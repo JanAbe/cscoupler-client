@@ -1,6 +1,6 @@
 <template>
   <div class="container mx-auto">
-    <div class="flex flex-wrap">
+    <div class="flex flex-wrap justify-center">
       <student-card class="px-2" v-for="student in students" v-bind:student="student" :key="student.id">
         <div class="w-1/3">
           <div class="bg-gray-400 h-12"></div>
