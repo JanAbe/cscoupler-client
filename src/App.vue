@@ -1,22 +1,34 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <student-list v-bind:students="students"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import StudentList from './components/StudentList.vue'
+import axios from 'axios'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    StudentList
+  },
+  data() {
+    return {
+      students: []
+    }
+  },
+  created() {
+    axios.get('http://localhost:3000/students/all')
+    .then(res => {
+      this.students = res.data
+    })
+    .catch(err => console.log(err))
   }
 }
 </script>
 
-<style>
+<style>  
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

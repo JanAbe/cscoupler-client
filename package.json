@@ -1,14 +1,26 @@
 {
   "name": "cscoupler-client",
   "version": "0.1.0",
+  "description": "A client written in Vue.js for CScoupler, a platform for companies and students to come in touch with one another.",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JanAbe/cscoupler-client.git"
+  },
+  "author": "Jan Abe de Waal",
+  "bugs": {
+    "url": "https://github.com/JanAbe/cscoupler-client/issues"
+  },
+  "homepage": "https://github.com/JanAbe/cscoupler-client#readme",
   "dependencies": {
+    "axios": "^0.19.0",
     "core-js": "^3.1.2",
+    "tailwindcss": "^1.1.2",
     "vue": "^2.6.10"
   },
   "devDependencies": {
@@ -29,14 +41,11 @@
       "plugin:vue/essential",
       "eslint:recommended"
     ],
-    "rules": {},
+    "rules": {
+      "no-console": "off"
+    },
     "parserOptions": {
       "parser": "babel-eslint"
-    }
-  },
-  "postcss": {
-    "plugins": {
-      "autoprefixer": {}
     }
   },
   "browserslist": [
