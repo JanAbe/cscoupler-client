@@ -1,5 +1,6 @@
 <template>
-  <div class="self-end h-full border m-1 rounded-lg bg-white mx-auto max-w-sm shadow-xl hover:shadow-none">
+  <div class="self-center h-full border m-1 rounded-lg bg-white mx-auto max-w-sm shadow-xl hover:shadow-none hover:bg-purple-200 cursor-pointer"
+    @click="viewStudentCard(student)">
     <div class="sm:flex sm:items-center px-2 py-4">
       <div>
         <img class="block h-16 object-contain object-center sm:h-16 rounded-full mx-auto mb-4 sm:mb-0 sm:mr-4 sm:ml-0" src="https://cdn.pixabay.com/photo/2013/07/13/10/07/man-156584_960_720.png" alt="">
@@ -18,11 +19,14 @@
       </div>
     </div>
     <div class="flex flex-wrap text-center justify-between">
-      <student-experience class="p-2" v-for="(exp, index) in student.experience.slice(0,2)" v-bind:experience="exp" :key="index"/>
+      <student-experience class="p-2 text-sm text-justify text-grey-dark mx-4 mt-1 mb-2 bg-gray-100 rounded-lg group-hover:bg-purple-100" 
+        v-for="(exp, index) in student.experience.slice(0,2)" 
+        v-bind:experience="exp" 
+        :key="index"/>
     </div>
     <div class="flex justify-between px-4 pb-2">
-      <button class="text-xs font-semibold rounded-full px-4 py-1 bg-white border border-blue">Message</button>
-      <button class="text-xs font-semibold rounded-full px-4 py-1 bg-white border border-tera">Curriculum Vitae</button>
+      <button v-on:click.stop="message(student.id, 'u want job?')" class="text-xs font-semibold rounded-full px-4 py-1 bg-white border border-purple-400 hover:bg-purple-400 hover:text-white">Message</button>
+      <button v-on:click.stop="resume()" class="text-xs font-semibold rounded-full px-4 py-1 bg-purple-400 border border-purple-400 text-white hover:bg-purple-500">Curriculum Vitae</button>
     </div>
   </div>
 </template>
@@ -45,12 +49,18 @@ export default {
       // and blur the other studentCards
       // it will also show the resume of 
       // this student.
+      alert('hi')
       return student
     },
 
-    messageStudent(studentID, message) {
+    resume() {
+      alert('resume wanted')
+    },
+
+    message(studentID, message) {
       // send a message to the selected
       // student
+      alert(`student ${studentID} messaged: ${message}`)
       return studentID, message
     }
   }

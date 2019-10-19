@@ -1,5 +1,5 @@
 <template>
-  <p class="text-sm text-justify text-grey-dark mx-4">
+  <p>
     {{experience}}
   </p>
 </template>
