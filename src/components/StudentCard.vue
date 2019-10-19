@@ -3,36 +3,27 @@
       <div class="border m-1 rounded-lg bg-white mx-auto max-w-sm shadow-lg hover:shadow-none">
         <div class="sm:flex sm:items-center px-2 py-2">
           <div>
-            <img class="block h-16 object-contain object-center sm:h-16 rounded-full mx-auto mb-4 sm:mb-0 sm:mr-4 sm:ml-0" src="https://api.adorable.io/avatars/196/abott@adorable.png" alt="">
-            <p class="text-sm py-1 mr-3" 
-              v-bind:class="{available: student.status=='Available', 
-                             unavailable: student.status=='Unavailable'}">
-              {{student.status}}
-            </p>
+            <img class="block h-16 object-contain object-center sm:h-16 rounded-full mx-auto mb-4 sm:mb-0 sm:mr-4 sm:ml-0" src="https://api.adorable.io/avatars/285/abott@adorable.png" alt="">
           </div>
           <div class="text-center sm:text-left sm:flex-grow">
             <div class="mb-4">
-              <p class="text-xl leading-tight">{{student.user.firstname}} {{student.user.lastname}}</p>
+              <p class="text-xl leading-tight">
+                {{student.user.firstname}} {{student.user.lastname}} 
+              </p>
               <p class="text-sm leading-tight text-grey-dark">Software Developer at SpongeBob LLC.</p>
+              <div class="text-sm py-px mx-6 md:mx-0 md:mr-6" v-bind:class="{available: student.status=='Available', unavailable: student.status=='Unavailable'}"></div>
             </div>
             <div class="flex flex-wrap justify-around">
-              <student-skill v-for="(skill, index) in student.skills.slice(0,3)" v-bind:skill="skill" :key="index" /> 
+              <student-skill v-for="(skill, index) in student.skills.slice(0,3)" v-bind:skill="skill" :key="index"/> 
             </div>
           </div>
         </div>
-        <div class="flex flex-wrap">
-          <p class="text-sm text-grey-dark mx-4">
-            - Interned at Fluukle company. Implemented
-            a new algorithm, decreasing cost by 20%.
-          </p>
-          <p class="text-sm text-grey-dark mx-4 py-3">
-            - Worked at Zoink.inc as junior developer.
-            Working on their main product, fixing bugs left and right.
-          </p>
+        <div class="flex flex-wrap text-center">
+          <student-experience class="p-2" v-for="(exp, index) in student.experience.slice(0,2)" v-bind:experience="exp" :key="index"/>
         </div>
         <div class="flex flex-wrap justify-between px-2 py-2">
-          <button class="text-xs font-semibold rounded-full px-4 py-1 bg-white border border-blue hover:bg-blue-200">Message</button>
-          <button class="text-xs font-semibold rounded-full px-4 py-1 bg-white border border-tera hover:bg-orange-300">Curriculum Vitae</button>
+          <button class="text-xs font-semibold rounded-full px-4 py-1 bg-white border border-blue">Message</button>
+          <button class="text-xs font-semibold rounded-full px-4 py-1 bg-white border border-tera">Curriculum Vitae</button>
         </div>
       </div>
     </div>
@@ -40,12 +31,14 @@
 
 <script>
 import StudentSkill from './StudentSkill.vue'
+import StudentExperience from './StudentExperience'
 
 export default {
   name: 'StudentCard',
   props: ['student'],
   components: {
     StudentSkill,
+    StudentExperience,
   },
   methods: {
     viewStudentCard(student) {
