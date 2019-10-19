@@ -1,7 +1,7 @@
 <template>
   <div class="container mx-auto">
-    <div class="flex flex-wrap justify-center">
-      <student-card class="px-2" v-for="student in students" v-bind:student="student" :key="student.id" />
+    <div class="flex flex-wrap">
+      <student-card v-for="student in students" v-bind:student="student" :key="student.id" />
     </div>
   </div>
 </template>
