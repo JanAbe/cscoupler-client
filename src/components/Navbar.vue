@@ -20,6 +20,7 @@
           Companies
         </a>
       </div>
+      <!-- div below should be shown to signed-in users only -->
       <div class="lg:flex text-white mx-4 lg:mt-0">
         <div class="mt-4 lg:mt-0">
           <a href="#account">
@@ -29,6 +30,19 @@
         <div class="mt-4 lg:mt-0">
           <a href="#sign-out" class="lg:ml-4">
             Sign out
+          </a>
+        </div>
+      </div>
+      <!-- div below should be shown to non-signed-in users only -->
+      <div class="lg:flex text-white mx-4 lg:mt-0">
+        <div class="mt-4 lg:mt-0">
+          <a href="#Register">
+            Register
+          </a>
+        </div>
+        <div class="mt-4 lg:mt-0">
+          <a href="#sign-in" class="lg:ml-4">
+            Sign in
           </a>
         </div>
       </div>
