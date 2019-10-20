@@ -21,7 +21,7 @@
         </a>
       </div>
       <!-- div below should be shown to signed-in users only -->
-      <div class="lg:flex text-white mx-4 lg:mt-0">
+      <div v-show="false" class="lg:flex text-white mx-4 lg:mt-0">
         <div class="mt-4 lg:mt-0">
           <a href="#account">
             Account
@@ -34,7 +34,7 @@
         </div>
       </div>
       <!-- div below should be shown to non-signed-in users only -->
-      <div class="lg:flex text-white mx-4 lg:mt-0">
+      <div v-show="true" class="lg:flex text-white mx-4 lg:mt-0">
         <div class="mt-4 lg:mt-0">
           <a href="#Register">
             Register

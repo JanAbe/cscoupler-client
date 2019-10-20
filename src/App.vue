@@ -6,14 +6,14 @@
 </template>
 
 <script>
-import StudentList from './components/StudentList.vue'
 import Navbar from './components/Navbar'
+import StudentList from './components/StudentList.vue'
 
 export default {
   name: 'app',
   components: {
+    Navbar,
     StudentList,
-    Navbar
   },
 }
 </script>

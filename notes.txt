@@ -1,0 +1,2 @@
+!!! Don't forget to change endpoints/url's used to 
+http if http is used by the server and vice versa !!!

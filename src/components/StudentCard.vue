@@ -23,13 +23,18 @@
         </div>
       </div>
     </div>
-    <div class="flex flex-wrap text-center justify-between">
-      <student-experience class="p-2 text-sm text-justify text-grey-dark mx-4 mt-1 mb-2 bg-gray-100 rounded-lg group-hover:bg-purple-100" 
+    <div class="flex flex-wrap text-center">
+      <student-experience class="p-2 text-sm text-justify text-grey-dark mx-4 mt-1 mb-2 bg-gray-100 rounded-lg" 
         v-for="(exp, index) in student.experience.slice(0,2)" 
         v-bind:experience="exp" 
         :key="index"/>
     </div>
-    <div class="flex justify-between px-4 pb-2">
+    <div class="flex flex-wrap text-center">
+      <p class="p-2 text-sm text-justify text-grey-dark mx-4 mt-1 mb-2 bg-purple-100 rounded-lg">
+        Looking for a start-up company working on socially relevant problems in the Bay area.
+      </p>
+    </div>
+    <div class="flex justify-between px-4 pb-2 pt-1">
       <button v-on:click.stop="message(student.id, 'u want job?')" class="text-xs font-semibold rounded-full px-4 py-1 bg-white border border-purple-400 hover:bg-purple-400 hover:text-white">Message</button>
       <button v-on:click.stop="resume()" class="text-xs font-semibold rounded-full px-4 py-1 bg-purple-400 border border-purple-400 text-white hover:bg-purple-500">Curriculum Vitae</button>
     </div>
