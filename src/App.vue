@@ -1,16 +1,19 @@
 <template>
   <div id="app">
+    <navbar />
     <student-list/>
   </div>
 </template>
 
 <script>
 import StudentList from './components/StudentList.vue'
+import Navbar from './components/Navbar'
 
 export default {
   name: 'app',
   components: {
-    StudentList
+    StudentList,
+    Navbar
   },
 }
 </script>
@@ -20,8 +23,6 @@ export default {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>

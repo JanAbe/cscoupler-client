@@ -4,7 +4,7 @@
     @click="viewStudentCard(student)">
 
     <div class="flex justify-end pt-2 pr-3">
-      <input v-on:click.stop="mark(student)" type="checkbox" name="marked">
+      <input v-on:click.stop="mark(student)" v-bind:checked="student.marked" type="checkbox" name="marked">
     </div>
     <div class="sm:flex sm:items-center px-2">
       <div>
@@ -70,7 +70,6 @@ export default {
     },
 
     mark(student) {
-      alert('marked')
       student.marked = !student.marked
     }
   }
