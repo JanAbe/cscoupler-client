@@ -1,5 +1,5 @@
 <template>
-  <nav class="flex items-center justify-between flex-wrap bg-purple-400 p-2 lg:px-8 lg:mb-6">
+  <nav class="flex items-center justify-between flex-wrap bg-purple-400 p-2 lg:px-8 lg:mb-6 mb-3">
     <div class="flex items-center flex-shrink-0 text-white mr-6">
       <a id="home" href="#home" class="font-semibold text-xl tracking-tight">CScoupler</a>
     </div>
@@ -9,19 +9,26 @@
       </button>
     </div>
     <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
-      <div class="text-semi-bold lg:flex-grow flex justify-center">
-        <a href="#students" class="block mt-4 lg:inline-block lg:mt-0 text-white mr-4">
+      <div class="lg:flex-grow lg:flex lg:justify-center">
+        <a href="#students" class="block mt-4 lg:inline-block lg:mt-0 text-white mx-4 lg:ml-0 lg:mr-4">
           Students
         </a>
-        <a href="#projects" class="block mt-4 lg:inline-block lg:mt-0 text-white mx-16">
+        <a href="#projects" class="block mt-4 lg:inline-block lg:mt-0 text-white mx-4">
           Projects
         </a>
-        <a href="#companies" class="block mt-4 lg:inline-block lg:mt-0 text-white">
+        <a href="#companies" class="block mt-4 lg:inline-block lg:mt-0 text-white mx-4">
           Companies
         </a>
       </div>
-      <div class="flex">
-        <a href="#login" class="text-white">Sign in</a>
+      <div class="lg:flex text-white mx-4 mt-4 lg:mt-0">
+        <a href="#account">
+          Account
+        </a>
+      </div>
+      <div class="lg:flex text-white mx-4 mt-4 lg:mt-0">
+        <a href="#sign-out" class="lg:ml-4">
+          Sign out
+        </a>
       </div>
     </div>
   </nav>
