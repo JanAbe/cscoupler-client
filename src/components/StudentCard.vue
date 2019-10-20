@@ -1,14 +1,19 @@
 <template>
-  <div class="self-center h-full border m-1 rounded-lg bg-white mx-auto max-w-sm shadow-xl hover:shadow-none hover:bg-purple-200 cursor-pointer"
+  <div class="self-center h-full border mb-2 rounded-lg bg-white mx-auto max-w-sm shadow-xl hover:shadow-none cursor-pointer"
+    v-bind:class="{ marked: student.marked }"
     @click="viewStudentCard(student)">
-    <div class="sm:flex sm:items-center px-2 py-4">
+
+    <div class="flex justify-end pt-2 pr-3">
+      <input v-on:click.stop="mark(student)" type="checkbox" name="marked">
+    </div>
+    <div class="sm:flex sm:items-center px-2">
       <div>
         <img class="block h-16 object-contain object-center sm:h-16 rounded-full mx-auto mb-4 sm:mb-0 sm:mr-4 sm:ml-0" src="https://cdn.pixabay.com/photo/2013/07/13/10/07/man-156584_960_720.png" alt="">
       </div>
-      <div class="text-center sm:text-left sm:flex-grow">
+      <div class="text-center py-1 sm:text-left sm:flex-grow">
         <div class="mb-4">
           <p class="text-xl leading-tight">
-            {{student.user.firstname}} {{student.user.lastname}} 
+            {{student.firstname}} {{student.lastname}} 
           </p>
           <p class="text-sm leading-tight text-grey-dark">Software Developer at SpongeBob LLC.</p>
           <div class="py-px mx-6 md:mx-0 md:mr-4" v-bind:class="{available: student.status=='Available', unavailable: student.status=='Unavailable'}"></div>
@@ -62,21 +67,17 @@ export default {
       // student
       alert(`student ${studentID} messaged: ${message}`)
       return studentID, message
+    },
+
+    mark(student) {
+      alert('marked')
+      student.marked = !student.marked
     }
   }
 }
 </script>
 
 <style scoped>
-  .border-tera {
-    /* border-color: #f6dbc6; */
-    border-color:#fbd38d;  
-  }
-
-  .border-blue {
-    border-color: #c6e0f6;
-  }
-
   .available {
     border-bottom: 2px solid;
     border-color: #4fd1c5;
@@ -85,5 +86,16 @@ export default {
   .unavailable {
     border-bottom: 2px solid;
     border-color: #fc8181;
+  }
+
+  .top-right {
+    position: fixed;
+    top:0;
+    right:0;
+  }
+
+  .marked {
+    background-color: #e9d8fd;
+    box-shadow: none;
   }
 </style>
