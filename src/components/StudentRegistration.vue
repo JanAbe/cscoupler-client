@@ -1,8 +1,9 @@
 <template>
-  <div class="flex h-full">
-    <div class="md:w-1/2 md:bg-purple-600">
-      <img src="../assets/svg/online-cv.svg" alt="" class="hidden md:block sm:mx-0 lg:mx-32 lg:mt-8">
+  <div class="flex h-screen">
+    <div class="hidden lg:block lg:w-1/2 lg:bg-purple-600">
+      <img src="../assets/svg/online-cv.svg" alt="" class="sm:mx-0 lg:mx-32 lg:mt-8">
     </div>
+
     <form v-on:submit.prevent="register()" id="student-form" class="w-1/2 mx-auto max-w-lg container md:mt-12 border-2 border-gray-200 rounded-lg px-8 pt-8 pb-4">
       <div class="flex flex-wrap mx-3 mb-6 sm:-mx-3">
         <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
@@ -48,18 +49,28 @@
       </div>
 
       <div class="flex flex-wrap mb-6 sm:-mx-3">
-        <label class="mx-3 text-gray-700 uppercase text-xs font-bold mb-2" for="grid-skills">Select up to 5 of your skills!</label>
+        <label class="mx-3 text-gray-700 uppercase text-xs font-bold mb-2" for="grid-skills">Select up to 5 of your skills</label>
         <multi-select v-model="skills" :options="skillsOptions" :multiple="true" 
           :close-on-select="false" :clear-on-select="true" :max="5"
           label="name" track-by="name" placeholder="Select your skills" class="mx-3" id="grid-skills">
         </multi-select>
       </div>
 
+      <div class="flex flex-wrap mx-3 sm:-mx-3">
+        <div class="w-full px-3 my-4">
+          <label v-on:click="selectResume()" class="text-xs font-semibold rounded-full mb-6 px-4 py-3 bg-purple-400 text-white hover:bg-purple-500" role="button" for="resume-upload">
+            Upload CV / Resume
+          </label>
+          <span id="selected-file-name" class="ml-2 text-gray-500">No CV / Resume selected</span>
+          <input id="resume-upload" class="hidden" type="file">
+        </div>
+      </div>
+
       <div class="flex flex-wrap mt-12 sm:-mx-3 justify-between">
         <button class="text-xs font-semibold rounded-full mx-3 px-4 py-1 bg-white border border-purple-400 hover:bg-purple-400 hover:text-white">
           Cancel
         </button>
-        <button class="text-xs font-semibold rounded-full mx-3 px-4 py-1 bg-purple-400 border border-purple-400 text-white hover:bg-purple-500">
+        <button class="text-xs font-semibold rounded-full mx-3 px-4 py-1 bg-purple-500 border border-purple-500 text-white hover:bg-purple-600">
           Register
         </button>
       </div>
@@ -105,6 +116,14 @@ export default {
 
       axios.post(endpoint, payload)
     },
+
+    selectResume() {
+      const resumeUpload = document.querySelector('#resume-upload')
+      resumeUpload.addEventListener('change', (event) => {
+        const resumeName = event.target.files[0].name
+        document.querySelector('#selected-file-name').textContent = resumeName
+      })
+    }
   }
 }
 </script>
@@ -153,9 +172,5 @@ export default {
 <style scoped>
   #student-form {
     height: max-content;
-  }
-
-  .info {
-    margin-top: revert;
   }
 </style>
