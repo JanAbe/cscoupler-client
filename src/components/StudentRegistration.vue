@@ -4,7 +4,7 @@
       <img src="../assets/svg/online-cv.svg" alt="" class="sm:mx-0 lg:mx-32 lg:mt-8">
     </div>
 
-    <form v-on:submit.prevent="register()" id="student-form" class="w-1/2 mx-auto md:ml-48 md:mr-auto max-w-lg md:mt-12 border-2 border-gray-200 rounded-lg px-8 pt-8 pb-4">
+    <form v-on:submit.prevent="register()" id="student-form" class="lg:w-1/2 mx-auto md:ml-48 md:mr-auto max-w-lg md:mt-12 border-2 border-gray-200 rounded-lg px-2 lg:px-6 pt-8 pb-4">
       <div class="flex flex-wrap mx-3 mb-6 sm:-mx-3">
         <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
           <label class="block uppercase text-gray-700 text-xs font-bold mb-2" for="student-first-name">
@@ -23,7 +23,7 @@
       </div>
       
       <div class="flex flex-wrap mx-3 mb-6 sm:-mx-3">
-        <div class="w-full px-3">
+        <div class="w-full px-3 mt-3 lg:mt-0">
           <label class="block uppercase text-gray-700 text-xs font-bold mb-2" for="grid-email">
             Email
           </label>
@@ -33,7 +33,7 @@
       </div>
 
       <div class="flex flex-wrap mx-3 mb-6 sm:-mx-3">
-        <div class="w-full px-3">
+        <div class="w-full px-3 mb-3 lg:mb-1">
           <label class="block uppercase text-gray-700 text-xs font-bold mb-2" for="student-password">
             Password
           </label>
@@ -44,7 +44,7 @@
       </div>
       
       <div class="flex flex-wrap mx-3 mb-6 sm:-mx-3">
-        <div class="w-full md:w-1/2 px-3">
+        <div class="w-full md:w-1/2 px-3 mb-4 lg:mb-0">
           <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="student-status">
             Student status
           </label>
@@ -59,7 +59,7 @@
         </div>
       </div>
 
-      <div class="flex flex-wrap mb-6 sm:-mx-3">
+      <div class="flex flex-wrap mx-3 mb-6 sm:-mx-3">
         <label class="mx-3 text-gray-700 uppercase text-xs font-bold mb-2" for="student-skills">Select up to 5 of your skills</label>
         <multi-select v-model="skills" :options="skillsOptions" :multiple="true" 
           :close-on-select="false" :clear-on-select="true" :max="5"
@@ -72,12 +72,12 @@
           <label v-on:click="selectResume()" class="text-xs font-semibold rounded-full mb-6 px-4 py-3 bg-purple-400 text-white hover:bg-purple-500" role="button" for="resume-upload">
             Upload CV / Resume
           </label>
-          <span id="selected-file-name" class="ml-2 text-gray-500">No CV / Resume selected</span>
+          <span id="selected-file-name" class="block pt-2 lg:mt-0 md:inline ml-2 text-gray-500">No CV / Resume selected</span>
           <input id="resume-upload" class="hidden" type="file">
         </div>
       </div>
 
-      <div class="flex flex-wrap mt-12 sm:-mx-3 justify-between">
+      <div class="flex flex-wrap mt-8 sm:-mx-3 justify-between">
         <button class="text-xs font-semibold rounded-full mx-3 px-4 py-1 bg-white border border-purple-400 hover:bg-purple-400 hover:text-white">
           Cancel
         </button>
