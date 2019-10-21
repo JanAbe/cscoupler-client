@@ -1,5 +1,5 @@
 <template>
-  <nav class="flex items-center justify-between flex-wrap bg-purple-400 p-2 lg:px-8 lg:mb-6 mb-3">
+  <nav class="flex items-center justify-between flex-wrap bg-purple-500 p-2 lg:px-8">
     <div class="flex items-center flex-shrink-0 text-white mr-6">
       <a id="home" href="#home" class="font-semibold text-xl tracking-tight">CScoupler</a>
     </div>
