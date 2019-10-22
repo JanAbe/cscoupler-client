@@ -11,14 +11,16 @@
             First Name
           </label>
           <input id="first-name" v-model="firstname" type="text" placeholder="John" 
-            class="appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white hover:border-purple-300 focus:border-purple-300">
+            class="appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white hover:border-purple-300 focus:border-purple-300">
+          <p class="text-red-600 leading-tight text-xs italic pl-1">{{ validationErrors.firstname }}</p>
         </div>
         <div class="w-full md:w-1/2 px-3">
           <label class="block uppercase text-gray-700 text-xs font-bold mb-2" for="last-name">
             Last Name
           </label>
           <input id="last-name" v-model="lastname" type="text" placeholder="Smith"
-            class="appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white hover:border-purple-300 focus:border-purple-300">
+            class="appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white hover:border-purple-300 focus:border-purple-300">
+          <p class="text-red-600 leading-tight text-xs italic pl-1">{{ validationErrors.lastname }}</p>
         </div>
       </div>
       
@@ -28,7 +30,8 @@
             Email
           </label>
           <input id="email" v-model="email" type="email" placeholder="johnsmith@email.com" 
-            class="appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white hover:border-purple-300 focus:border-purple-300">
+            class="appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white hover:border-purple-300 focus:border-purple-300">
+          <p class="text-red-600 leading-tight text-xs italic pl-1">{{ validationErrors.email }}</p>
         </div>
       </div>
 
@@ -39,7 +42,8 @@
           </label>
           <input id="password" v-model="password" type="password" placeholder="******************" 
             class="appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white hover:border-purple-300 focus:border-purple-300">
-          <p class="text-gray-600 leading-tight text-xs italic">It should be atleast 8 characters long, contain numbers, letters and special characters</p>
+          <p class="text-gray-600 leading-tight text-xs italic pl-1">It should be atleast 8 characters long, contain numbers, letters and special characters</p>
+          <p class="text-red-600 leading-tight text-xs italic pl-1">{{ validationErrors.password }}</p>
         </div>
       </div>
       
@@ -48,14 +52,16 @@
           <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="status">
             Student status
           </label>
-          <multi-select class="mb-3 leading-tight focus:outline-none hover:border-purple-300 focus:border-purple-300" v-model="status" :options="statusOptions" :close-on-select="true" :show-labels="false" label="stat" track-by="stat" placeholder="Select student status"></multi-select>
+          <multi-select class="mb-1 leading-tight focus:outline-none hover:border-purple-300 focus:border-purple-300" v-model="status" :options="statusOptions" :close-on-select="true" :show-labels="false" label="stat" track-by="stat" placeholder="Select student status"></multi-select>
+          <p class="text-red-600 leading-tight text-xs italic pl-1">{{ validationErrors.status }}</p>
         </div>
         <div class="w-full md:w-1/2 px-3">
           <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="university">
             University
           </label>
           <input id="university" v-model="university" type="text" placeholder="University of ..." 
-            class="appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none hover:border-purple-300 focus:border-purple-300">
+            class="appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 mb-1 leading-tight focus:outline-none hover:border-purple-300 focus:border-purple-300">
+          <p class="text-red-600 leading-tight text-xs italic pl-1">{{ validationErrors.university }}</p>
         </div>
       </div>
 
@@ -65,6 +71,7 @@
           :close-on-select="false" :clear-on-select="true" :max="5"
           label="skill" track-by="skill" placeholder="Select your skills" class="mx-3" id="skills">
         </multi-select>
+        <p class="text-red-600 leading-tight text-xs italic pl-1 mx-3">{{ validationErrors.skills }}</p>
       </div>
 
       <div class="flex flex-wrap mx-3 sm:-mx-3">
@@ -74,6 +81,7 @@
           </label>
           <span id="selected-file-name" class="block pt-2 lg:mt-0 md:inline ml-2 text-gray-500">No CV / Resume selected</span>
           <input id="resume-upload" class="hidden" type="file">
+          <p class="text-red-600 leading-tight text-xs italic pl-1 mt-2">{{ validationErrors.resume }}</p>
         </div>
       </div>
 
@@ -93,6 +101,14 @@
 import Vue from 'vue'
 import axios from 'axios'
 import MultiSelect from 'vue-multiselect'
+import { validateFirstName,
+         validateLastName,
+         validateEmail,
+         validatePassword, 
+         validateStatus,
+         validateUniversity,
+         validateSkills,
+         validateResume} from "../validators";
 
 Vue.component('multi-select', MultiSelect)
 
@@ -102,13 +118,13 @@ export default {
   },
   data() {
     return {
-      errors: [],
-      firstname: null,
-      lastname: null,
-      email: null,
-      password: null,
-      status: null,
-      university: null,
+      validationErrors: {},
+      firstname: '',
+      lastname: '',
+      email: '',
+      password: '',
+      status: '',
+      university: '',
       skills: [],
       resume: null,
       skillsOptions: [
@@ -131,6 +147,11 @@ export default {
   },
   methods: {
     register() {
+      const formIsValid = this.validateForm()
+      if (!formIsValid) {
+        return
+      }
+
       const endpoint = 'http://localhost:3000/signup/student'
       const data = {
         user: {
@@ -141,7 +162,7 @@ export default {
         },
         university: this.university,
         skills: this.skills.map(({ skill }) => skill),
-        status: this.status['stat']
+        status: this.status
       }
 
       const payload = new FormData()
@@ -152,39 +173,54 @@ export default {
     },
 
     validateForm() {
-      if (this.firstname && this.lastname &&
-          this.email && this.password && this.status.length !== 0
-          && this.skills.length !== 0 && this.resume) {
-            return true
-      }
-        
-      if (!this.firstname) {
-        this.errors.push('First name is required')
+      this.validationErrors = {}
+
+      const fname = validateFirstName(this.firstname)
+      if (!fname.isValid) {
+        this.validationErrors.firstname = fname.error      
       }
 
-      if (!this.lastname) {
-        this.errors.push('Last name is required')
+      const lname = validateLastName(this.lastname)
+      if (!lname.isValid) {
+        this.validationErrors.lastname = lname.error      
       }
 
-      if (!this.email) {
-        this.errors.push('Email is required')
+      const email = validateEmail(this.email)
+      if (!email.isValid) {
+        this.validationErrors.email = email.error
       }
 
-      if (!this.password) {
-        this.errors.push('Password is required')
+      const password = validatePassword(this.password)
+      if (!password.isValid) {
+        this.validationErrors.password = password.error      
       }
 
-      if (this.skills.length === 0) {
-        this.errors.push('At least one skill needs to be selected')
-      }
-      
-      if (this.status.length === 0) {
-        this.errors.push('Status is required')
+      const status = validateStatus(this.status)
+      if (!status.isValid) {
+        this.validationErrors.status = status.error
       }
 
-      if (!this.resume) {
-        this.errors.push('Resume is required')
+      const university = validateUniversity(this.university)
+      if (!university.isValid) {
+        this.validationErrors.university = university.error
       }
+
+      const skills = validateSkills(this.skills)
+      if (!skills.isValid) {
+        this.validationErrors.skills = skills.error
+      }
+
+      const resume = validateResume(this.resume)
+      if (!resume.isValid) {
+        this.validationErrors.resume = resume.error
+      }
+
+      // check if no errors are present
+      if (!Object.entries(this.validationErrors).length) {
+        return true // form is valid
+      }
+
+      return false
     },
 
     selectResume() {

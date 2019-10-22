@@ -1,2 +1,8 @@
 !!! Don't forget to change endpoints/url's used to 
 http if http is used by the server and vice versa !!!
+
+
+todo:
+add validation to student registration form
+direct user to login screen after successfully registrating
+look into error messages when a user submits an invalid value
