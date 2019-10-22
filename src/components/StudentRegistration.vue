@@ -1,10 +1,10 @@
 <template>
-  <div class="flex justify-between h-screen">
+  <div class="flex justify-between h-full">
     <div class="hidden lg:block lg:w-1/2 lg:bg-purple-600">
       <img src="../assets/svg/online-cv.svg" alt="" class="sm:mx-0 lg:mx-32 lg:mt-8">
     </div>
 
-    <form v-on:submit.prevent="register()" id="student-form" class="lg:w-1/2 mx-auto lg:ml-48 lg:mr-auto max-w-lg md:mt-12 border-2 border-gray-200 rounded-lg px-2 lg:px-6 pt-8 pb-4">
+    <form v-on:submit.prevent="register()" id="student-form" class="lg:w-1/2 mx-auto lg:ml-48 lg:mr-auto max-w-lg md:mt-12 lg:mt-24 border-2 border-gray-200 rounded-lg px-2 lg:px-6 pt-8 pb-4">
       <div class="flex flex-wrap mx-3 mb-6 sm:-mx-3">
         <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
           <label class="block uppercase text-gray-700 text-xs font-bold mb-2" for="first-name">

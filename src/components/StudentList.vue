@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto">
+  <div class="container mx-auto mt-8">
     <div class="flex flex-wrap">
       <student-card v-for="student in students" v-bind:student="student" :key="student.id" />
     </div>

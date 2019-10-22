@@ -1,5 +1,5 @@
 <template>
-  <nav class="flex items-center justify-between flex-wrap bg-purple-500 p-2 lg:px-8">
+  <nav class="flex items-center justify-between flex-wrap bg-purple-600 p-2 lg:px-8">
     <div class="flex items-center flex-shrink-0 text-white mr-6">
       <a id="home" href="#home" class="font-semibold text-xl tracking-tight">CScoupler</a>
     </div>
@@ -10,9 +10,9 @@
     </div>
     <div id="menu-content" class="w-full flex-grow lg:flex lg:items-center lg:w-auto">
       <div class="lg:flex-grow lg:flex lg:justify-center">
-        <a href="#students" class="block mt-4 lg:inline-block lg:mt-0 text-white mx-4 lg:ml-0 lg:mr-4">
+        <router-link to="/students" class="block mt-4 lg:inline-block lg:mt-0 text-white mx-4 lg:ml-0 lg:mr-4">
           Students
-        </a>
+        </router-link>
         <a href="#projects" class="block mt-4 lg:inline-block lg:mt-0 text-white mx-4">
           Projects
         </a>
@@ -36,9 +36,7 @@
       <!-- div below should be shown to non-signed-in users only -->
       <div v-show="true" class="lg:flex text-white mx-4 lg:mt-0">
         <div class="mt-4 lg:mt-0">
-          <a href="#Register">
-            Register
-          </a>
+          <router-link to="/students/register">Register(Student)</router-link>
         </div>
         <div class="mt-4 lg:mt-0">
           <a href="#sign-in" class="lg:ml-4">

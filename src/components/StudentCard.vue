@@ -8,7 +8,7 @@
     </div>
     <div class="sm:flex sm:items-center px-2">
       <div>
-        <img class="block h-16 object-contain object-center sm:h-16 rounded-full mx-auto mb-4 sm:mb-0 sm:mr-4 sm:ml-0" src="https://cdn.pixabay.com/photo/2013/07/13/10/07/man-156584_960_720.png" alt="">
+        <img class="block h-16 object-contain object-center sm:h-16 rounded-full mx-auto mb-4 sm:mb-0 sm:mr-4 sm:ml-0" src="../assets/avatar.png" alt="">
       </div>
       <div class="text-center py-1 sm:text-left sm:flex-grow">
         <div class="mb-4">
@@ -23,7 +23,7 @@
         </div>
       </div>
     </div>
-    <div class="flex flex-wrap text-center">
+    <div v-if="student.experience !== null" class="flex flex-wrap text-center">
       <student-experience class="p-2 text-sm text-justify text-grey-dark mx-4 mt-1 mb-2 bg-gray-100 rounded-lg" 
         v-for="(exp, index) in student.experience.slice(0,2)" 
         v-bind:experience="exp" 
