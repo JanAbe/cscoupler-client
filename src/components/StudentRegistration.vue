@@ -25,7 +25,7 @@
       </div>
       
       <div class="flex flex-wrap mx-3 mb-6 sm:-mx-3">
-        <div class="w-full px-3 mt-3 lg:mt-0">
+        <div class="w-full px-3 lg:mt-0">
           <label class="block uppercase text-gray-700 text-xs font-bold mb-2" for="email">
             Email
           </label>
@@ -81,7 +81,7 @@
           </label>
           <span id="selected-file-name" class="block pt-2 lg:mt-0 md:inline ml-2 text-gray-500">No CV / Resume selected</span>
           <input id="resume-upload" class="hidden" type="file">
-          <p class="text-red-600 leading-tight text-xs italic pl-1 mt-2">{{ validationErrors.resume }}</p>
+          <p class="text-red-600 leading-tight text-xs italic pl-2 lg:mt-2">{{ validationErrors.resume }}</p>
         </div>
       </div>
 
