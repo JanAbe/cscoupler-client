@@ -32,6 +32,7 @@
           <input id="email" v-model="email" type="email" placeholder="johnsmith@email.com" 
             class="appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white hover:border-purple-300 focus:border-purple-300">
           <p class="text-red-600 leading-tight text-xs italic pl-1">{{ validationErrors.email }}</p>
+          <p class="text-red-600 leading-tight text-xs italic pl-1">{{ emailConflictError }}</p>
         </div>
       </div>
 
@@ -119,6 +120,7 @@ export default {
   data() {
     return {
       validationErrors: {},
+      emailConflictError: '',
       firstname: '',
       lastname: '',
       email: '',
@@ -164,12 +166,25 @@ export default {
         skills: this.skills.map(({ skill }) => skill),
         status: this.status.stat
       }
-      console.log(this.resume.type)
+
       const payload = new FormData()
       payload.append('resume', this.resume)
       payload.append('studentData', JSON.stringify(data))
 
       axios.post(endpoint, payload)
+      .then(() => {
+        location.reload()
+      })
+      .catch(err => {
+        switch(err.response.status) {
+          case 409:
+            this.emailConflictError = 'Submitted email is already taken and bound to an account.'
+            break
+          case 404:
+            console.log('bad request feels badman')
+            break
+        }
+      })
     },
 
     validateForm() {
