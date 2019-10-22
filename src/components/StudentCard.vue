@@ -1,5 +1,5 @@
 <template>
-  <div class="self-center h-full border mb-2 rounded-lg bg-white mx-auto max-w-sm shadow-xl hover:shadow-none cursor-pointer"
+  <div class="self-center border mb-2 rounded-lg bg-white mx-auto max-w-sm shadow-xl hover:shadow-none cursor-pointer"
     v-bind:class="{ marked: student.marked }"
     @click="viewStudentCard(student)">
 
@@ -15,8 +15,8 @@
           <p class="text-xl leading-tight">
             {{student.firstname}} {{student.lastname}} 
           </p>
-          <p class="text-sm leading-tight text-grey-dark">Software Developer at SpongeBob LLC.</p>
-          <div class="py-px mx-6 md:mx-0 md:mr-4" v-bind:class="{available: student.status=='Available', unavailable: student.status=='Unavailable'}"></div>
+          <p class="text-sm leading-tight text-grey-dark">Newly graduate of Marmaduke university</p>
+          <div class="py-px mx-6 md:mx-0 md:mr-4 border-b-2 border-purple-300 "></div>
         </div>
         <div class="flex flex-wrap justify-around sm:flex-grow">
           <student-skill v-for="(skill, index) in student.skills.slice(0,3)" v-bind:skill="skill" :key="index"/> 
