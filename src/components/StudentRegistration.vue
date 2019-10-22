@@ -4,7 +4,7 @@
       <img src="../assets/svg/online-cv.svg" alt="" class="sm:mx-0 lg:mx-32 lg:mt-8">
     </div>
 
-    <form v-on:submit.prevent="register()" id="student-form" class="lg:w-1/2 mx-auto md:ml-48 md:mr-auto max-w-lg md:mt-12 border-2 border-gray-200 rounded-lg px-2 lg:px-6 pt-8 pb-4">
+    <form v-on:submit.prevent="register()" id="student-form" class="lg:w-1/2 mx-auto lg:ml-48 lg:mr-auto max-w-lg md:mt-12 border-2 border-gray-200 rounded-lg px-2 lg:px-6 pt-8 pb-4">
       <div class="flex flex-wrap mx-3 mb-6 sm:-mx-3">
         <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
           <label class="block uppercase text-gray-700 text-xs font-bold mb-2" for="first-name">
@@ -71,7 +71,7 @@
           :close-on-select="false" :clear-on-select="true" :max="5"
           label="skill" track-by="skill" placeholder="Select your skills" class="mx-3" id="skills">
         </multi-select>
-        <p class="text-red-600 leading-tight text-xs italic pl-1 mx-3">{{ validationErrors.skills }}</p>
+        <p class="text-red-600 leading-tight text-xs italic pl-1 mx-3 md:mt-1">{{ validationErrors.skills }}</p>
       </div>
 
       <div class="flex flex-wrap mx-3 sm:-mx-3">
@@ -81,7 +81,7 @@
           </label>
           <span id="selected-file-name" class="block pt-2 lg:mt-0 md:inline ml-2 text-gray-500">No CV / Resume selected</span>
           <input id="resume-upload" class="hidden" type="file">
-          <p class="text-red-600 leading-tight text-xs italic pl-2 lg:mt-2">{{ validationErrors.resume }}</p>
+          <p class="text-red-600 leading-tight text-xs italic pl-2 md:mt-3">{{ validationErrors.resume }}</p>
         </div>
       </div>
 
@@ -162,9 +162,9 @@ export default {
         },
         university: this.university,
         skills: this.skills.map(({ skill }) => skill),
-        status: this.status
+        status: this.status.stat
       }
-
+      console.log(this.resume.type)
       const payload = new FormData()
       payload.append('resume', this.resume)
       payload.append('studentData', JSON.stringify(data))

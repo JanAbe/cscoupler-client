@@ -35,7 +35,7 @@ export const validatePassword = (pw) => {
 }
 
 export const validateStatus = (status) => {
-  if (!status.length) {
+  if (status.stat === undefined || status.stat === null) {
     return { isValid: false, error: 'Status is required' }
   }
 
@@ -62,5 +62,10 @@ export const validateResume = (resume) => {
   if (resume === null) {
     return { isValid: false, error: 'Resume is required' }
   }
+
+  if (resume.type !== "application/pdf") {
+    return { isValid: false, error: 'Resume should be uploaded as PDF' }
+  }
+
   return { isValid: true, error: null }
 }
