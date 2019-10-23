@@ -32,7 +32,7 @@
           <hr>
 
           <div class="flex justify-center border border-transparent">
-            <button @click="search()" class="bg-teal-400 rounded-full p-1 text-sm font-semibold w-full mx-6 my-2 hover:bg-teal-500 text-white">
+            <button class="bg-teal-400 rounded-full p-1 text-sm font-semibold w-full mx-6 my-2 hover:bg-teal-500 text-white">
               Search
             </button>
           </div>
@@ -43,7 +43,7 @@
       <student-card v-for="student in markedStudents" v-bind:student="student" :key="student.id" />
     </div>
     <div v-else-if="!markedToggle" class="flex flex-wrap w-2/3 ">
-      <student-card v-for="student in students" v-bind:student="student" :key="student.id" />
+      <student-card v-for="student in filteredStudents" v-bind:student="student" :key="student.id" />
     </div>
   </div>
 </template>
@@ -104,23 +104,19 @@ export default {
     toggle() {
       this.markedToggle = !this.markedToggle
     },
-
-    // search() {
-    //   if (this.skillQuery === '') {
-    //     return
-    //   }
-      
-    //   let x = false
-    //   const skills = this.skillQuery.split(',').map(s => s.trim()) 
-    //   this.students = this.students.filter(s => {
-    //     skills.forEach(sk => x = s.skills.includes(sk))
-    //     return x
-    //   })
-    // }
   }, 
   computed: {
     markedStudents: function() {
       return this.students.filter(s => s.marked)
+    },
+    filteredStudents: function() {
+      if (this.skillQuery === '') {
+        return this.students
+      }
+
+      return this.students.filter(s => {
+        return s.skills.map(s => s.toLowerCase()).includes(this.skillQuery.toLowerCase())
+      })
     }
   }
 }
