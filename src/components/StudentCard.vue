@@ -15,7 +15,7 @@
           <p class="text-xl leading-tight">
             {{student.firstname}} {{student.lastname}} 
           </p>
-          <p class="text-sm leading-tight text-grey-dark">Student at Marmaduke University</p>
+          <p class="text-sm leading-tight text-grey-dark">Student at {{student.university}}</p>
           <div class="py-px mx-6 md:mx-0 md:mr-4 border-b-2 border-purple-300 "></div>
         </div>
         <div class="flex flex-wrap justify-around sm:flex-grow">

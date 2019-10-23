@@ -1,5 +1,5 @@
 <template>
-  <span class="flex-grow text-center mt-2 bg-indigo-100 rounded-full px-4 py-1 text-sm text-gray-700 mr-2">
+  <span class="flex-grow text-center bg-indigo-100 rounded-full px-4 py-1 mb-1 text-sm text-gray-700 mr-2">
     {{skill}}
   </span>
 </template>
