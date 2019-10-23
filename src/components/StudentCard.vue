@@ -1,5 +1,5 @@
 <template>
-  <div class="self-center border mb-2 rounded-lg bg-white mx-auto max-w-sm shadow-xl hover:shadow-none cursor-pointer"
+  <div class="self-center border mb-2 rounded-lg bg-white md:ml-8 lg:mx-auto max-w-sm shadow-xl hover:shadow-none cursor-pointer"
     v-bind:class="{ marked: student.marked }"
     @click="viewStudentCard(student)">
 

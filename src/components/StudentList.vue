@@ -1,30 +1,43 @@
 <template>
   <div class="mt-8 flex">
     <!-- Turn this into it's own component (StudentFilter or something) -->
-    <div>
-      <div class="w-1/4 border mb-2 rounded-lg bg-white max-w-sm bg-gray-100 lg:mx-12">
-        <h2 class="mx-4">Filter menu</h2>
-        <div class="mb-2">
-          <div class="flex justify-end pt-2 pr-3">
+    <div class="flex-none w-1/3 md:max-w-xs text-gray-700 lg:mr-16 ml-10">
+      <div class="flex justify-center">
+        <div class="border border-gray-200 rounded fixed mt-16 md:ml-8">
+          <h2 class="bg-pink-200 text-center font-semibold text-gray-700 py-3">
+            Filter menu
+          </h2>
+          <hr class="mb-4">
+
+          <div class="mb-4 px-4">
+            <input v-on:click="!markedToggle" v-model="markedToggle" type="checkbox" class="mr-3">
+            Show marked students only
           </div>
-          <div class="sm:flex sm:items-center px-2">
-            <div class="text-center py-1 sm:text-left sm:flex-grow">
-              <div class="mb-4">
-                <p class="text-xl leading-tight">
-                  test test
-                </p>
-                <p class="text-sm leading-tight text-grey-dark">Newly graduate of Marmaduke university</p>
-                <div class="py-px mx-6 md:mx-0 md:mr-4 border-b-2 border-purple-300 "></div>
-              </div>
-              <div class="flex flex-wrap justify-around sm:flex-grow">
-                <p>jajaja</p>
-              </div>
-            </div>
+          <hr class="mb-4">
+
+          <div class="mb-4 px-4">
+            <multi-select :options="[]" :multiple="true" 
+              :close-on-select="false" :clear-on-select="true"
+              label="skill" track-by="skill" placeholder="Filter on skills" id="skills">
+            </multi-select>
+          </div>
+          <hr class="mb-4">
+
+          <div class="mb-4 px-4">
+            <input class="border-b-2 border-pink-200 text-gray-600 p-2 w-full" type="text" placeholder="University of Oklahoma...">
+          </div>
+          <hr class="mb-4">
+
+          <div class="mb-4 px-4">
+            <input class="border-b-2 border-pink-200 text-gray-600 p-2 w-full" type="text" placeholder="New York City ...">
           </div>
         </div>
       </div>
     </div>
-    <div class="w-3/4 flex flex-wrap">
+    <div v-if="markedToggle" class="flex flex-wrap w-2/3 ">
+      <student-card v-for="student in students.filter(s => s.marked)" v-bind:student="student" :key="student.id" />
+    </div>
+    <div v-if="!markedToggle" class="flex flex-wrap w-2/3 ">
       <student-card v-for="student in students" v-bind:student="student" :key="student.id" />
     </div>
   </div>
@@ -41,7 +54,8 @@ export default {
   },
   data() {
     return {
-      students: []
+      students: [],
+      markedToggle: false
     }
   },
   created() {
@@ -77,6 +91,10 @@ export default {
         })
       })
       .catch(err => console.log(err))
+    },
+
+    filterMarked() {
+      console.log(this.students.filter(s => s.marked))
     }
   }
 }
