@@ -4,33 +4,37 @@
     <div class="flex-none w-1/3 md:max-w-xs text-gray-700 lg:mr-16 ml-10">
       <div class="flex justify-center">
         <div class="border border-gray-200 rounded fixed mt-16 md:ml-8">
-          <h2 class="bg-pink-200 text-center font-semibold text-gray-700 py-3">
+          <h2 class="bg-teal-400 text-center font-semibold text-white py-3">
             Filter menu
           </h2>
           <hr class="mb-4">
 
-          <div class="mb-4 px-4 py-2">
-            <input v-on:click="!markedToggle" v-model="markedToggle" type="checkbox" class="mr-3">
-            Show marked students only
+          <div v-on:click="toggle()" class="mb-4 px-4 py-2 mx-6 bg-teal-400 hover:bg-teal-500 rounded-full cursor-pointer text-center">
+            <input hidden v-bind:checked="markedToggle" type="checkbox" class="mr-3">
+            <p v-if="!markedToggle" class="text-sm font-semibold text-white">Show marked students</p>
+            <p v-if="markedToggle" class="text-sm font-semibold text-white">Show all students</p>
           </div>
           <hr class="mb-4">
 
           <div class="mb-4 px-4">
-            <!-- <multi-select :options="['1', '2', '3']" :multiple="true" 
-              :close-on-select="false" :clear-on-select="true" :show-labels="false"
-              label="skill" track-by="skill" placeholder="Filter on skills" id="skills">
-            </multi-select> -->
-            <input class="border-b-2 border-pink-200 text-gray-600 p-2 w-full" type="text" placeholder="Docker, Java, Spring ...">
+            <input v-model="skillQuery" class="border-b-2 border-teal-300 text-gray-600 p-2 w-full" name="searchSkill" type="text" placeholder="Search for skills, e.g Rust">
           </div>
           <hr class="mb-4">
 
           <div class="mb-4 px-4">
-            <input class="border-b-2 border-pink-200 text-gray-600 p-2 w-full" type="text" placeholder="University of Oklahoma...">
+            <input class="border-b-2 border-teal-300 text-gray-600 p-2 w-full" type="text" placeholder="Search for a university">
           </div>
           <hr class="mb-4">
 
           <div class="mb-4 px-4">
-            <input class="border-b-2 border-pink-200 text-gray-600 p-2 w-full" type="text" placeholder="New York City ...">
+            <input class="border-b-2 border-teal-300 text-gray-600 p-2 w-full" type="text" placeholder="Search for a city">
+          </div>
+          <hr>
+
+          <div class="flex justify-center border border-transparent">
+            <button @click="search()" class="bg-teal-400 rounded-full p-1 text-sm font-semibold w-full mx-6 my-2 hover:bg-teal-500 text-white">
+              Search
+            </button>
           </div>
         </div>
       </div>
@@ -38,7 +42,7 @@
     <div v-if="markedToggle" class="flex flex-wrap w-2/3 ">
       <student-card v-for="student in markedStudents" v-bind:student="student" :key="student.id" />
     </div>
-    <div v-if="!markedToggle" class="flex flex-wrap w-2/3 ">
+    <div v-else-if="!markedToggle" class="flex flex-wrap w-2/3 ">
       <student-card v-for="student in students" v-bind:student="student" :key="student.id" />
     </div>
   </div>
@@ -56,7 +60,9 @@ export default {
   data() {
     return {
       students: [],
-      markedToggle: false
+      markedToggle: false,
+      filterOn: false,
+      skillQuery: ''
     }
   },
   created() {
@@ -93,6 +99,24 @@ export default {
       })
       .catch(err => console.log(err))
     },
+    // toggle toggles between showing all students
+    // and showing only the marked ones
+    toggle() {
+      this.markedToggle = !this.markedToggle
+    },
+
+    // search() {
+    //   if (this.skillQuery === '') {
+    //     return
+    //   }
+      
+    //   let x = false
+    //   const skills = this.skillQuery.split(',').map(s => s.trim()) 
+    //   this.students = this.students.filter(s => {
+    //     skills.forEach(sk => x = s.skills.includes(sk))
+    //     return x
+    //   })
+    // }
   }, 
   computed: {
     markedStudents: function() {
