@@ -9,17 +9,18 @@
           </h2>
           <hr class="mb-4">
 
-          <div class="mb-4 px-4">
+          <div class="mb-4 px-4 py-2">
             <input v-on:click="!markedToggle" v-model="markedToggle" type="checkbox" class="mr-3">
             Show marked students only
           </div>
           <hr class="mb-4">
 
           <div class="mb-4 px-4">
-            <multi-select :options="[]" :multiple="true" 
-              :close-on-select="false" :clear-on-select="true"
+            <!-- <multi-select :options="['1', '2', '3']" :multiple="true" 
+              :close-on-select="false" :clear-on-select="true" :show-labels="false"
               label="skill" track-by="skill" placeholder="Filter on skills" id="skills">
-            </multi-select>
+            </multi-select> -->
+            <input class="border-b-2 border-pink-200 text-gray-600 p-2 w-full" type="text" placeholder="Docker, Java, Spring ...">
           </div>
           <hr class="mb-4">
 
@@ -35,7 +36,7 @@
       </div>
     </div>
     <div v-if="markedToggle" class="flex flex-wrap w-2/3 ">
-      <student-card v-for="student in students.filter(s => s.marked)" v-bind:student="student" :key="student.id" />
+      <student-card v-for="student in markedStudents" v-bind:student="student" :key="student.id" />
     </div>
     <div v-if="!markedToggle" class="flex flex-wrap w-2/3 ">
       <student-card v-for="student in students" v-bind:student="student" :key="student.id" />
@@ -92,9 +93,10 @@ export default {
       })
       .catch(err => console.log(err))
     },
-
-    filterMarked() {
-      console.log(this.students.filter(s => s.marked))
+  }, 
+  computed: {
+    markedStudents: function() {
+      return this.students.filter(s => s.marked)
     }
   }
 }

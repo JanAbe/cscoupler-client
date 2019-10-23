@@ -1,10 +1,10 @@
 <template>
   <div class="self-center border mb-2 rounded-lg bg-white md:ml-8 lg:mx-auto max-w-sm shadow-xl hover:shadow-none cursor-pointer"
     v-bind:class="{ marked: student.marked }"
-    @click="viewStudentCard(student)">
+    v-on:click.stop="mark(student)">
 
-    <div v-on:click.stop="mark(student)" class="flex justify-end pt-2 pr-3">
-      <input v-bind:checked="student.marked" type="checkbox" name="marked">
+    <div class="flex justify-end pt-2 pr-3">
+      <input hidden v-bind:checked="student.marked" type="checkbox" name="marked">
     </div>
     <div class="sm:flex sm:items-center px-2">
       <div>
@@ -15,7 +15,7 @@
           <p class="text-xl leading-tight">
             {{student.firstname}} {{student.lastname}} 
           </p>
-          <p class="text-sm leading-tight text-grey-dark">Newly graduate of Marmaduke university</p>
+          <p class="text-sm leading-tight text-grey-dark">Student at Marmaduke University</p>
           <div class="py-px mx-6 md:mx-0 md:mr-4 border-b-2 border-purple-300 "></div>
         </div>
         <div class="flex flex-wrap justify-around sm:flex-grow">
@@ -36,7 +36,7 @@
     </div>
     <div class="flex justify-between px-4 pb-2 pt-1">
       <button v-on:click.stop="message(student.id, 'u want job?')" class="text-xs font-semibold rounded-full px-4 py-1 bg-white border border-purple-400 hover:bg-purple-400 hover:text-white">Message</button>
-      <button v-on:click.stop="resume()" class="text-xs font-semibold rounded-full px-4 py-1 bg-purple-400 border border-purple-400 text-white hover:bg-purple-500">Curriculum Vitae</button>
+      <button v-on:click.stop="viewStudentCard(student)" class="text-xs font-semibold rounded-full px-4 py-1 bg-purple-400 border border-purple-400 text-white hover:bg-purple-500">View Account</button>
     </div>
   </div>
 </template>
