@@ -44,8 +44,9 @@
             <label class="block uppercase text-gray-700 text-xs font-bold mb-2" for="company">
               Company
             </label>
-            <input readonly id="company" type="text" placeholder="Fluugle"
-              class="appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white hover:border-purple-300 focus:border-purple-300">
+            <input readonly v-model="company" id="company" type="text" placeholder="Fluugle"
+              class="cursor-default bg-gray-200 appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white hover:border-purple-300 focus:border-purple-300">
+              <p class="text-red-600 leading-tight text-xs italic pl-1">{{ companyError }}</p>
           </div>
         </div>
         
@@ -100,12 +101,17 @@ export default {
       emailConflictError: '',
       invitationError: '',
       invalidInvitationError: '',
+      companyError: '',
       firstname: '',
       lastname: '',
       email: '',
       password: '',
-      jobTitle: ''
+      jobTitle: '',
+      company: ''
     }
+  },
+  created() {
+    this.fetchCompanyName()
   },
   methods: {
     register() {
@@ -180,6 +186,24 @@ export default {
       }
 
       return false
+    },
+    fetchCompanyName() {
+      console.log('jaja')
+      axios.get(`http://localhost:3000/companies/name/${this.$route.params.companyID}`)
+      .then(res => {
+        this.company = res.data
+      })
+      .catch(err => {
+        console.log(err)
+        switch(err.response.status) {
+          case 404:
+            console.log('errrrro')
+            this.companyError = 'The company you were invited to doesn\'t exist'
+            break
+          default:
+            console.log('oh no')
+        }
+      })
     }
   }
 }
