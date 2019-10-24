@@ -3,7 +3,7 @@
     <!-- Turn this into it's own component (StudentFilter or something, or not) -->
     <div class="flex-none w-1/3 md:max-w-xs text-gray-700 lg:mr-16 ml-10">
       <div class="flex justify-center">
-        <div class="border border-gray-200 rounded fixed mt-16 md:ml-8">
+        <div class="border border-gray-300 rounded fixed mt-16 md:ml-8">
           <h2 class="bg-purple-400 text-center font-semibold text-white py-3">
             Filter menu
           </h2>
