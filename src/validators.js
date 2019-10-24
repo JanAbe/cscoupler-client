@@ -69,3 +69,64 @@ export const validateResume = (resume) => {
 
   return { isValid: true, error: null }
 }
+
+export const validateCompanyName = (name) => {
+  if (!name.length) {
+    return { isValid: false, error: 'Company name is required' }
+  }
+
+  return { isValid: true, error: null }
+}
+
+export const validateCompanyInfo = (info) => {
+  if (!info.length) {
+    return { isValid: false, error: 'Information about the company is required' }
+  }
+
+  return { isValid: true, error: null }
+}
+
+export const validateCity = (city) => {
+  if (!city.length) {
+    return { isValid: false, error: 'City is required' }
+  }
+
+  return { isValid: true, error: null }
+}
+
+export const validateZipcode = (zipcode) => {
+  if (!zipcode.length) {
+    return { isValid: false, error: 'Zipcode is required' }
+  }
+
+  if (!/^\d{4}\s[A-Z]{2}$/.test(zipcode)) {
+    return { isValid: false, error: 'Invalid zipcode. It must have the format like 4212 EZ'}
+  }
+
+  return { isValid: true, error: null }
+}
+
+export const validateStreet = (street) => {
+  if (!street.length) {
+    return { isValid: false, error: 'Street is required' }
+  }
+
+  return { isValid: true, error: null }
+}
+
+export const validateNumber = (number) => {
+  if (!number.length) {
+    return { isValid: false, error: 'Number is required' }
+  }
+
+  return { isValid: true, error: null }
+}
+
+export const validateJobTitle = (jobTitle) => {
+  if (!jobTitle.length) {
+    return { isValid: false, error: 'Job title is required' }
+  }
+
+  return { isValid: true, error: null }
+}
+         

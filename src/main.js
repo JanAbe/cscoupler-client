@@ -3,6 +3,7 @@ import App from './App.vue'
 import VueRouter from 'vue-router'
 import StudentList from './components/StudentList.vue'
 import StudentRegistration from './components/StudentRegistration.vue'
+import CompanyRegistration from './components/CompanyRegistration.vue'
 import '@/assets/css/tailwind.css'
 
 // main.js is the entry point to vue, here vue gets imported 
@@ -13,7 +14,8 @@ Vue.use(VueRouter)
 
 const routes = [
   { path: '/students/register', component: StudentRegistration },
-  { path: '/students', component: StudentList }
+  { path: '/students', component: StudentList },
+  { path: '/companies/register', component: CompanyRegistration }
 ]
 
 const router = new VueRouter({
