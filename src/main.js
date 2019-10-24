@@ -4,18 +4,21 @@ import VueRouter from 'vue-router'
 import StudentList from './components/StudentList.vue'
 import StudentRegistration from './components/StudentRegistration.vue'
 import CompanyRegistration from './components/CompanyRegistration.vue'
+import RepresentativeRegistration from './components/RepresentativeRegistration.vue'
 import '@/assets/css/tailwind.css'
 
 // main.js is the entry point to vue, here vue gets imported 
-// aswell as our main component (App.vue)
+// aswell as our main component (App.vue). It's also the place
+// where our routes are defined.
 
 Vue.config.productionTip = false
 Vue.use(VueRouter)
 
 const routes = [
-  { path: '/students/register', component: StudentRegistration },
+  { path: '/signup/student', component: StudentRegistration },
   { path: '/students', component: StudentList },
-  { path: '/companies/register', component: CompanyRegistration }
+  { path: '/signup/company', component: CompanyRegistration },
+  { path: '/signup/representatives/invite/:companyID/:invitationID', component: RepresentativeRegistration }
 ]
 
 const router = new VueRouter({

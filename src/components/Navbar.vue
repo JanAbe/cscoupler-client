@@ -36,10 +36,10 @@
       <!-- div below should be shown to non-signed-in users only -->
       <div v-show="true" class="lg:flex text-white mx-4 lg:mt-0">
         <div class="mt-4 lg:mt-0">
-          <router-link to="/companies/register" class="mr-4">Register(Company)</router-link>
+          <router-link to="/signup/company" class="mr-4">Register(Company)</router-link>
         </div>
         <div class="mt-4 lg:mt-0">
-          <router-link to="/students/register">Register(Student)</router-link>
+          <router-link to="/signup/student">Register(Student)</router-link>
         </div>
         <div class="mt-4 lg:mt-0">
           <a href="#sign-in" class="lg:ml-4">

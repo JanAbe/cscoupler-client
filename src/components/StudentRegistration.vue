@@ -181,7 +181,7 @@ export default {
           case 409:
             this.emailConflictError = 'Submitted email is already taken and bound to an account.'
             break
-          case 404:
+          case 400:
             console.log('bad request feels badman')
             break
         }
