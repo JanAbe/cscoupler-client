@@ -188,7 +188,6 @@ export default {
       return false
     },
     fetchCompanyName() {
-      console.log('jaja')
       axios.get(`http://localhost:3000/companies/name/${this.$route.params.companyID}`)
       .then(res => {
         this.company = res.data

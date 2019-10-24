@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto h-full">
+  <div class="container mx-auto bg-white">
     <form v-on:submit.prevent="register()" id="company-form" class="lg:mt-16 md:mt-6 border-2 border-gray-200 rounded-lg pt-4 pb-2">
       <div class="flex">
         <div class="w-1/2">

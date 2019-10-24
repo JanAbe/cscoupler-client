@@ -42,9 +42,7 @@
           <router-link to="/signup/student">Register(Student)</router-link>
         </div>
         <div class="mt-4 lg:mt-0">
-          <a href="#sign-in" class="lg:ml-4">
-            Sign in
-          </a>
+          <router-link to="/signin" class="lg:ml-4">Sign in</router-link>
         </div>
       </div>
     </div>
