@@ -9,7 +9,7 @@
           </h2>
           <hr class="mb-4">
 
-          <div v-on:click="toggle()" class="mb-4 px-4 py-2 mx-6 bg-purple-400 hover:bg-purple-500 rounded-full cursor-pointer text-center">
+          <div v-on:click="toggle()" class="mb-4 px-4 py-2 mx-6 bg-purple-400 hover:bg-purple-500 rounded cursor-pointer text-center">
             <input hidden v-bind:checked="markedToggle" type="checkbox" class="mr-3">
             <p v-if="!markedToggle" class="text-sm font-semibold text-white">Show marked students</p>
             <p v-if="markedToggle" class="text-sm font-semibold text-white">Show all students</p>
@@ -31,9 +31,9 @@
           </div>
           <hr>
 
-          <div class="flex justify-center border border-transparent">
-            <button class="bg-purple-400 rounded-full p-1 text-sm font-semibold w-full mx-6 my-2 hover:bg-purple-500 text-white">
-              Search
+          <div class="flex justify-center">
+            <button @click="clearAllFilters()" class="bg-purple-400 rounded p-1 text-sm font-semibold w-full mx-6 my-2 hover:bg-purple-500 text-white">
+              Clear all
             </button>
           </div>
         </div>
@@ -105,6 +105,10 @@ export default {
     toggle() {
       this.markedToggle = !this.markedToggle
     },
+    clearAllFilters() {
+      this.skillQuery = ''
+      this.uniQuery = ''
+    }
   }, 
   computed: {
     markedStudents: function() {
