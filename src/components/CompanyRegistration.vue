@@ -3,7 +3,8 @@
     <form v-on:submit.prevent="register()" id="company-form" class="lg:mt-16 md:mt-6 border-2 border-gray-200 rounded-lg pt-4 pb-2">
       <div class="flex">
         <div class="w-1/2">
-          <h2 class="font-semibold text-md pt-2 pb-6 px-2 lg:px-6 mx-6 sm:mx-0">Company Registration</h2>
+          <h2 class="font-semibold text-md pt-2 pb-6 px-2 lg:px-6 mx-6 sm:mx-0">Company Registration <span class="float-right rounded-full bg-purple-200 p-4 h-8 w-8 flex items-center justify-center">1</span></h2>
+
           <div class="px-2 lg:px-6">
             <div class="flex flex-wrap mx-3 mb-6 sm:-mx-3">
               <div class="w-full px-3 mb-3 lg:mb-1">
@@ -70,7 +71,8 @@
 
         <div class="w-1/2 border-l border-purple-200">
           <div class="px-2 lg:px-6">
-            <h2 class="font-semibold text-md pt-2 pb-6 mx-6 sm:mx-0">Representative Registration</h2>
+            <h2 class="font-semibold text-md pt-2 pb-6 mx-6 sm:mx-0">Representative Registration <span class="float-right rounded-full bg-purple-200 p-4 h-8 w-8 flex items-center justify-center">2</span></h2>
+
             <div class="flex flex-wrap mx-3 mb-6 sm:-mx-3">
               <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                 <label class="block uppercase text-gray-700 text-xs font-bold mb-2" for="first-name">
