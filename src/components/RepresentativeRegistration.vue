@@ -194,14 +194,10 @@ export default {
         this.company = res.data
       })
       .catch(err => {
-        console.log(err)
         switch(err.response.status) {
           case 404:
-            console.log('errrrro')
             this.companyError = 'The company you were invited to doesn\'t exist'
             break
-          default:
-            console.log('oh no')
         }
       })
     }
