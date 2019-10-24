@@ -206,10 +206,20 @@ export default {
         ]
       }
 
-      console.log(JSON.stringify(data))
       axios.post(endpoint, JSON.stringify(data))
+      .then(() => {
+        location.reload()
+      })
       .catch(err => {
-        console.log('error, oh no!! ' + err)
+        switch(err.response.status) {
+          case 409:
+            this.emailConflictError = 'Submitted email might already be taken'
+            this.nameConflictError = 'The submitted company is already registered and has existing representatives. Ask another representative of your company to send an invite link.'
+            break
+          case 404:
+            console.log('404 bad request. Something went wrong')
+            break
+        }
       })
     },
 

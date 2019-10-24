@@ -6,3 +6,21 @@ todo:
 add validation to student registration form
 direct user to login screen after successfully registrating
 look into error messages when a user submits an invalid value
+
+
+How to differentiate between two of the same http response statuses?
+if a company is registered, there is a possibility that the company name
+and the provided representative email are already in use/taken/registered.
+In both cases the http status 409 (conflict) gets send.
+There is however no way of finding out if there is a conflict with the company name
+or the representative email.
+
+Possible solution: create new functions in the backend that check if the company name exists
+and if the email is already taken or not. Then when someone tries to register a company, these functions
+get called when the respective input fields are provided with data.
+
+e.g user enteres 'Fluugle' in the company-name inputfield.
+When the user leaves the input field (he/she goes to the next one for example)
+a call gets made to the backend function companyNameExists().
+Based on the response of this method, the front-end displays a succeed message or an error message.
+Depending if the company name already exists or not.
