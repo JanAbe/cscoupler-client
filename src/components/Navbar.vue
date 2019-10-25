@@ -59,13 +59,13 @@ export default {
         return
       }
       menuContent.style.display = 'none'
-    }
+    },
   }
 }
 </script>
 
 <style scoped>
-  a{
+  a {
     border-bottom: 2px solid transparent;
   }
   a:hover {

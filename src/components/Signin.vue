@@ -51,7 +51,6 @@ export default {
   },
   methods: {
     signIn() {
-      console.log('jja')
       const formIsValid = this.validateForm()
       if (!formIsValid) {
         return
@@ -62,7 +61,8 @@ export default {
         password: this.password
       }
 
-      axios.post('http://localhost:3000/signin', JSON.stringify(data))
+      const config = { headers: {'Content-Type' : 'application/json' }, withCredentials: true }
+      axios.post('http://localhost:3000/signin', JSON.stringify(data), config)
       .then(res => {
         // todo: get cookie from response, maybe there are problems with cors again.
         console.log(res.headers['set-cookie'])

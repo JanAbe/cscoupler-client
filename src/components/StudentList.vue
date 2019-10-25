@@ -71,7 +71,7 @@ export default {
   },
   methods: {
     fetchAllStudents() {
-      axios.get('http://localhost:3000/students/all')
+      axios.get('http://localhost:3000/students/all', { withCredentials: true })
       .then(res => {
         res.data.forEach(s => {
           const id = s['id']
