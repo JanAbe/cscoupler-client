@@ -1,7 +1,7 @@
 <template>
   <div class="flex h-full">
-    <form id="student-update-form" class="w-2/5 bg-white rounded-lg px-4 pt-4 pb-2 lg:ml-24 lg:mr-10 lg:mt-10">
-      <h2 class="font-semibold text-md pb-6 mx-6 sm:mx-0">Your profile</h2>
+    <form id="student-update-form" class="w-2/5 bg-white rounded-lg px-4 pt-4 pb-2 lg:ml-24 lg:mr-10 ">
+      <h2 class="text-lg font-semibold text-md pb-6 mx-6 sm:mx-0">Your profile</h2>
       <div class="flex flex-wrap mx-3 mb-6 sm:-mx-3">
         <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
           <label class="block uppercase text-gray-700 text-xs font-bold mb-2" for="first-name">
@@ -71,8 +71,25 @@
         <p class="text-red-600 leading-tight text-xs italic pl-1 mx-3 md:mt-1">{{ validationErrors.skills }}</p>
       </div>
 
+      <div class="flex flex-wrap mx-3 mb-4 sm:-mx-3">
+        <div>
+          <h2 class="mx-3">Experiences</h2>
+          <p class="text-gray-600 leading-tight text-xs italic mx-3">Try to keep your descriptions short and powerful, as only 100 characters are allowed!</p>
+        </div>
+        <student-experience-text-area v-for="(e, index) in experience" v-bind:key="index" v-bind:experience="e"/> 
+      </div>
+
+      <div class="flex flex-wrap mx-3 mb-6 sm:-mx-3">
+        <div class="w-full px-3 mb-3 lg:mb-1 mt-1">
+          <h2>Wishes</h2>
+          <p class="text-gray-600 leading-tight text-xs italic mb-2">Try to keep your whishes short and powerful, as only 100 characters are allowed!</p>
+          <textarea v-model="wishes" type="text" maxlength="100" placeholder="Looking for a start-up company focusing on cybersecurity"
+            class="appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white hover:border-purple-300 focus:border-purple-300"></textarea>
+        </div>
+      </div>
+
       <div class="flex flex-wrap mx-3 sm:-mx-3 border-b-2 border-purple-200">
-        <div class="w-full px-3 my-4">
+        <div class="w-full px-3 mb-3">
           <label v-on:click="selectResume()" class="text-xs font-semibold rounded-full mb-6 px-4 py-3 bg-purple-400 text-white hover:bg-purple-500" role="button" for="resume-upload">
             Change CV / Resume
           </label>
@@ -88,7 +105,18 @@
     </form>
 
     <div class="w-3/5 bg-purple-100">
-      <div class="mt-24 border mb-2 rounded-lg bg-white md:ml-8 lg:mx-auto max-w-lg shadow-xl hover:shadow-none">
+      <div class="text-justify bg-white lg:mx-auto max-w-lg">
+        <h2 class="font-semibold">Tips</h2>
+        <div class="py-2">
+          <p>Only the first three of your skills get shown on the page, so order them consiously!</p>
+          <p>All your skills are visible through the search option though.</p>
+        </div>
+        <div class="py-2">
+          <p>Keep your experience descriptions short and concise, the card below serves as a sneak peek to your profile.</p>
+          <p>It's goal is to interest the company recruiters/representatives to view your profile and resume.</p>
+        </div>
+      </div>
+      <div class="mt-4 border mb-2 rounded-lg bg-white md:ml-8 lg:mx-auto max-w-sm shadow-xl hover:shadow-none">
         <div class="sm:flex sm:items-center px-2">
           <div>
             <img class="block h-16 object-contain object-center sm:h-16 rounded-full mx-auto mb-4 my-2 sm:mb-0 sm:mr-4 sm:ml-0" src="../assets/avatar.png" alt="">
@@ -102,7 +130,7 @@
               <div class="py-px mx-6 md:mx-0 md:mr-4 border-b-2 border-purple-300 "></div>
             </div>
             <div class="flex flex-wrap justify-around sm:flex-grow">
-              <student-skill v-for="(skill, index) in skills.slice(0,3)" v-bind:skill="skill" :key="index"/> 
+              <student-skill v-for="(skill, index) in skills.slice(0,3)" v-bind:skill="skill.skill" :key="index"/> 
             </div>
           </div>
         </div>
@@ -114,12 +142,12 @@
         </div>
         <div class="flex flex-wrap text-center">
           <p class="p-2 text-sm text-justify text-grey-dark mx-4 mt-1 mb-2 bg-purple-100 rounded-lg">
-            Looking for a start-up company working on socially relevant problems in the Bay area.
+            {{ wishes }}
           </p>
         </div>
         <div class="flex justify-between px-4 pb-2 pt-1">
-          <button disabled class="text-xs font-semibold rounded-full px-4 py-1 bg-white border border-purple-400 hover:bg-purple-400 hover:text-white">Message</button>
-          <button disabled class="text-xs font-semibold rounded-full px-4 py-1 bg-purple-400 border border-purple-400 text-white hover:bg-purple-500">View Profile</button>
+          <button disabled class="text-xs font-semibold rounded-full px-4 py-1 bg-white border border-purple-400 hover:bg-purple-400 hover:text-white opacity-50 cursor-not-allowed">Message</button>
+          <button disabled class="text-xs font-semibold rounded-full px-4 py-1 bg-purple-400 border border-purple-400 text-white hover:bg-purple-500 opacity-50 cursor-not-allowed">View Profile</button>
         </div>
       </div>
     </div>
@@ -132,12 +160,14 @@ import { parseJWT } from '../util'
 import MultiSelect from 'vue-multiselect'
 import StudentSkill from './StudentSkill.vue'
 import StudentExperience from './StudentExperience'
+import StudentExperienceTextArea from './StudentExperienceTextArea'
 
 export default {
   components: {
     MultiSelect,
     StudentSkill,
-    StudentExperience
+    StudentExperience,
+    StudentExperienceTextArea
   },
   created() {
     this.fetchStudent()
@@ -153,6 +183,7 @@ export default {
       university: '',
       skills: [],
       experience: [],
+      wishes: '',
       resume: null,
       skillsOptions: [
         { skill: 'Docker' },
@@ -186,10 +217,19 @@ export default {
         })
         this.experience = student.experience
         this.university = student.university
-        this.status = {stat: student.status}
+        this.status = { stat: student.status }
+        this.resume = student.resume
       })
       .catch(err => {
         console.log(err)
+      })
+    },
+    selectResume() {
+      const resumeUpload = document.querySelector('#resume-upload')
+      resumeUpload.addEventListener('change', (event) => {
+        const file = event.target.files[0]
+        this.resume = file
+        document.querySelector('#selected-file-name').textContent = file.name
       })
     }
   }

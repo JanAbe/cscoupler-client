@@ -29,9 +29,11 @@ Depending if the company name already exists or not.
 
 todo for student profile:
 
-add experience text fields
-
 add a the cv of the student, so he/she can look at it
 and decide if he/she wants to upload a new one.
 
-look into the wrong display of the skills.
+todo: look into changing experience field in the form and displaying it in the studentcard option
+todo: look into how to display wishes and experience fields if the user doesn't have em yet
+they aren't part of the sign up form so the first time someone comes up to their profile, these fields
+are empty. Are they displayed correctly, how are they updated/added to the db. How to differentiate between these
+actions.
