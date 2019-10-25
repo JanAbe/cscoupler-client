@@ -24,3 +24,14 @@ When the user leaves the input field (he/she goes to the next one for example)
 a call gets made to the backend function companyNameExists().
 Based on the response of this method, the front-end displays a succeed message or an error message.
 Depending if the company name already exists or not.
+
+
+
+todo for student profile:
+
+add experience text fields
+
+add a the cv of the student, so he/she can look at it
+and decide if he/she wants to upload a new one.
+
+look into the wrong display of the skills.

@@ -16,7 +16,7 @@ export const validateLastName = (lname) => {
 
 export const validateEmail = (email) => {
   if (!email.length) {
-    return { isValid: false, error: 'Email is required '}
+    return { isValid: false, error: 'Email is required' }
   }
         
   return { isValid: true, error: null }

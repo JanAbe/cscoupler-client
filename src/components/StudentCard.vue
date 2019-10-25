@@ -36,7 +36,7 @@
     </div>
     <div class="flex justify-between px-4 pb-2 pt-1">
       <button v-on:click.stop="message(student.id, 'u want job?')" class="text-xs font-semibold rounded-full px-4 py-1 bg-white border border-purple-400 hover:bg-purple-400 hover:text-white">Message</button>
-      <button v-on:click.stop="viewStudentCard(student)" class="text-xs font-semibold rounded-full px-4 py-1 bg-purple-400 border border-purple-400 text-white hover:bg-purple-500">View Account</button>
+      <button v-on:click.stop="viewStudentCard(student)" class="text-xs font-semibold rounded-full px-4 py-1 bg-purple-400 border border-purple-400 text-white hover:bg-purple-500">View Profile</button>
     </div>
   </div>
 </template>
