@@ -73,10 +73,36 @@
 
       <div class="flex flex-wrap mx-3 mb-4 sm:-mx-3">
         <div>
-          <h2 class="mx-3">Experiences</h2>
-          <p class="text-gray-600 leading-tight text-xs italic mx-3">Try to keep your descriptions short and powerful, as only 100 characters are allowed!</p>
+          <h2 class="mx-3">Experiences (Shorts)</h2>
+          <p class="text-gray-600 leading-tight text-xs italic mx-3">Pick two of your past experiences and write a description about them.</p>
+          <p class="text-gray-600 leading-tight text-xs italic mx-3">Try to keep them short and powerful, as only 100 characters are allowed!</p>
         </div>
-        <student-experience-text-area v-for="(e, index) in experience" v-bind:key="index" v-bind:experience="e"/> 
+        
+        <div class="w-full px-3 mb-3 lg:mb-1 mt-2">
+          <textarea v-model="shortExperiences[0]" type="text" maxlength="100" placeholder="Interned at company X, worked on their main product Y. Improved an algorithm's performance by 20%."
+            class="not-resizable appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white hover:border-purple-300 focus:border-purple-300"></textarea>
+        </div>
+        
+        <div class="w-full px-3 mb-3 lg:mb-1 mt-2">
+          <textarea v-model="shortExperiences[1]" type="text" maxlength="100" placeholder="While working part-time as a programmer, I added various security checks against, e.g XSS and SQLi."
+            class="not-resizable appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white hover:border-purple-300 focus:border-purple-300"></textarea>
+        </div>
+      </div>
+      
+      <div class="flex flex-wrap mx-3 mb-4 sm:-mx-3">
+        <div>
+          <div class="flex mb-1">
+            <h2 class="mx-3">Experiences (Full)</h2>
+            <button @click="addFullExperience()" class="py-px px-3 text-xs bg-purple-400 hover:bg-purple-500 rounded-full text-white">Add</button>
+          </div>
+          <p class="text-gray-600 leading-tight text-xs italic mx-3">Write about your work experience, past internships or selfmade projects!</p>
+          <p class="text-gray-600 leading-tight text-xs italic mx-3">These don't show on your 'card' but do show on your profile.</p> 
+        </div>
+        
+        <div v-for="(e, index) in experiences" v-bind:key="index" class="w-full px-3 mb-3 lg:mb-1 mt-2">
+          <textarea v-model="experiences[index]" type="text" maxlength="100"
+            class="appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white hover:border-purple-300 focus:border-purple-300"></textarea>
+        </div>
       </div>
 
       <div class="flex flex-wrap mx-3 mb-6 sm:-mx-3">
@@ -84,7 +110,7 @@
           <h2>Wishes</h2>
           <p class="text-gray-600 leading-tight text-xs italic mb-2">Try to keep your whishes short and powerful, as only 100 characters are allowed!</p>
           <textarea v-model="wishes" type="text" maxlength="100" placeholder="Looking for a start-up company focusing on cybersecurity"
-            class="appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white hover:border-purple-300 focus:border-purple-300"></textarea>
+            class="not-resizable appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white hover:border-purple-300 focus:border-purple-300"></textarea>
         </div>
       </div>
 
@@ -100,7 +126,7 @@
       </div>
 
       <div class="flex justify-center mt-4">
-        <button v-on:click.stop="update()" class="text-xs font-semibold rounded-full px-6 py-2 bg-purple-500 border border-purple-400 text-white hover:bg-purple-600">Update profile</button>
+        <button v-on:click.stop="update()" class="text-xs font-semibold rounded-full px-6 py-2 bg-purple-500 border border-purple-400 text-white hover:bg-purple-600 hover:border-purple-600">Update profile</button>
       </div>
     </form>
 
@@ -134,9 +160,9 @@
             </div>
           </div>
         </div>
-        <div v-if="experience !== null" class="flex flex-wrap text-center">
+        <div v-if="shortExperiences !== null" class="flex flex-wrap text-center">
           <student-experience class="p-2 text-sm text-justify text-grey-dark mx-4 mt-1 mb-2 bg-gray-100 rounded-lg" 
-            v-for="(exp, index) in experience.slice(0,2)" 
+            v-for="(exp, index) in shortExperiences.slice(0,2)" 
             v-bind:experience="exp" 
             :key="index"/>
         </div>
@@ -160,14 +186,12 @@ import { parseJWT } from '../util'
 import MultiSelect from 'vue-multiselect'
 import StudentSkill from './StudentSkill.vue'
 import StudentExperience from './StudentExperience'
-import StudentExperienceTextArea from './StudentExperienceTextArea'
 
 export default {
   components: {
     MultiSelect,
     StudentSkill,
     StudentExperience,
-    StudentExperienceTextArea
   },
   created() {
     this.fetchStudent()
@@ -182,7 +206,8 @@ export default {
       status: '',
       university: '',
       skills: [],
-      experience: [],
+      experiences: [],
+      shortExperiences: [],
       wishes: '',
       resume: null,
       skillsOptions: [
@@ -215,7 +240,8 @@ export default {
         this.skills = student.skills.map(s => {
           return {skill: s}
         })
-        this.experience = student.experience
+        this.experiences = student.experience
+        // this.shortExperiences = student.shortExperiences
         this.university = student.university
         this.status = { stat: student.status }
         this.resume = student.resume
@@ -231,6 +257,9 @@ export default {
         this.resume = file
         document.querySelector('#selected-file-name').textContent = file.name
       })
+    },
+    addFullExperience() {
+      this.experiences.push('')
     }
   }
 }
@@ -239,5 +268,9 @@ export default {
 <style scoped>
   #student-update-form {
     height: max-content;
+  }
+
+  .not-resizable {
+    resize: none;
   }
 </style>
