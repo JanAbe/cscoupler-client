@@ -37,3 +37,10 @@ todo: look into how to display wishes and experience fields if the user doesn't 
 they aren't part of the sign up form so the first time someone comes up to their profile, these fields
 are empty. Are they displayed correctly, how are they updated/added to the db. How to differentiate between these
 actions.
+
+
+atm i removed the possibility to chagne your password on your profile page (for students)
+this was done because the backend didn't support it anyway
+todo: add the possibility to change your password
+todo: add extra validation step when updating your profile, when the update button is pressed
+the users must provide his/her password again, to validate it's not some random person.

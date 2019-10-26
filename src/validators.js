@@ -129,4 +129,3 @@ export const validateJobTitle = (jobTitle) => {
 
   return { isValid: true, error: null }
 }
-         

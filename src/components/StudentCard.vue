@@ -25,7 +25,7 @@
     </div>
     <div v-if="student.experience !== null" class="flex flex-wrap text-center">
       <student-experience class="p-2 text-sm text-justify text-grey-dark mx-4 mt-1 mb-2 bg-gray-100 rounded-lg" 
-        v-for="(exp, index) in student.experience.slice(0,2)" 
+        v-for="(exp, index) in student.shortExperiences.slice(0,2)" 
         v-bind:experience="exp" 
         :key="index"/>
     </div>

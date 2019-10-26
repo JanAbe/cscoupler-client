@@ -77,7 +77,8 @@ export default {
           const id = s['id']
           const uni = s['university']
           const skills = s['skills']
-          const exp = s['experience']
+          const experiences = s['experiences']
+          const shortExperiences = s['shortExperiences']
           const stat = s['status']
           const resume = s['resume']
           const email = s['user']['email']
@@ -87,7 +88,8 @@ export default {
             id: id,
             university: uni,
             skills: skills,
-            experience: exp,
+            experiences: experiences,
+            shortExperiences: shortExperiences,
             status: stat,
             resume: resume,
             email: email,

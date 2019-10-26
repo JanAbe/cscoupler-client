@@ -110,7 +110,7 @@ import { validateFirstName,
          validateStatus,
          validateUniversity,
          validateSkills,
-         validateResume} from "../validators";
+         validateResume } from "../validators";
 
 Vue.component('multi-select', MultiSelect)
 

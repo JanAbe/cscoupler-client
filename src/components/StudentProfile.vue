@@ -2,65 +2,6 @@
   <div class="flex h-full">
     <form id="student-update-form" class="w-2/5 bg-white rounded-lg px-4 pt-4 pb-2 lg:ml-24 lg:mr-10 ">
       <h2 class="text-lg font-semibold text-md pb-6 mx-6 sm:mx-0">Your profile</h2>
-      <div class="flex flex-wrap mx-3 mb-6 sm:-mx-3">
-        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-          <label class="block uppercase text-gray-700 text-xs font-bold mb-2" for="first-name">
-            First Name
-          </label>
-          <input id="first-name" v-model="firstname" type="text" placeholder="John" 
-            class="appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white hover:border-purple-300 focus:border-purple-300">
-          <p class="text-red-600 leading-tight text-xs italic pl-1">{{ validationErrors.firstname }}</p>
-        </div>
-        <div class="w-full md:w-1/2 px-3">
-          <label class="block uppercase text-gray-700 text-xs font-bold mb-2" for="last-name">
-            Last Name
-          </label>
-          <input id="last-name" v-model="lastname" type="text" placeholder="Smith"
-            class="appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white hover:border-purple-300 focus:border-purple-300">
-          <p class="text-red-600 leading-tight text-xs italic pl-1">{{ validationErrors.lastname }}</p>
-        </div>
-      </div>
-      
-      <div class="flex flex-wrap mx-3 mb-6 sm:-mx-3">
-        <div class="w-full px-3 lg:mt-0">
-          <label class="block uppercase text-gray-700 text-xs font-bold mb-2" for="email">
-            Email
-          </label>
-          <input id="email" v-model="email" type="email" placeholder="johnsmith@email.com" 
-            class="appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white hover:border-purple-300 focus:border-purple-300">
-          <p class="text-red-600 leading-tight text-xs italic pl-1">{{ validationErrors.email }}</p>
-        </div>
-      </div>
-
-      <div class="flex flex-wrap mx-3 mb-6 sm:-mx-3">
-        <div class="w-full px-3 mb-3 lg:mb-1">
-          <label class="block uppercase text-gray-700 text-xs font-bold mb-2" for="password">
-            Password
-          </label>
-          <input id="password" v-model="password" type="password" placeholder="******************" 
-            class="appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white hover:border-purple-300 focus:border-purple-300">
-          <p class="text-gray-600 leading-tight text-xs italic pl-1">It should be atleast 8 characters long, contain numbers, letters and special characters</p>
-          <p class="text-red-600 leading-tight text-xs italic pl-1">{{ validationErrors.password }}</p>
-        </div>
-      </div>
-      
-      <div class="flex flex-wrap mx-3 mb-6 sm:-mx-3">
-        <div class="w-full md:w-1/2 px-3 mb-4 lg:mb-0">
-          <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="status">
-            Student status
-          </label>
-          <multi-select class="mb-1 leading-tight focus:outline-none hover:border-purple-300 focus:border-purple-300" v-model="status" :options="statusOptions" :close-on-select="true" :show-labels="false" label="stat" track-by="stat" placeholder="Select student status"></multi-select>
-          <p class="text-red-600 leading-tight text-xs italic pl-1">{{ validationErrors.status }}</p>
-        </div>
-        <div class="w-full md:w-1/2 px-3">
-          <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="university">
-            University
-          </label>
-          <input id="university" v-model="university" type="text" placeholder="University of ..." 
-            class="appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 mb-1 leading-tight focus:outline-none hover:border-purple-300 focus:border-purple-300">
-          <p class="text-red-600 leading-tight text-xs italic pl-1">{{ validationErrors.university }}</p>
-        </div>
-      </div>
 
       <div class="flex flex-wrap mx-3 mb-6 sm:-mx-3">
         <label class="mx-3 text-gray-700 uppercase text-xs font-bold mb-2" for="skills">Select up to 5 of your skills</label>
@@ -80,12 +21,21 @@
         
         <div class="w-full px-3 mb-3 lg:mb-1 mt-2">
           <textarea v-model="shortExperiences[0]" type="text" maxlength="100" placeholder="Interned at company X, worked on their main product Y. Improved an algorithm's performance by 20%."
-            class="not-resizable appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white hover:border-purple-300 focus:border-purple-300"></textarea>
+            class="text-sm not-resizable appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white hover:border-purple-300 focus:border-purple-300"></textarea>
         </div>
         
         <div class="w-full px-3 mb-3 lg:mb-1 mt-2">
           <textarea v-model="shortExperiences[1]" type="text" maxlength="100" placeholder="While working part-time as a programmer, I added various security checks against, e.g XSS and SQLi."
-            class="not-resizable appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white hover:border-purple-300 focus:border-purple-300"></textarea>
+            class="text-sm not-resizable appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white hover:border-purple-300 focus:border-purple-300"></textarea>
+        </div>
+      </div>
+      
+      <div class="flex flex-wrap mx-3 mb-6 sm:-mx-3">
+        <div class="w-full px-3 mb-3 lg:mb-1 mt-1">
+          <h2>Wishes</h2>
+          <p class="text-gray-600 leading-tight text-xs italic mb-2">Try to keep your whishes short and powerful, as only 100 characters are allowed!</p>
+          <textarea v-model="wishes" type="text" maxlength="100" placeholder="Looking for a start-up company focusing on cybersecurity"
+            class="text-sm not-resizable appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white hover:border-purple-300 focus:border-purple-300"></textarea>
         </div>
       </div>
       
@@ -93,26 +43,82 @@
         <div>
           <div class="flex mb-1">
             <h2 class="mx-3">Experiences (Full)</h2>
-            <button @click="addFullExperience()" class="py-px px-3 text-xs bg-purple-400 hover:bg-purple-500 rounded-full text-white">Add</button>
+            <button @click="addFullExperience()" class="float-right py-px px-6 text-xs bg-purple-400 hover:bg-purple-500 rounded-full text-white">Add experience</button>
           </div>
           <p class="text-gray-600 leading-tight text-xs italic mx-3">Write about your work experience, past internships or selfmade projects!</p>
           <p class="text-gray-600 leading-tight text-xs italic mx-3">These don't show on your 'card' but do show on your profile.</p> 
         </div>
         
         <div v-for="(e, index) in experiences" v-bind:key="index" class="w-full px-3 mb-3 lg:mb-1 mt-2">
-          <textarea v-model="experiences[index]" type="text" maxlength="100"
-            class="appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white hover:border-purple-300 focus:border-purple-300"></textarea>
+          <div>
+            <button @click="deleteExperience(index)" class="bg-red-400 text-white text-xs rounded-full py-px px-3 mb-1 float-right">Delete</button>
+            <textarea v-model="experiences[index]" type="text"
+              class="text-sm appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white hover:border-purple-300 focus:border-purple-300"></textarea>
+            <p class="text-red-600 leading-tight text-xs italic pl-1">{{ validationErrors.experiences }}</p>
+          </div>
         </div>
       </div>
 
       <div class="flex flex-wrap mx-3 mb-6 sm:-mx-3">
-        <div class="w-full px-3 mb-3 lg:mb-1 mt-1">
-          <h2>Wishes</h2>
-          <p class="text-gray-600 leading-tight text-xs italic mb-2">Try to keep your whishes short and powerful, as only 100 characters are allowed!</p>
-          <textarea v-model="wishes" type="text" maxlength="100" placeholder="Looking for a start-up company focusing on cybersecurity"
-            class="not-resizable appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white hover:border-purple-300 focus:border-purple-300"></textarea>
+        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+          <label class="block uppercase text-gray-700 text-xs font-bold mb-2" for="first-name">
+            First Name
+          </label>
+          <input id="first-name" v-model="firstname" type="text" placeholder="John" 
+            class="text-sm appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white hover:border-purple-300 focus:border-purple-300">
+          <p class="text-red-600 leading-tight text-xs italic pl-1">{{ validationErrors.firstname }}</p>
+        </div>
+        <div class="w-full md:w-1/2 px-3">
+          <label class="block uppercase text-gray-700 text-xs font-bold mb-2" for="last-name">
+            Last Name
+          </label>
+          <input id="last-name" v-model="lastname" type="text" placeholder="Smith"
+            class="text-sm appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white hover:border-purple-300 focus:border-purple-300">
+          <p class="text-red-600 leading-tight text-xs italic pl-1">{{ validationErrors.lastname }}</p>
         </div>
       </div>
+      
+      <div class="flex flex-wrap mx-3 mb-6 sm:-mx-3">
+        <div class="w-full px-3 lg:mt-0">
+          <label class="block uppercase text-gray-700 text-xs font-bold mb-2" for="email">
+            Email
+          </label>
+          <input id="email" v-model="email" type="email" placeholder="johnsmith@email.com" 
+            class="text-sm appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white hover:border-purple-300 focus:border-purple-300">
+          <p class="text-red-600 leading-tight text-xs italic pl-1">{{ validationErrors.email }}</p>
+        </div>
+      </div>
+
+      <!-- <div class="flex flex-wrap mx-3 mb-6 sm:-mx-3">
+        <div class="w-full px-3 mb-3 lg:mb-1">
+          <label class="block uppercase text-gray-700 text-xs font-bold mb-2" for="password">
+            Password
+          </label>
+          <input id="password" v-model="password" type="password" placeholder="******************" 
+            class="text-sm appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white hover:border-purple-300 focus:border-purple-300">
+          <p class="text-gray-600 leading-tight text-xs italic pl-1">It should be atleast 8 characters long, contain numbers, letters and special characters</p>
+          <p class="text-red-600 leading-tight text-xs italic pl-1">{{ validationErrors.password }}</p>
+        </div>
+      </div> -->
+      
+      <div class="flex flex-wrap mx-3 mb-6 sm:-mx-3">
+        <div class="w-full md:w-1/2 px-3 mb-4 lg:mb-0">
+          <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="status">
+            Student status
+          </label>
+          <multi-select class="mb-1 leading-tight focus:outline-none hover:border-purple-300 focus:border-purple-300" v-model="status" :options="statusOptions" :close-on-select="true" :show-labels="false" label="stat" track-by="stat" placeholder="Select student status"></multi-select>
+          <p class="text-red-600 leading-tight text-xs italic pl-1">{{ validationErrors.status }}</p>
+        </div>
+        <div class="w-full md:w-1/2 px-3">
+          <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="university">
+            University
+          </label>
+          <input id="university" v-model="university" type="text" placeholder="University of ..." 
+            class="text-sm appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 mb-1 leading-tight focus:outline-none hover:border-purple-300 focus:border-purple-300">
+          <p class="text-red-600 leading-tight text-xs italic pl-1">{{ validationErrors.university }}</p>
+        </div>
+      </div>
+
 
       <div class="flex flex-wrap mx-3 sm:-mx-3 border-b-2 border-purple-200">
         <div class="w-full px-3 mb-3">
@@ -186,6 +192,13 @@ import { parseJWT } from '../util'
 import MultiSelect from 'vue-multiselect'
 import StudentSkill from './StudentSkill.vue'
 import StudentExperience from './StudentExperience'
+import { validateFirstName,
+         validateLastName,
+         validateEmail,
+         validateStatus,
+         validateUniversity,
+         validateSkills,
+         validateResume } from "../validators";
 
 export default {
   components: {
@@ -202,7 +215,6 @@ export default {
       firstname: '',
       lastname: '',
       email: '',
-      password: '',
       status: '',
       university: '',
       skills: [],
@@ -240,8 +252,8 @@ export default {
         this.skills = student.skills.map(s => {
           return {skill: s}
         })
-        this.experiences = student.experience
-        // this.shortExperiences = student.shortExperiences
+        this.experiences = student.experiences
+        this.shortExperiences = student.shortExperiences
         this.university = student.university
         this.status = { stat: student.status }
         this.resume = student.resume
@@ -260,10 +272,108 @@ export default {
     },
     addFullExperience() {
       this.experiences.push('')
+    },
+    deleteExperience(index) {
+      this.experiences.splice(index, 1)
+    },
+    update() {
+      const formIsValid = this.validateForm()
+      if (!formIsValid) {
+        return
+      }
+
+      const studentID = parseJWT(document.cookie.split('=')[1])['ID']
+      const data = {
+        user: {
+          firstname: this.firstname,
+          lastname: this.lastname,
+          email: this.email,
+        },
+        university: this.university,
+        skills: this.skills.map(({ skill }) => skill),
+        status: this.status.stat,
+        experiences: this.experiences,
+        shortExperiences: this.shortExperiences
+      }
+      const payload = new FormData()
+      payload.append('resume', this.resume)
+      payload.append('studentData', JSON.stringify(data))
+      axios.put(`http://localhost:3000/students/edit/${studentID}`, payload, { withCredentials: true })
+      .then(() => {
+        location.reload()
+      })
+      .catch(err => {
+        console.log(err)
+        // switch(err.response.status) {
+        //   case 404:
+        //     console.log(err)
+        //     console.log('not found :c')
+        //     break
+        //   case 500:
+        //     console.log(err)
+        //     console.log('something went terribly wrong, :c')
+        //     break
+        //   case 400:
+        //     console.log(err)
+        //     console.log('bad request feels badman')
+        //     break
+        // }
+      }) 
+    },
+    validateForm() {
+      this.validationErrors = {}
+
+      const fname = validateFirstName(this.firstname)
+      if (!fname.isValid) {
+        this.validationErrors.firstname = fname.error      
+      }
+
+      const lname = validateLastName(this.lastname)
+      if (!lname.isValid) {
+        this.validationErrors.lastname = lname.error      
+      }
+
+      const email = validateEmail(this.email)
+      if (!email.isValid) {
+        this.validationErrors.email = email.error
+      }
+
+      const status = validateStatus(this.status)
+      if (!status.isValid) {
+        this.validationErrors.status = status.error
+      }
+
+      const university = validateUniversity(this.university)
+      if (!university.isValid) {
+        this.validationErrors.university = university.error
+      }
+
+      const skills = validateSkills(this.skills)
+      if (!skills.isValid) {
+        this.validationErrors.skills = skills.error
+      }
+
+      const resume = validateResume(this.resume)
+      if (!resume.isValid) {
+        this.validationErrors.resume = resume.error
+      }
+
+      // check if no errors are present
+      if (!Object.entries(this.validationErrors).length) {
+        return true // form is valid
+      }
+
+      return false
     }
   }
 }
 </script>
+
+<style>
+  .multiselect__single {
+    font-size: .875rem;
+  }
+</style>
 
 <style scoped>
   #student-update-form {
