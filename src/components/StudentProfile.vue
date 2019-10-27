@@ -51,7 +51,7 @@
         
         <div v-for="(e, index) in experiences" v-bind:key="index" class="w-full px-3 mb-3 lg:mb-1 mt-2">
           <div>
-            <button @click="deleteExperience(index)" class="bg-red-400 text-white text-xs rounded-full py-px px-3 mb-1 float-right">Delete</button>
+            <button @click="deleteExperience(index)" class="bg-red-400 hover:bg-red-500 text-white text-xs rounded-full py-px px-3 mb-1 float-right">Delete</button>
             <textarea v-model="experiences[index]" type="text"
               class="text-sm appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white hover:border-purple-300 focus:border-purple-300"></textarea>
             <p class="text-red-600 leading-tight text-xs italic pl-1">{{ validationErrors.experiences }}</p>
@@ -257,6 +257,7 @@ export default {
         this.university = student.university
         this.status = { stat: student.status }
         this.resume = student.resume
+        this.wishes = student.wishes
       })
       .catch(err => {
         console.log(err)
@@ -293,7 +294,8 @@ export default {
         skills: this.skills.map(({ skill }) => skill),
         status: this.status.stat,
         experiences: this.experiences,
-        shortExperiences: this.shortExperiences
+        shortExperiences: this.shortExperiences,
+        wishes: this.wishes
       }
       const payload = new FormData()
       payload.append('resume', this.resume)
