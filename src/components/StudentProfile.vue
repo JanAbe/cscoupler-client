@@ -1,6 +1,6 @@
 <template>
-  <div class="flex h-full">
-    <form id="student-update-form" class="w-2/5 bg-white rounded-lg px-4 pt-4 pb-2 lg:ml-24 lg:mr-10 ">
+  <div class="flex">
+    <form id="student-update-form" class="w-2/5 bg-white rounded-lg px-4 pt-4 pb-2 mb-2 lg:ml-24">
       <h2 class="text-lg font-semibold text-md pb-6 mx-6 sm:mx-0">Your profile</h2>
 
       <div class="flex flex-wrap mx-3 mb-6 sm:-mx-3">
@@ -43,13 +43,13 @@
         <div>
           <div class="flex mb-1">
             <h2 class="mx-3">Experiences (Full)</h2>
-            <button @click="addFullExperience()" class="float-right py-px px-6 text-xs bg-purple-400 hover:bg-purple-500 rounded-full text-white">Add experience</button>
+            <button @click="addFullExperience()" class="py-px px-6 text-xs bg-purple-400 hover:bg-purple-500 rounded-full text-white">Add experience</button>
           </div>
           <p class="text-gray-600 leading-tight text-xs italic mx-3">Write about your work experience, past internships or selfmade projects!</p>
           <p class="text-gray-600 leading-tight text-xs italic mx-3">These don't show on your 'card' but do show on your profile.</p> 
         </div>
         
-        <div v-for="(e, index) in experiences" v-bind:key="index" class="w-full px-3 mb-3 lg:mb-1 mt-2">
+        <div v-for="(e, index) in experiences" v-bind:key="index" class="w-full px-3 mb-3 lg:mb-1 mt-1">
           <div>
             <button @click="deleteExperience(index)" class="bg-red-400 hover:bg-red-500 text-white text-xs rounded-full py-px px-3 mb-1 float-right">Delete</button>
             <textarea v-model="experiences[index]" type="text"
@@ -136,50 +136,56 @@
       </div>
     </form>
 
-    <div class="w-3/5 bg-purple-100">
-      <div class="text-justify bg-white lg:mx-auto max-w-lg">
-        <h2 class="font-semibold">Tips</h2>
+    <div class="w-3/5 bg-gray-100">
+      <div class="text-center bg-white lg:mx-auto pb-4 mb-16">
+        <h2 class="font-semibold text-sm mx-3 md:pt-1">Tips</h2>
         <div class="py-2">
-          <p>Only the first three of your skills get shown on the page, so order them consiously!</p>
-          <p>All your skills are visible through the search option though.</p>
+          <p class="text-xs italic pl-1 mx-3 md:mt-1">Only the first three of your skills get shown on your card, so order them consiously!</p>
+          <p class="text-xs italic pl-1 mx-3 md:mt-1">All your skills are visible through the search option though.</p>
         </div>
         <div class="py-2">
-          <p>Keep your experience descriptions short and concise, the card below serves as a sneak peek to your profile.</p>
-          <p>It's goal is to interest the company recruiters/representatives to view your profile and resume.</p>
+          <p class="text-xs italic pl-1 mx-3 md:mt-1">Keep your experience descriptions short and concise, the card below serves as a sneak peek to your profile.</p>
+          <p class="text-xs italic pl-1 mx-3 md:mt-1">It's goal is to interest the company recruiters/representatives to view your profile and resume.</p>
         </div>
       </div>
-      <div class="mt-4 border mb-2 rounded-lg bg-white md:ml-8 lg:mx-auto max-w-sm shadow-xl hover:shadow-none">
-        <div class="sm:flex sm:items-center px-2">
-          <div>
-            <img class="block h-16 object-contain object-center sm:h-16 rounded-full mx-auto mb-4 my-2 sm:mb-0 sm:mr-4 sm:ml-0" src="../assets/avatar.png" alt="">
-          </div>
-          <div class="text-center py-1 sm:text-left sm:flex-grow">
-            <div class="mb-4">
-              <p class="text-xl leading-tight">
-                {{firstname}} {{lastname}} 
-              </p>
-              <p class="text-sm leading-tight text-grey-dark">Student at {{university}}</p>
-              <div class="py-px mx-6 md:mx-0 md:mr-4 border-b-2 border-purple-300 "></div>
+      
+      <div class="center-fixed"> <!-- i want to add class="fixed", but doing so makes it not centered. And i don't know how to center it. -->
+        <div class="text-xl mt-4 mb-2 md:ml-8 lg:mx-auto max-w-sm ">
+          <h2>Live preview of your card</h2>
+        </div>
+        <div class="mt-6 border mb-2 rounded-lg bg-white md:ml-8 lg:mx-auto max-w-sm shadow-xl hover:shadow-none">
+          <div class="sm:flex sm:items-center px-2">
+            <div>
+              <img class="block h-16 object-contain object-center sm:h-16 rounded-full mx-auto mb-4 my-2 sm:mb-0 sm:mr-4 sm:ml-0" src="../assets/avatar.png" alt="">
             </div>
-            <div class="flex flex-wrap justify-around sm:flex-grow">
-              <student-skill v-for="(skill, index) in skills.slice(0,3)" v-bind:skill="skill.skill" :key="index"/> 
+            <div class="text-center py-1 sm:text-left sm:flex-grow">
+              <div class="mb-4">
+                <p class="text-xl leading-tight">
+                  {{firstname}} {{lastname}} 
+                </p>
+                <p class="text-sm leading-tight text-grey-dark">Student at {{university}}</p>
+                <div class="py-px mx-6 md:mx-0 md:mr-4 border-b-2 border-purple-300 "></div>
+              </div>
+              <div class="flex flex-wrap justify-around sm:flex-grow">
+                <student-skill v-for="(skill, index) in skills.slice(0,3)" v-bind:skill="skill.skill" :key="index"/> 
+              </div>
             </div>
           </div>
-        </div>
-        <div v-if="shortExperiences !== null" class="flex flex-wrap text-center">
-          <student-experience class="p-2 text-sm text-justify text-grey-dark mx-4 mt-1 mb-2 bg-gray-100 rounded-lg" 
-            v-for="(exp, index) in shortExperiences.slice(0,2)" 
-            v-bind:experience="exp" 
-            :key="index"/>
-        </div>
-        <div class="flex flex-wrap text-center">
-          <p class="p-2 text-sm text-justify text-grey-dark mx-4 mt-1 mb-2 bg-purple-100 rounded-lg">
-            {{ wishes }}
-          </p>
-        </div>
-        <div class="flex justify-between px-4 pb-2 pt-1">
-          <button disabled class="text-xs font-semibold rounded-full px-4 py-1 bg-white border border-purple-400 hover:bg-purple-400 hover:text-white opacity-50 cursor-not-allowed">Message</button>
-          <button disabled class="text-xs font-semibold rounded-full px-4 py-1 bg-purple-400 border border-purple-400 text-white hover:bg-purple-500 opacity-50 cursor-not-allowed">View Profile</button>
+          <div v-if="shortExperiences !== null" class="flex flex-wrap text-center">
+            <student-experience class="p-2 text-sm text-justify text-grey-dark mx-4 mt-1 mb-2 bg-gray-100 rounded-lg" 
+              v-for="(exp, index) in shortExperiences.slice(0,2)" 
+              v-bind:experience="exp" 
+              :key="index"/>
+          </div>
+          <div class="flex flex-wrap text-center">
+            <p class="p-2 text-sm text-justify text-grey-dark mx-4 mt-1 mb-2 bg-purple-100 rounded-lg">
+              {{ wishes }}
+            </p>
+          </div>
+          <div class="flex justify-between px-4 pb-2 pt-1">
+            <button disabled class="text-xs font-semibold rounded-full px-4 py-1 bg-white border border-purple-400 hover:bg-purple-400 hover:text-white opacity-50 cursor-not-allowed">Message</button>
+            <button disabled class="text-xs font-semibold rounded-full px-4 py-1 bg-purple-400 border border-purple-400 text-white hover:bg-purple-500 opacity-50 cursor-not-allowed">View Profile</button>
+          </div>
         </div>
       </div>
     </div>
@@ -306,20 +312,6 @@ export default {
       })
       .catch(err => {
         console.log(err)
-        // switch(err.response.status) {
-        //   case 404:
-        //     console.log(err)
-        //     console.log('not found :c')
-        //     break
-        //   case 500:
-        //     console.log(err)
-        //     console.log('something went terribly wrong, :c')
-        //     break
-        //   case 400:
-        //     console.log(err)
-        //     console.log('bad request feels badman')
-        //     break
-        // }
       }) 
     },
     validateForm() {
@@ -378,8 +370,11 @@ export default {
 </style>
 
 <style scoped>
-  #student-update-form {
-    height: max-content;
+  @media (min-width: 1024px) {
+    .center-fixed {
+      position: fixed;
+      left: 60%;
+    }
   }
 
   .not-resizable {
