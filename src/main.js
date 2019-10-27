@@ -4,6 +4,7 @@ import VueRouter from 'vue-router'
 import Signin from './components/Signin.vue'
 import StudentList from './components/StudentList.vue'
 import StudentProfile from './components/StudentProfile.vue'
+import StudentAccount from './components/StudentAccount.vue'
 import StudentRegistration from './components/StudentRegistration.vue'
 import CompanyRegistration from './components/CompanyRegistration.vue'
 import RepresentativeRegistration from './components/RepresentativeRegistration.vue'
@@ -22,7 +23,8 @@ const routes = [
   { path: '/signup/company', component: CompanyRegistration },
   { path: '/signup/representatives/invite/:companyID/:invitationID', component: RepresentativeRegistration },
   { path: '/signin', component: Signin },
-  { path: '/profile', component: StudentProfile }
+  { path: '/profile', component: StudentProfile },
+  { path: '/students/:studentID/profile', component: StudentAccount }
 ]
 
 const router = new VueRouter({
