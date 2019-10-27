@@ -1,6 +1,6 @@
 <template>
   <div class="flex">
-    <form id="student-update-form" class="w-2/5 bg-white rounded-lg px-4 pt-4 pb-2 mb-2 lg:ml-24">
+    <form id="student-update-form" class="w-3/5 bg-white rounded-lg px-4 pt-4 pb-2 mb-2 lg:ml-24">
       <h2 class="text-lg font-semibold text-md pb-6 mx-6 sm:mx-0">Your profile</h2>
 
       <div class="flex flex-wrap mx-3 mb-6 sm:-mx-3">
@@ -136,7 +136,7 @@
       </div>
     </form>
 
-    <div class="w-3/5 bg-gray-100">
+    <div class="w-2/5 bg-purple-100">
       <div class="text-center bg-white lg:mx-auto pb-4 mb-16">
         <h2 class="font-semibold text-sm mx-3 md:pt-1">Tips</h2>
         <div class="py-2">
@@ -373,7 +373,7 @@ export default {
   @media (min-width: 1024px) {
     .center-fixed {
       position: fixed;
-      left: 60%;
+      left: 71.5%;
     }
   }
 
