@@ -4,7 +4,7 @@
       <h2 class="text-lg font-semibold text-md pb-6 mx-6 sm:mx-0">Your profile</h2>
 
       <div class="flex flex-wrap mx-3 mb-6 sm:-mx-3">
-        <label class="mx-3 text-gray-700 uppercase text-xs font-bold mb-2" for="skills">Select up to 5 of your skills</label>
+        <label class="mx-3 text-gray-700 mb-2" for="skills">Select up to 5 of your skills</label>
         <multi-select v-model="skills" :options="skillsOptions" :multiple="true" 
           :close-on-select="false" :clear-on-select="true" :max="5"
           label="skill" track-by="skill" placeholder="Select your skills" class="mx-3" id="skills">
@@ -32,7 +32,7 @@
       
       <div class="flex flex-wrap mx-3 mb-6 sm:-mx-3">
         <div class="w-full px-3 mb-3 lg:mb-1 mt-1">
-          <h2>Wishes</h2>
+          <h2 class="text-semibold">Wishes</h2>
           <p class="text-gray-600 leading-tight text-xs italic mb-2">Try to keep your whishes short and powerful, as only 100 characters are allowed!</p>
           <textarea v-model="wishes" type="text" maxlength="100" placeholder="Looking for a start-up company focusing on cybersecurity"
             class="text-sm not-resizable appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white hover:border-purple-300 focus:border-purple-300"></textarea>
@@ -61,7 +61,7 @@
 
       <div class="flex flex-wrap mx-3 mb-6 sm:-mx-3">
         <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-          <label class="block uppercase text-gray-700 text-xs font-bold mb-2" for="first-name">
+          <label class="block text-gray-700 mb-2 mt-6" for="first-name">
             First Name
           </label>
           <input id="first-name" v-model="firstname" type="text" placeholder="John" 
@@ -69,7 +69,7 @@
           <p class="text-red-600 leading-tight text-xs italic pl-1">{{ validationErrors.firstname }}</p>
         </div>
         <div class="w-full md:w-1/2 px-3">
-          <label class="block uppercase text-gray-700 text-xs font-bold mb-2" for="last-name">
+          <label class="block text-gray-700 mb-2 mt-6" for="last-name">
             Last Name
           </label>
           <input id="last-name" v-model="lastname" type="text" placeholder="Smith"
@@ -80,7 +80,7 @@
       
       <div class="flex flex-wrap mx-3 mb-6 sm:-mx-3">
         <div class="w-full px-3 lg:mt-0">
-          <label class="block uppercase text-gray-700 text-xs font-bold mb-2" for="email">
+          <label class="block text-gray-700 mb-2" for="email">
             Email
           </label>
           <input id="email" v-model="email" type="email" placeholder="johnsmith@email.com" 
@@ -103,14 +103,14 @@
       
       <div class="flex flex-wrap mx-3 mb-6 sm:-mx-3">
         <div class="w-full md:w-1/2 px-3 mb-4 lg:mb-0">
-          <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="status">
+          <label class="block text-gray-700 mb-2" for="status">
             Student status
           </label>
           <multi-select class="mb-1 leading-tight focus:outline-none hover:border-purple-300 focus:border-purple-300" v-model="status" :options="statusOptions" :close-on-select="true" :show-labels="false" label="stat" track-by="stat" placeholder="Select student status"></multi-select>
           <p class="text-red-600 leading-tight text-xs italic pl-1">{{ validationErrors.status }}</p>
         </div>
         <div class="w-full md:w-1/2 px-3">
-          <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="university">
+          <label class="block text-gray-700 mb-2" for="university">
             University
           </label>
           <input id="university" v-model="university" type="text" placeholder="University of ..." 
