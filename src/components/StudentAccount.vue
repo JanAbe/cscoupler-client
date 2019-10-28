@@ -6,10 +6,10 @@
         <p class="leading-tight pb-2">{{ student.status }} at {{ student.university }}</p>
       </div>
 
-      <h2 class="text-lg pt-1 text-center">Skills include:</h2>
+      <h2 class="text-lg pt-1 text-center my-4">Skills include:</h2>
       <div class="flex flex-wrap justify-center border-b-2 border-purple-200">
         <div v-for="(s, index) in student.skills" :key="index"
-          class="bg-purple-400 text-center text-white text-sm py-1 px-2 lg:my-2 lg:mx-3 rounded-full">
+          class="bg-purple-400 text-center text-white text-sm py-1 px-2 lg:mt-1 lg:mb-6 lg:mx-3 rounded-full">
           {{ s }}
         </div>
       </div>
@@ -31,7 +31,8 @@
     </div>
     <div class="w-1/2 bg-purple-100">
       <div class="text-center">
-        <h2 class="text-2xl pt-4">{{ student.firstname }} {{ student.lastname }}'s Resume</h2>
+        <h2 class="text-2xl pt-4">{{ student.firstname }} {{ student.lastname }}'s PDF</h2>
+        <iframe src="../assets/test.pdf" type="application/pdf" width="800px" height="400px"> </iframe>
       </div>
     </div>
   </div>
