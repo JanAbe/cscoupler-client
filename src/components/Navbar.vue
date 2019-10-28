@@ -13,9 +13,9 @@
         <router-link to="/students" class="block mt-4 lg:inline-block lg:mt-0 text-white mx-4 lg:ml-0 lg:mr-4">
           Students
         </router-link>
-        <a href="#projects" class="block mt-4 lg:inline-block lg:mt-0 text-white mx-4">
+        <router-link to="/projects" class="block mt-4 lg:inline-block lg:mt-0 text-white mx-4">
           Projects
-        </a>
+        </router-link>
         <a href="#companies" class="block mt-4 lg:inline-block lg:mt-0 text-white mx-4">
           Companies
         </a>
