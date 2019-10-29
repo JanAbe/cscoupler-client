@@ -31,7 +31,7 @@
     </div>
     <div class="w-1/2 bg-purple-100">
       <div class="text-center">
-        <h2 class="text-2xl pt-4">{{ student.firstname }} {{ student.lastname }}'s PDF</h2>
+        <h2 class="text-2xl pt-4">{{ student.firstname }} {{ student.lastname }}'s CV</h2>
         <iframe src="../assets/test.pdf" type="application/pdf" width="800px" height="400px"> </iframe>
       </div>
     </div>
