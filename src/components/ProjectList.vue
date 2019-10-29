@@ -29,10 +29,10 @@
       </div>
     </div>
 
-    <div v-if="markedToggle" class="flex flex-wrap w-2/3 ">
+    <div v-if="markedToggle" class="flex flex-wrap w-2/3">
       <project-card v-for="project in markedProjects" v-bind:project="project" :key="project.id" />
     </div>
-    <div v-else-if="!markedToggle" class="flex flex-wrap w-2/3 ">
+    <div v-else-if="!markedToggle" class="flex flex-wrap w-2/3">
       <project-card v-for="project in projects" v-bind:project="project" :key="project.id" />
     </div>
   </div>
