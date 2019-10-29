@@ -7,6 +7,7 @@ import ProjectList from './components/ProjectList.vue'
 import CompanyList from './components/CompanyList.vue'
 import StudentProfile from './components/StudentProfile.vue'
 import StudentAccount from './components/StudentAccount.vue'
+import CompanyAccount from './components/CompanyAccount.vue'
 import StudentRegistration from './components/StudentRegistration.vue'
 import CompanyRegistration from './components/CompanyRegistration.vue'
 import RepresentativeRegistration from './components/RepresentativeRegistration.vue'
@@ -28,7 +29,8 @@ const routes = [
   { path: '/profile', component: StudentProfile },
   { path: '/projects', component: ProjectList },
   { path: '/students/:studentID/profile', component: StudentAccount }, 
-  { path: '/companies', component: CompanyList }
+  { path: '/companies', component: CompanyList },
+  { path: '/companies/:companyID/profile', component: CompanyAccount }
 ]
 
 const router = new VueRouter({
