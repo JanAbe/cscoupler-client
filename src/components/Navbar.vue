@@ -16,9 +16,9 @@
         <router-link to="/projects" class="block mt-4 lg:inline-block lg:mt-0 text-white mx-4">
           Projects
         </router-link>
-        <a href="#companies" class="block mt-4 lg:inline-block lg:mt-0 text-white mx-4">
+        <router-link to="/companies" class="block mt-4 lg:inline-block lg:mt-0 text-white mx-4">
           Companies
-        </a>
+        </router-link>
       </div>
       <!-- div below should be shown to signed-in users only -->
       <div v-show="false" class="lg:flex text-white mx-4 lg:mt-0">

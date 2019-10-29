@@ -4,6 +4,7 @@ import VueRouter from 'vue-router'
 import Signin from './components/Signin.vue'
 import StudentList from './components/StudentList.vue'
 import ProjectList from './components/ProjectList.vue'
+import CompanyList from './components/CompanyList.vue'
 import StudentProfile from './components/StudentProfile.vue'
 import StudentAccount from './components/StudentAccount.vue'
 import StudentRegistration from './components/StudentRegistration.vue'
@@ -26,7 +27,8 @@ const routes = [
   { path: '/signin', component: Signin },
   { path: '/profile', component: StudentProfile },
   { path: '/projects', component: ProjectList },
-  { path: '/students/:studentID/profile', component: StudentAccount }
+  { path: '/students/:studentID/profile', component: StudentAccount }, 
+  { path: '/companies', component: CompanyList }
 ]
 
 const router = new VueRouter({
