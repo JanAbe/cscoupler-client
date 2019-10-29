@@ -9,7 +9,7 @@
           <hr class="mb-4">
 
           <div class="mb-4 px-4">
-            <input class="border-b-2 border-purple-300 text-gray-600 p-2 w-full" type="text" placeholder="Search by city">
+            <input v-model="cityQuery" class="border-b-2 border-purple-300 text-gray-600 p-2 w-full" type="text" placeholder="Search by city">
           </div>
           <hr>
 
@@ -22,7 +22,7 @@
       </div>
     </div>
     <div class="flex flex-wrap w-2/3 ">
-      <company-card v-for="company in companies" v-bind:company="company" :key="company.id" />
+      <company-card v-for="company in filteredCompanies" v-bind:company="company" :key="company.id" />
     </div>
   </div>
 </template>
@@ -38,7 +38,8 @@ export default {
   },
   data() {
     return {
-      companies: []
+      companies: [],
+      cityQuery: ''
     }
   },
   created() {
@@ -64,11 +65,26 @@ export default {
             representatives: representatives,
             projects: projects
           }
-
           this.companies.push(company)
         })
       })
       .catch(err => console.log(err))
+    },
+    clearAllFilters() {
+      this.cityQuery = ''
+    }
+  },
+  computed: {
+    filteredCompanies: function() {
+      if (this.cityQuery === '') {
+        return this.companies
+      }
+
+      const filteredOnCity = this.companies.filter(c => {
+        return c.locations.map(l => l['city'].toLowerCase()).includes(this.cityQuery.toLowerCase())
+      })
+
+      return filteredOnCity
     }
   }
 }
