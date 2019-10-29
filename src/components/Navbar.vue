@@ -33,7 +33,6 @@
           </a>
         </div>
       </div>
-      <!-- div below should be shown to non-signed-in users only -->
       <div v-show="true" class="lg:flex text-white mx-4 lg:mt-0">
         <div class="mt-4 lg:mt-0">
           <router-link to="/profile" class="mr-4">Profile(Student)</router-link>

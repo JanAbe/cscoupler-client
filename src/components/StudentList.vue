@@ -84,6 +84,7 @@ export default {
           const email = s['user']['email']
           const fname = s['user']['firstname']
           const lname = s['user']['lastname']
+          const wishes = s['wishes']
           const student = {
             id: id,
             university: uni,
@@ -95,6 +96,7 @@ export default {
             email: email,
             firstname: fname,
             lastname: lname,
+            wishes: wishes,
             marked: false
           }
           this.students.push(student)

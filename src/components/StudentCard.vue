@@ -31,12 +31,12 @@
     </div>
     <div class="flex flex-wrap text-center">
       <p class="p-2 text-sm text-justify text-grey-dark mx-4 mt-1 mb-2 bg-purple-100 rounded-lg">
-        Looking for a start-up company working on socially relevant problems in the Bay area.
+        {{ student.wishes }}
       </p>
     </div>
     <div class="flex justify-between px-4 pb-2 pt-1">
       <button v-on:click.stop="message(student.id, 'u want job?')" class="text-xs font-semibold rounded-full px-4 py-1 bg-white border border-purple-400 hover:bg-purple-400 hover:text-white">Message</button>
-      <button v-on:click.stop="viewStudentCard(student)" class="text-xs font-semibold rounded-full px-4 py-1 bg-purple-400 border border-purple-400 text-white hover:bg-purple-500">View Profile</button>
+      <router-link :to="profileURL" class="text-xs font-semibold rounded-full px-4 py-1 bg-purple-400 border border-purple-400 text-white hover:bg-purple-500">View Profile</router-link>
     </div>
   </div>
 </template>
@@ -53,20 +53,6 @@ export default {
     StudentExperience,
   },
   methods: {
-    viewStudentCard(student) {
-      // focus on the selected card
-      // will display more info
-      // and blur the other studentCards
-      // it will also show the resume of 
-      // this student.
-      alert('hi')
-      return student
-    },
-
-    resume() {
-      alert('resume wanted')
-    },
-
     message(studentID, message) {
       // send a message to the selected
       // student
@@ -76,6 +62,11 @@ export default {
 
     mark(student) {
       student.marked = !student.marked
+    }
+  },
+  computed: {
+    profileURL: function() {
+      return '/students/' + this.student.id + '/profile'
     }
   }
 }
