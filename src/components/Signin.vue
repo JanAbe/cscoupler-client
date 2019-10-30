@@ -63,6 +63,9 @@ export default {
 
       const config = { headers: {'Content-Type' : 'application/json' }, withCredentials: true }
       axios.post('http://localhost:3000/signin', JSON.stringify(data), config)
+      .then(() => {
+        this.$router.push('/home')
+      })
       .catch(err => {
         console.log(err)
         this.error = 'Invalid email/password combination'

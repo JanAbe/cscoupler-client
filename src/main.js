@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import VueRouter from 'vue-router'
+import Home from './components/Home.vue'
 import Signin from './components/Signin.vue'
 import StudentList from './components/StudentList.vue'
 import ProjectList from './components/ProjectList.vue'
@@ -21,6 +22,7 @@ Vue.config.productionTip = false
 Vue.use(VueRouter)
 
 const routes = [
+  { path: '/home', component: Home },
   { path: '/signup/student', component: StudentRegistration },
   { path: '/students', component: StudentList },
   { path: '/signup/company', component: CompanyRegistration },

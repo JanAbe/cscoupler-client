@@ -13,14 +13,14 @@
     </div>
 
     <div class="mt-4">
-      <p class="">
+      <p>
         During the duration of an internship, interns own their projects from start to finish. 
         At that time, Fluugle teams provide feedback on the intern’s overall performance. At the start
         you get assigned one mentor who will assist you during your internship.
       </p>
     </div>
 
-    <div class="flex justify-between">
+    <div class="">
       <div v-for="(l, index) in company.locations" :key="index" class="my-2 p-4">
         <div class="flex flex-wrap mx-3 mb-3 sm:-mx-3">
           <div class="w-full md:w-2/3 px-3 mb-3 lg:mb-1">
@@ -62,14 +62,7 @@
       </div>
     </div>
 
-    <div class="flex">
-      <h3>Projects</h3>
-      <div class="w-1/2 text-center">
-        <div v-for="(p, index) in company.projects" :key="index" class="my-2">
-          {{ p.description }}
-        </div>
-      </div>
-
+    <div class="flex flex-wrap">
       <h3>Representatives</h3>
       <div class="w-1/2 text-center">
         <div v-for="(r, index) in company.representatives" :key="index" class="my-2">
@@ -77,13 +70,24 @@
         </div>
       </div>
     </div>
+
+    <div class="flex flex-wrap">
+      <h3>Projects</h3>
+      <div class="flex flex-wrap">
+        <project-card v-for="(p, index) in company.projects" v-bind:project="p" :key="index" class="my-2" />
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
+import ProjectCard from './ProjectCard'
 
 export default {
+  components: {
+    ProjectCard,
+  },
   data() {
     return {
       company: {}
