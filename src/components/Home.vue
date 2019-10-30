@@ -3,7 +3,7 @@
     <div class="text-center text-3xl">
       CScoupler
     </div>
-    <p class="leading-tight italic text-base text-center mx-40">
+    <p class="leading-tight italic text-sm text-center mx-40">
       A platform for companies and students to 
       come in touch with one another, easing the internship hunt for students and easing the 
       quest of finding qualified students for companies.
@@ -24,13 +24,13 @@
       </p>
     </div>
     <div class="flex justify-center mt-4">
-      <button class="mx-2 py-2 px-2 text-sm rounded-full bg-white text-gray-700 border border-purple-400 hover:bg-purple-400 hover:text-white">
+      <router-link to="/signup/company" class="mx-2 py-2 px-2 text-sm rounded-full bg-white text-gray-700 border border-purple-400 hover:bg-purple-400 hover:text-white">
         Register your company today
-      </button>
+      </router-link>
 
-      <button class="mx-2 py-2 px-2 text-sm rounded-full bg-white text-gray-700 border border-purple-400 hover:bg-purple-400 hover:text-white">
+      <router-link to="/signup/student" class="mx-2 py-2 px-2 text-sm rounded-full bg-white text-gray-700 border border-purple-400 hover:bg-purple-400 hover:text-white">
         Create an account today
-      </button>
+      </router-link>
     </div>
 
     <div class="flex justify-center mt-4">

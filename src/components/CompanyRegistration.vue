@@ -131,9 +131,9 @@
       </div>
 
       <div class="flex mt-1 sm:-mx-3 justify-center px-6">
-        <button class="text-xs font-semibold rounded-full mx-6 px-4 py-1 bg-white border border-purple-400 hover:bg-purple-400 hover:text-white">
+        <router-link to="/home" class="text-xs font-semibold rounded-full mx-6 px-4 py-1 bg-white border border-purple-400 hover:bg-purple-400 hover:text-white">
           Cancel
-        </button>
+        </router-link>
         <button class="text-xs font-semibold rounded-full mx-6 px-4 py-1 bg-purple-500 border border-purple-500 text-white hover:bg-purple-600">
           Register
         </button>
