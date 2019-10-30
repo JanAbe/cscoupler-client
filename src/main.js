@@ -11,6 +11,7 @@ import StudentAccount from './components/StudentAccount.vue'
 import CompanyAccount from './components/CompanyAccount.vue'
 import StudentRegistration from './components/StudentRegistration.vue'
 import CompanyRegistration from './components/CompanyRegistration.vue'
+import RepresentativeProfile from './components/RepresentativeProfile.vue'
 import RepresentativeRegistration from './components/RepresentativeRegistration.vue'
 import '@/assets/css/tailwind.css'
 
@@ -32,7 +33,8 @@ const routes = [
   { path: '/projects', component: ProjectList },
   { path: '/students/:studentID/profile', component: StudentAccount }, 
   { path: '/companies', component: CompanyList },
-  { path: '/companies/:companyID/profile', component: CompanyAccount }
+  { path: '/companies/:companyID/profile', component: CompanyAccount },
+  { path: '/account', component: RepresentativeProfile }
 ]
 
 const router = new VueRouter({
