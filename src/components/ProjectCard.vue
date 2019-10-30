@@ -9,7 +9,7 @@
     
     <div class="flex flex-wrap justify-center border-b-2 border-purple-400">
       <p class="p-2 text-xl text-grey-dark mx-4 mt-1 mb-2">
-        Internship at Fluugle
+        Internship at {{ company }}
       </p>
     </div>
 
@@ -37,7 +37,7 @@
     <h4 class="pl-2">Desired Skills:</h4>
     <div class="flex flex-wrap justify-center sm:flex-grow">
       <span v-for="(rec, index) in project.recommendations" :key="index"
-        class="flex-grow text-center bg-indigo-100 rounded-full px-4 py-2 mb-1 text-sm text-gray-700 mx-4">
+        class="flex-grow text-center bg-indigo-100 rounded-full px-2 py-1 mb-1 text-sm text-gray-700 mx-2">
         {{ rec }}
       </span> 
     </div>
@@ -51,15 +51,34 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   name: 'ProjectCard',
   props: ['project'],
+  data() {
+    return {
+      company: ''
+    }
+  },
+  created() {
+    this.fetchCompanyname()
+  },
   methods: {
     message() {
       return ''
     },
     mark(project) {
       project.marked = !project.marked
+    },
+    fetchCompanyname() {
+      console.log(this.project.companyID)
+      axios.get(`http://localhost:3000/companies/name/${this.project.companyID}`, { withCredentials: true })
+      .then(res => {
+        console.log(res.data)
+        this.company = res.data
+      })
+      .catch(err => console.log(err))
     }
   }
 }
