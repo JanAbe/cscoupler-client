@@ -72,10 +72,8 @@ export default {
       project.marked = !project.marked
     },
     fetchCompanyname() {
-      console.log(this.project.companyID)
       axios.get(`http://localhost:3000/companies/name/${this.project.companyID}`, { withCredentials: true })
       .then(res => {
-        console.log(res.data)
         this.company = res.data
       })
       .catch(err => console.log(err))

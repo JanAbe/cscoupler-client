@@ -119,7 +119,6 @@
         </div>
       </div>
 
-
       <div class="flex flex-wrap mx-3 sm:-mx-3 border-b-2 border-purple-200">
         <div class="w-full px-3 mb-3">
           <label v-on:click="selectResume()" class="text-xs font-semibold rounded-full mb-6 px-4 py-3 bg-purple-400 text-white hover:bg-purple-500" role="button" for="resume-upload">
