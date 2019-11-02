@@ -1,6 +1,6 @@
 <template>
-  <div class="container mx-auto mt-16">
-    <form v-on:submit.prevent="signIn()" id="student-form" class="max-w-sm mx-auto md:mt-12 lg:mt-24 border-2 border-gray-200 rounded-lg px-2 lg:px-6 pb-4">
+  <div class="container mx-auto mt-6 md:mt-16">
+    <form v-on:submit.prevent="signIn()" id="student-form" class="max-w-sm mx-auto md:mt-12 lg:mt-24 md:border-2 md:border-gray-200 md:rounded-lg px-2 lg:px-6 pb-4">
       <h2 class="font-semibold text-md pt-2 pb-6 mx-6 sm:mx-0">Sign in to CScoupler</h2>
       
       <div class="flex flex-wrap mx-3 mb-6 sm:-mx-3">
