@@ -1,11 +1,11 @@
 <template>
   <div class="container mx-auto bg-white">
-    <form v-on:submit.prevent="register()" id="company-form" class="lg:mt-16 md:mt-6 border-2 border-gray-200 rounded-lg pt-4 pb-2">
-      <div class="flex">
-        <div class="w-1/2">
+    <form v-on:submit.prevent="register()" id="company-form" class="lg:mt-16 md:mt-6 lg:border-2 lg:border-gray-200 lg:rounded-lg pt-4 pb-2">
+      <div class="lg:flex">
+        <div class="lg:w-1/2 md:mx-6 lg:mx-0">
           <h2 class="font-semibold text-md pt-2 pb-6 px-2 lg:px-6 mx-6 sm:mx-0">Company Registration <span class="float-right text-sm rounded-full bg-purple-200 p-4 h-8 w-8 flex items-center justify-center">1</span></h2>
 
-          <div class="px-2 lg:px-6">
+          <div class="px-2 lg:px-6 mb-6">
             <div class="flex flex-wrap mx-3 mb-6 sm:-mx-3">
               <div class="w-full px-3 mb-3 lg:mb-1">
                 <label class="block uppercase text-gray-700 text-xs font-bold mb-2" for="name">
@@ -18,7 +18,7 @@
               </div>
             </div>
 
-            <div class="flex flex-wrap mx-3 mb-6 sm:-mx-3">
+            <div class="flex flex-wrap mx-3 mb-6 md:mb-5 sm:-mx-3">
               <div class="w-full px-3 mb-3 lg:mb-1">
                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="information">
                   Information
@@ -29,13 +29,13 @@
               </div>
             </div>
             
-            <div class="flex flex-wrap mx-3 mb-3 sm:-mx-3">
+            <div class="flex flex-wrap mx-3 mb-6 md:mb-1 sm:-mx-3">
               <div class="w-full md:w-2/3 px-3 mb-3 lg:mb-1">
                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="city">
                   City
                 </label>
                 <input id="city" v-model="city" type="text" placeholder="New York City" 
-                  class="appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 mb-1 leading-tight focus:outline-none hover:border-purple-300 focus:border-purple-300">
+                  class="appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 mb-6 leading-tight focus:outline-none hover:border-purple-300 focus:border-purple-300">
                 <p class="text-red-600 leading-tight text-xs italic pl-1">{{ validationErrors.city }}</p>
               </div>
               <div class="w-full md:w-1/3 px-3 mb-3 lg:mb-1">
@@ -54,7 +54,7 @@
                   Street
                 </label>
                 <input id="street" v-model="street" type="text" placeholder="Mainstreet" 
-                  class="appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 mb-1 leading-tight focus:outline-none hover:border-purple-300 focus:border-purple-300">
+                  class="appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 mb-6 md:mb-1 leading-tight focus:outline-none hover:border-purple-300 focus:border-purple-300">
                 <p class="text-red-600 leading-tight text-xs italic pl-1">{{ validationErrors.street }}</p>
               </div>
               <div class="w-full md:w-1/3 px-3 mb-3 lg:mb-1">
@@ -69,7 +69,7 @@
           </div>
         </div>
 
-        <div class="w-1/2 border-l border-purple-200">
+        <div class="lg:w-1/2 md:mx-6 lg:mx-0 pt-3 lg:pt-0 border-t border-purple-200 lg:border-t-0 lg:border-l lg:border-purple-200">
           <div class="px-2 lg:px-6">
             <h2 class="font-semibold text-md pt-2 pb-6 mx-6 sm:mx-0">Representative Registration <span class="float-right text-sm rounded-full bg-purple-200 p-4 h-8 w-8 flex items-center justify-center">2</span></h2>
 
@@ -130,7 +130,7 @@
         </div>
       </div>
 
-      <div class="flex mt-1 sm:-mx-3 justify-center px-6">
+      <div class="flex mt-1 sm:-mx-3 justify-center px-6 mb-4">
         <router-link to="/home" class="text-xs font-semibold rounded-full mx-6 px-4 py-1 bg-white border border-purple-400 hover:bg-purple-400 hover:text-white">
           Cancel
         </router-link>
