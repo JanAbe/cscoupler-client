@@ -1,5 +1,5 @@
 <template>
-  <div class="self-start border mb-2 rounded-lg bg-white md:ml-8 lg:mx-auto max-w-sm shadow-xl hover:shadow-none">
+  <div class="self-start border mb-6 rounded-lg bg-white md:ml-8 lg:mx-auto max-w-sm shadow-xl hover:shadow-none">
     <div class="sm:flex sm:items-center">
       <div class="text-center py-1 sm:text-left sm:flex-grow">
         <div class="mb-1 border-b-2 border-purple-400 pb-2">

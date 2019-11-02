@@ -20,7 +20,7 @@
           Companies
         </router-link>
       </div>
-      <!-- div below should be shown to signed-in users only -->
+      
       <div v-show="false" class="lg:flex text-white mx-4 lg:mt-0">
         <div class="mt-4 lg:mt-0">
           <a href="#account">

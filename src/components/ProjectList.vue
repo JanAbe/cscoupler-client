@@ -1,8 +1,8 @@
 <template>
-  <div class="mt-8 flex">
-    <div class="flex-none w-1/3 md:max-w-xs text-gray-700 lg:mr-16 ml-10">
-      <div class="flex justify-center">
-        <div class="border border-gray-300 rounded fixed mt-16 md:ml-8">
+  <div class="mt-4 md:mt-8 md:flex">
+    <div class="flex-none text-gray-700 mb-6 mx-6 md:w-1/3 md:max-w-xs lg:mr-16 md:ml-10">
+      <div class="md:flex md:justify-center">
+        <div class="border border-gray-300 rounded md:fixed md:mt-16 md:ml-8">
           <h2 class="bg-purple-400 text-center font-semibold text-white py-3">
             Filter menu
           </h2>
@@ -29,10 +29,10 @@
       </div>
     </div>
 
-    <div v-if="markedToggle" class="flex flex-wrap w-2/3">
+    <div v-if="markedToggle" class="flex flex-wrap mx-6 md:w-2/3">
       <project-card v-for="project in markedProjects" v-bind:project="project" :key="project.id" />
     </div>
-    <div v-else-if="!markedToggle" class="flex flex-wrap w-2/3">
+    <div v-else-if="!markedToggle" class="flex flex-wrap mx-6 md:w-2/3">
       <project-card v-for="project in projects" v-bind:project="project" :key="project.id" />
     </div>
   </div>
