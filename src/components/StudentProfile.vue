@@ -1,6 +1,61 @@
 <template>
-  <div class="flex">
-    <form id="student-update-form" class="w-3/5 bg-white rounded-lg px-4 pt-4 pb-2 mb-2 lg:ml-24">
+  <div class="lg:flex">
+
+    <div class="lg:w-2/6 bg-purple-100 pb-4">
+      <div class="text-center bg-white lg:mx-auto pb-4">
+        <h2 class="font-semibold text-sm mx-3 md:pt-1">Tips</h2>
+        <div class="py-2">
+          <p class="text-xs italic pl-1 mx-3 md:mt-1">Only the first three of your skills get shown on your card, so order them consiously!</p>
+          <p class="text-xs italic pl-1 mx-3 md:mt-1">All your skills are visible through the search option though.</p>
+        </div>
+        <div class="py-2">
+          <p class="text-xs italic pl-1 mx-3 md:mt-1">Keep your experience descriptions short and concise, the card below serves as a sneak peek to your profile.</p>
+          <p class="text-xs italic pl-1 mx-3 md:mt-1">It's goal is to interest the company recruiters/representatives to view your profile and resume.</p>
+        </div>
+      </div>
+      
+      <div class="center-fixed md:ml-32 lg:ml-0 mx-4">
+        <div class="text-xl mt-2 lg:mt-4 lg:mb-2 md:ml-8 lg:mx-auto max-w-sm">
+          <h2>Live preview of your card</h2>
+        </div>
+        <div class="mt-3 border mb-2 rounded-lg bg-white md:ml-8 mx-auto max-w-sm shadow-xl hover:shadow-none">
+          <div class="sm:flex sm:items-center px-2">
+            <div>
+              <img class="block h-16 object-contain object-center sm:h-16 rounded-full mx-auto mb-4 my-2 sm:mb-0 sm:mr-4 sm:ml-0" src="../assets/avatar.png" alt="">
+            </div>
+            <div class="text-center py-1 sm:text-left sm:flex-grow">
+              <div class="mb-4">
+                <p class="text-xl leading-tight break-all">
+                  {{firstname}} {{lastname}} 
+                </p>
+                <p class="text-sm leading-tight text-grey-dark break-all">Student at {{university}}</p>
+                <div class="py-px mx-6 md:mx-0 md:mr-4 border-b-2 border-purple-300 "></div>
+              </div>
+              <div class="flex flex-wrap justify-around sm:flex-grow">
+                <student-skill v-for="(skill, index) in skills.slice(0,3)" v-bind:skill="skill.skill" :key="index"/> 
+              </div>
+            </div>
+          </div>
+          <div v-if="shortExperiences !== null" class="flex flex-wrap text-center">
+            <student-experience class="p-2 text-sm text-justify text-grey-dark mx-4 mt-1 mb-2 bg-gray-100 rounded-lg" 
+              v-for="(exp, index) in shortExperiences.slice(0,2)" 
+              v-bind:experience="exp" 
+              :key="index"/>
+          </div>
+          <div class="flex flex-wrap text-center">
+            <p class="overflow-hidden p-2 text-sm text-justify text-grey-dark mx-4 mt-1 mb-2 bg-purple-100 rounded-lg">
+              {{ wishes }}
+            </p>
+          </div>
+          <div class="flex justify-between px-4 pb-2 pt-1">
+            <button disabled class="text-xs font-semibold rounded-full px-4 py-1 bg-white border border-purple-400 hover:bg-purple-400 hover:text-white opacity-50 cursor-not-allowed">Message</button>
+            <button disabled class="text-xs font-semibold rounded-full px-4 py-1 bg-purple-400 border border-purple-400 text-white hover:bg-purple-500 opacity-50 cursor-not-allowed">View Profile</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <form id="student-update-form" class="lg:w-4/6 bg-white rounded-lg px-2 pt-4 pb-2 mb-2 lg:ml-24 md:mr-12 md:ml-12">
       <h2 class="text-lg font-semibold text-md pb-6 mx-6 sm:mx-0">Your profile</h2>
 
       <div class="flex flex-wrap mx-3 mb-6 sm:-mx-3">
@@ -59,17 +114,17 @@
         </div>
       </div>
 
-      <div class="flex flex-wrap mx-3 mb-6 sm:-mx-3">
+      <div class="flex flex-wrap mx-3 mb-3 sm:-mx-3">
         <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-          <label class="block text-gray-700 mb-2 mt-6" for="first-name">
+          <label class="block text-gray-700 mb-2 md:mt-6" for="first-name">
             First Name
           </label>
           <input id="first-name" v-model="firstname" type="text" placeholder="John" maxlength="60"
-            class="text-sm appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white hover:border-purple-300 focus:border-purple-300">
+            class="text-sm appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 md:mb-1 leading-tight focus:outline-none focus:bg-white hover:border-purple-300 focus:border-purple-300">
           <p class="text-red-600 leading-tight text-xs italic pl-1">{{ validationErrors.firstname }}</p>
         </div>
         <div class="w-full md:w-1/2 px-3">
-          <label class="block text-gray-700 mb-2 mt-6" for="last-name">
+          <label class="block text-gray-700 mb-2 md:mt-6" for="last-name">
             Last Name
           </label>
           <input id="last-name" v-model="lastname" type="text" placeholder="Smith" maxlength="60"
@@ -89,18 +144,6 @@
         </div>
       </div>
 
-      <!-- <div class="flex flex-wrap mx-3 mb-6 sm:-mx-3">
-        <div class="w-full px-3 mb-3 lg:mb-1">
-          <label class="block uppercase text-gray-700 text-xs font-bold mb-2" for="password">
-            Password
-          </label>
-          <input id="password" v-model="password" type="password" placeholder="******************" 
-            class="text-sm appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white hover:border-purple-300 focus:border-purple-300">
-          <p class="text-gray-600 leading-tight text-xs italic pl-1">It should be atleast 8 characters long, contain numbers, letters and special characters</p>
-          <p class="text-red-600 leading-tight text-xs italic pl-1">{{ validationErrors.password }}</p>
-        </div>
-      </div> -->
-      
       <div class="flex flex-wrap mx-3 mb-6 sm:-mx-3">
         <div class="w-full md:w-1/2 px-3 mb-4 lg:mb-0">
           <label class="block text-gray-700 mb-2" for="status">
@@ -135,59 +178,6 @@
       </div>
     </form>
 
-    <div class="w-2/5 bg-purple-100">
-      <div class="text-center bg-white lg:mx-auto pb-4 mb-16">
-        <h2 class="font-semibold text-sm mx-3 md:pt-1">Tips</h2>
-        <div class="py-2">
-          <p class="text-xs italic pl-1 mx-3 md:mt-1">Only the first three of your skills get shown on your card, so order them consiously!</p>
-          <p class="text-xs italic pl-1 mx-3 md:mt-1">All your skills are visible through the search option though.</p>
-        </div>
-        <div class="py-2">
-          <p class="text-xs italic pl-1 mx-3 md:mt-1">Keep your experience descriptions short and concise, the card below serves as a sneak peek to your profile.</p>
-          <p class="text-xs italic pl-1 mx-3 md:mt-1">It's goal is to interest the company recruiters/representatives to view your profile and resume.</p>
-        </div>
-      </div>
-      
-      <div class="center-fixed">
-        <div class="text-xl mt-4 mb-2 md:ml-8 lg:mx-auto max-w-sm ">
-          <h2>Live preview of your card</h2>
-        </div>
-        <div class="mt-6 border mb-2 rounded-lg bg-white md:ml-8 lg:mx-auto max-w-sm shadow-xl hover:shadow-none">
-          <div class="sm:flex sm:items-center px-2">
-            <div>
-              <img class="block h-16 object-contain object-center sm:h-16 rounded-full mx-auto mb-4 my-2 sm:mb-0 sm:mr-4 sm:ml-0" src="../assets/avatar.png" alt="">
-            </div>
-            <div class="text-center py-1 sm:text-left sm:flex-grow">
-              <div class="mb-4">
-                <p class="text-xl leading-tight break-all">
-                  {{firstname}} {{lastname}} 
-                </p>
-                <p class="text-sm leading-tight text-grey-dark break-all">Student at {{university}}</p>
-                <div class="py-px mx-6 md:mx-0 md:mr-4 border-b-2 border-purple-300 "></div>
-              </div>
-              <div class="flex flex-wrap justify-around sm:flex-grow">
-                <student-skill v-for="(skill, index) in skills.slice(0,3)" v-bind:skill="skill.skill" :key="index"/> 
-              </div>
-            </div>
-          </div>
-          <div v-if="shortExperiences !== null" class="flex flex-wrap text-center">
-            <student-experience class="p-2 text-sm text-justify text-grey-dark mx-4 mt-1 mb-2 bg-gray-100 rounded-lg" 
-              v-for="(exp, index) in shortExperiences.slice(0,2)" 
-              v-bind:experience="exp" 
-              :key="index"/>
-          </div>
-          <div class="flex flex-wrap text-center">
-            <p class="overflow-hidden p-2 text-sm text-justify text-grey-dark mx-4 mt-1 mb-2 bg-purple-100 rounded-lg">
-              {{ wishes }}
-            </p>
-          </div>
-          <div class="flex justify-between px-4 pb-2 pt-1">
-            <button disabled class="text-xs font-semibold rounded-full px-4 py-1 bg-white border border-purple-400 hover:bg-purple-400 hover:text-white opacity-50 cursor-not-allowed">Message</button>
-            <button disabled class="text-xs font-semibold rounded-full px-4 py-1 bg-purple-400 border border-purple-400 text-white hover:bg-purple-500 opacity-50 cursor-not-allowed">View Profile</button>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </template>
 
@@ -372,7 +362,7 @@ export default {
   @media (min-width: 1024px) {
     .center-fixed {
       position: fixed;
-      left: 71.5%;
+      left: 3.7%
     }
   }
 
