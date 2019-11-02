@@ -1,5 +1,5 @@
 <template>
-  <p>
+  <p class="overflow-hidden">
     {{experience}}
   </p>
 </template>

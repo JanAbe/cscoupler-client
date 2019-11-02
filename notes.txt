@@ -1,6 +1,9 @@
 !!! Don't forget to change endpoints/url's used to 
 http if http is used by the server and vice versa !!!
 
+todo:
+add length restrictions to all input fields,
+e.g university input field on the student-profile page
 
 todo:
 add validation to student registration form

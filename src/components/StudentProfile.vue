@@ -64,7 +64,7 @@
           <label class="block text-gray-700 mb-2 mt-6" for="first-name">
             First Name
           </label>
-          <input id="first-name" v-model="firstname" type="text" placeholder="John" 
+          <input id="first-name" v-model="firstname" type="text" placeholder="John" maxlength="60"
             class="text-sm appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white hover:border-purple-300 focus:border-purple-300">
           <p class="text-red-600 leading-tight text-xs italic pl-1">{{ validationErrors.firstname }}</p>
         </div>
@@ -72,7 +72,7 @@
           <label class="block text-gray-700 mb-2 mt-6" for="last-name">
             Last Name
           </label>
-          <input id="last-name" v-model="lastname" type="text" placeholder="Smith"
+          <input id="last-name" v-model="lastname" type="text" placeholder="Smith" maxlength="60"
             class="text-sm appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white hover:border-purple-300 focus:border-purple-300">
           <p class="text-red-600 leading-tight text-xs italic pl-1">{{ validationErrors.lastname }}</p>
         </div>
@@ -83,7 +83,7 @@
           <label class="block text-gray-700 mb-2" for="email">
             Email
           </label>
-          <input id="email" v-model="email" type="email" placeholder="johnsmith@email.com" 
+          <input id="email" v-model="email" type="email" placeholder="johnsmith@email.com"
             class="text-sm appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white hover:border-purple-300 focus:border-purple-300">
           <p class="text-red-600 leading-tight text-xs italic pl-1">{{ validationErrors.email }}</p>
         </div>
@@ -113,7 +113,7 @@
           <label class="block text-gray-700 mb-2" for="university">
             University
           </label>
-          <input id="university" v-model="university" type="text" placeholder="University of ..." 
+          <input id="university" v-model="university" type="text" placeholder="University of ..." maxlength="60"
             class="text-sm appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 mb-1 leading-tight focus:outline-none hover:border-purple-300 focus:border-purple-300">
           <p class="text-red-600 leading-tight text-xs italic pl-1">{{ validationErrors.university }}</p>
         </div>
@@ -148,7 +148,7 @@
         </div>
       </div>
       
-      <div class="center-fixed"> <!-- i want to add class="fixed", but doing so makes it not centered. And i don't know how to center it. -->
+      <div class="center-fixed">
         <div class="text-xl mt-4 mb-2 md:ml-8 lg:mx-auto max-w-sm ">
           <h2>Live preview of your card</h2>
         </div>
@@ -159,10 +159,10 @@
             </div>
             <div class="text-center py-1 sm:text-left sm:flex-grow">
               <div class="mb-4">
-                <p class="text-xl leading-tight">
+                <p class="text-xl leading-tight break-all">
                   {{firstname}} {{lastname}} 
                 </p>
-                <p class="text-sm leading-tight text-grey-dark">Student at {{university}}</p>
+                <p class="text-sm leading-tight text-grey-dark break-all">Student at {{university}}</p>
                 <div class="py-px mx-6 md:mx-0 md:mr-4 border-b-2 border-purple-300 "></div>
               </div>
               <div class="flex flex-wrap justify-around sm:flex-grow">
@@ -177,7 +177,7 @@
               :key="index"/>
           </div>
           <div class="flex flex-wrap text-center">
-            <p class="p-2 text-sm text-justify text-grey-dark mx-4 mt-1 mb-2 bg-purple-100 rounded-lg">
+            <p class="overflow-hidden p-2 text-sm text-justify text-grey-dark mx-4 mt-1 mb-2 bg-purple-100 rounded-lg">
               {{ wishes }}
             </p>
           </div>
