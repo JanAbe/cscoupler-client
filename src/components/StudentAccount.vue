@@ -33,7 +33,7 @@
       <div class="text-center">
         <h2 class="text-2xl pt-4 mb-4">{{ student.firstname }} {{ student.lastname }}'s CV</h2>
         <!-- <iframe src="../assets/test.pdf" type="application/pdf" width="800px" height="400px"> </iframe> -->
-        <iframe src="http://africau.edu/images/default/sample.pdf" type="application/pdf" width="100%" height="900px"> </iframe>
+        <iframe src="https://www.bellevue.edu/student-support/career-services/pdfs/resume-samples.pdf" type="application/pdf" width="100%" height="900px"> </iframe>
       </div>
     </div>
   </div>

@@ -12,7 +12,7 @@
       </p>
     </div>
 
-    <div class="mt-4 mx-64 text-center mt-8">
+    <div class="mx-4 md:mx-24 lg:mx-64 text-center mt-8">
       <p>
         During the duration of an internship, interns own their projects from start to finish. 
         At that time, Fluugle teams provide feedback on the intern’s overall performance. At the start
@@ -20,14 +20,14 @@
       </p>
     </div>
 
-    <h2 class="block uppercase tracking-wide text-gray-700 text-sm font-bold text-center mt-16">
+    <h2 class="block uppercase tracking-wide text-gray-700 text-sm font-bold text-center mt-8 md:mt-16">
       Addresses
     </h2>
-    <div class="flex flex-wrap justify-center  mx-auto mb-8">
-      <div v-for="(l, index) in company.locations" :key="index" class="p-4">
+    <div class="flex flex-wrap justify-center mx-auto mb-8">
+      <div v-for="(l, index) in company.locations" :key="index" class="px-4 py-2">
         <div class="flex mx-3 mb-1 sm:-mx-3">
-          <div class="w-full px-3 mb-3 lg:mb-1">
-            <p class="appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 mb-1 leading-tight focus:outline-none border-purple-300 border-purple-300">
+          <div class="w-full px-3 lg:mb-1">
+            <p class="appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none border-purple-300 border-purple-300">
               {{ l.street }} {{ l.number }} <br>
               {{ l.zipcode }}, {{ l.city}}
             </p>
@@ -39,9 +39,9 @@
     <h2 class="block uppercase tracking-wide text-gray-700 text-sm font-bold text-center mt-8">
       Representatives
     </h2>
-    <div class="flex flex-wrap justify-center">
-      <div v-for="(r, index) in company.representatives" :key="index" class="md:flex bg-white rounded-lg p-6 pl-4 mx-2 shadow-lg">
-        <img class="h-16 w-16 md:h-20 md:w-20 rounded-full mx-auto mr-4" src="../assets/avatar.png" alt="">
+    <div class="md:flex md:flex-wrap md:justify-center">
+      <div v-for="(r, index) in company.representatives" :key="index" class="md:flex bg-white rounded-lg p-6 pl-4 mx-4 shadow-lg mt-2 border border-gray-300">
+        <img class="h-16 w-16 md:h-20 md:w-20 rounded-full mx-auto" src="../assets/avatar.png" alt="">
         <div class="text-center md:text-left">
           <h2 class="text-lg">
             {{ r.user.firstname }} {{ r.user.lastname }}
@@ -55,8 +55,8 @@
     <h2 class="block uppercase tracking-wide text-gray-700 text-sm font-bold text-center mt-16">
       Projects
     </h2>
-    <div class="flex flex-wrap">
-      <div class="flex flex-wrap">
+    <div class="lg:flex lg:flex-wrap md:ml-40 mx-4 lg:mx-1">
+      <div class="lg:flex lg:flex-wrap">
         <project-card v-for="(p, index) in company.projects" v-bind:project="p" :key="index" class="my-2" />
       </div>
     </div>
