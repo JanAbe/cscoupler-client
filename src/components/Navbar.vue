@@ -21,7 +21,7 @@
         </router-link>
       </div>
       
-      <div class="lg:flex text-white mx-4 lg:mt-0">
+      <div class="lg:flex ml-auto text-white mx-4 lg:mt-0">
         <div v-if="this.role === 'representative'" class="mt-4 lg:mt-0">
           <router-link to="/account" class="mr-4">Profile</router-link>
         </div>
@@ -70,7 +70,6 @@ export default {
       localStorage.setItem('isLoggedIn', 'false')
       localStorage.setItem('role', '')
       this.$router.push('/signin')
-      location.reload()
     }
   }
 }
