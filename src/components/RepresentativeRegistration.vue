@@ -1,16 +1,16 @@
 <template>
-  <div class="flex justify-between h-full">
+  <div class="lg:flex lg:justify-between h-full">
     <div class="hidden lg:block lg:w-1/2 lg:bg-purple-600">
       <img src="../assets/svg/online-cv.svg" alt="" class="sm:mx-0 lg:mx-32 lg:mt-8">
     </div>
 
-    <form v-on:submit.prevent="register()" id="representative-form" class="lg:w-1/2 mx-auto lg:ml-48 lg:mr-auto max-w-lg md:mt-12 lg:mt-24 border-2 border-gray-200 rounded-lg px-2 lg:px-6 pb-4">
+    <form v-on:submit.prevent="register()" id="representative-form" class="w-full lg:w-1/2 md:ml-6 lg:ml-48 lg:mr-12 md:mt-6 lg:mt-24 lg:border-2 lg:border-gray-200 lg:rounded-lg px-2 lg:px-6 pb-4">
       <div class="px-2 lg:px-6">
         <h2 class="font-semibold text-md pt-2 mx-6 sm:mx-0">Representative Registration</h2>
         <p class="text-red-600 leading-tight text-xs italic pl-px">{{ invalidInvitationError }}</p>
         <p class="text-red-600 leading-tight text-xs italic pl-px">{{ invitationError }}</p>
 
-        <div class="flex flex-wrap mx-3 mb-6 sm:-mx-3 pt-6">
+        <div class="flex flex-wrap mx-3 mb-6 sm:-mx-3 pt-6 md:mr-8">
           <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
             <label class="block uppercase text-gray-700 text-xs font-bold mb-2" for="first-name">
               First Name
@@ -29,7 +29,7 @@
           </div>
         </div>
         
-        <div class="flex flex-wrap mx-3 mb-6 sm:-mx-3">
+        <div class="flex flex-wrap mx-3 mb-6 sm:-mx-3 md:mr-8">
           <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
             <div class="w-full lg:mt-0">
               <label class="block uppercase text-gray-700 text-xs font-bold mb-2" for="jobTitle">
@@ -50,7 +50,7 @@
           </div>
         </div>
         
-        <div class="flex flex-wrap mx-3 mb-6 sm:-mx-3">
+        <div class="flex flex-wrap mx-3 mb-6 sm:-mx-3 md:mr-8">
           <div class="w-full px-3 lg:mt-0">
             <label class="block uppercase text-gray-700 text-xs font-bold mb-2" for="email">
               Email
@@ -62,7 +62,7 @@
           </div>
         </div>
 
-        <div class="flex flex-wrap mx-3 mb-6 sm:-mx-3">
+        <div class="flex flex-wrap mx-3 mb-6 sm:-mx-3 md:mr-8">
           <div class="w-full px-3 mb-3 lg:mb-1">
             <label class="block uppercase text-gray-700 text-xs font-bold mb-2" for="password">
               Password
@@ -73,11 +73,11 @@
             <p class="text-red-600 leading-tight text-xs italic pl-1">{{ validationErrors.password }}</p>
           </div>
         </div>
-        <div class="flex flex-wrap mt-8 sm:-mx-3 justify-between">
-          <button class="text-xs font-semibold rounded-full mx-3 px-4 py-1 bg-white border border-purple-400 hover:bg-purple-400 hover:text-white">
+        <div class="flex flex-wrap mt-8 sm:-mx-3 justify-center lg:justify-between">
+          <button class="text-xs font-semibold rounded-full mr-12 lg:mx-3 px-4 py-1 bg-white border border-purple-400 hover:bg-purple-400 hover:text-white">
             Cancel
           </button>
-          <button class="text-xs font-semibold rounded-full mx-3 px-4 py-1 bg-purple-500 border border-purple-500 text-white hover:bg-purple-600">
+          <button class="text-xs font-semibold rounded-full mr-8 lg:mr-12 lg:mx-3 px-4 py-1 bg-purple-500 border border-purple-500 text-white hover:bg-purple-600">
             Register
           </button>
         </div>
