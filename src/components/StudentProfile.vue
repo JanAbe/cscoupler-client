@@ -1,6 +1,5 @@
 <template>
   <div class="lg:flex">
-
     <div class="lg:w-2/6 bg-purple-100 pb-4">
       <div class="text-center bg-white lg:mx-auto pb-4">
         <h2 class="font-semibold text-sm mx-3 md:pt-1">Tips</h2>
@@ -15,7 +14,7 @@
       </div>
       
       <div class="center-fixed md:ml-32 lg:ml-0 mx-4">
-        <div class="text-xl mt-2 lg:mt-4 lg:mb-2 md:ml-8 lg:mx-auto max-w-sm">
+        <div class="text-xl mt-2 lg:mt-4 lg:mb-2 md:ml-8 max-w-sm">
           <h2>Live preview of your card</h2>
         </div>
         <div class="mt-3 border mb-2 rounded-lg bg-white md:ml-8 mx-auto max-w-sm shadow-xl hover:shadow-none">
