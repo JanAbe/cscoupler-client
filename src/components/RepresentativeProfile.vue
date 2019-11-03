@@ -208,7 +208,7 @@ export default {
       lastname: '',
       email: '',
       jobTitle: '',
-      recommendations: [],
+      recommendations: [''],
       description: '',
       compensation: '',
       duration: '',

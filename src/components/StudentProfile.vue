@@ -213,7 +213,7 @@ export default {
       status: '',
       university: '',
       skills: [],
-      experiences: [],
+      experiences: [''],
       shortExperiences: [],
       wishes: '',
       resume: null,

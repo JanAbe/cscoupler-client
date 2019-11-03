@@ -56,6 +56,8 @@ export default {
     }
   },
   created() {
+    this.isLoggedIn = localStorage.getItem('isLoggedIn')
+    this.role = localStorage.getItem('role')
     EventBus.$on('loggedIn', () => {
       this.isLoggedIn = localStorage.getItem('isLoggedIn')
       this.role = localStorage.getItem('role')
