@@ -1,7 +1,7 @@
 <template>
-  <div class="ml-auto mr-32 container">
-    <div class="flex">
-      <form id="representative-update-form" class="w-full bg-white px-4 pt-4 pb-3 ">
+  <div class="mx-auto lg:ml-auto lg:mr-32 container">
+    <div class="lg:flex">
+      <form id="representative-update-form" class="w-full bg-white md:px-4 pt-4 pb-3 ">
         <h2 class="text-lg font-semibold text-md mx-6 sm:mx-0">Your profile</h2>
 
         <div class="flex flex-wrap mx-3 mb-6 sm:-mx-3">
@@ -14,7 +14,7 @@
             <p class="text-red-600 leading-tight text-xs italic pl-1">{{ validationErrors.firstname }}</p>
           </div>
           <div class="w-full md:w-1/2 px-3">
-            <label class="block text-gray-700 mb-2 mt-6" for="last-name">
+            <label class="block text-gray-700 mb-2 md:mt-6" for="last-name">
               Last Name
             </label>
             <input id="last-name" v-model="lastname" type="text" placeholder="Smith"
@@ -50,10 +50,10 @@
         </div>
       </form>
 
-      <div class="w-full pl-8 ml-12">
+      <div class="px-6 lg:w-full lg:pl-8 lg:ml-12 border-t border-purple-400 lg:border-t-0">
         <div>
           <h2 class="text-xl text-center mt-4 md:ml-8 lg:mx-auto font-semibold">Invitations</h2>
-          <table class="mx-auto w-full mt-4">
+          <table class="mx-auto lg:mx-auto lg:w-full mt-4">
             <thead>
               <tr class="bg-purple-100">
                 <th class="border text-sm font-normal w-3/5 px-3">URL</th>
@@ -74,7 +74,7 @@
               </tr>
             </tbody>
           </table>
-          <div class="flex justify-center mt-4">
+          <div class="flex justify-center my-4">
             <button @click="generateInvitation()" class="bg-white text-purple-400 hover:bg-purple-400 hover:text-white border border-purple-400 rounded-full py-1 px-2 text-xs font-semibold">
               Generate invitation
             </button>
@@ -83,7 +83,7 @@
       </div> 
     </div>
 
-    <div class="flex border-t-2 border-gray-200">
+    <div class="lg:flex border-t border-purple-400 lg:border-t-2 lg:border-gray-200">
       <form class="bg-white px-4 pt-4 pb-2 mb-2 w-full">
         <h2 class="text-lg font-semibold text-md pb-5 mx-6 sm:mx-0">Add project</h2>
 
@@ -124,7 +124,7 @@
           <div>
             <div class="flex mb-1">
               <h2 class="mx-3">Recommendations</h2>
-              <button @click="addRecommendation()" class="py-px px-6 text-xs bg-purple-400 hover:bg-purple-500 rounded-full text-white">Add recommendation</button>
+              <button @click="addRecommendation()" class="py-px px-2 md:px-6 text-xs bg-purple-400 hover:bg-purple-500 rounded-full text-white">Add recommendation</button>
             </div>
           </div>
           
@@ -143,7 +143,7 @@
         </div>
       </form>
 
-      <div class="w-full ml-12"> 
+      <div class="hidden lg:block w-full ml-12"> 
         <div class="text-xl mt-4 mb-2 md:ml-8 lg:mx-auto max-w-sm ">
           <h2>Live preview of the new project</h2>
         </div>
