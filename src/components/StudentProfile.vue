@@ -1,7 +1,8 @@
 <template>
   <div class="lg:flex">
     <div class="lg:w-2/6 bg-purple-100 pb-4">
-      <div class="text-center bg-white lg:mx-auto pb-4">
+    <!-- todo: make this toggable or something, idk -->
+      <!-- <div class="text-center bg-white lg:mx-auto pb-4">
         <h2 class="font-semibold text-sm mx-3 md:pt-1">Tips</h2>
         <div class="py-2">
           <p class="text-xs italic pl-1 mx-3 md:mt-1">Only the first three of your skills get shown on your card, so order them consiously!</p>
@@ -11,9 +12,9 @@
           <p class="text-xs italic pl-1 mx-3 md:mt-1">Keep your experience descriptions short and concise, the card below serves as a sneak peek to your profile.</p>
           <p class="text-xs italic pl-1 mx-3 md:mt-1">It's goal is to interest the company recruiters/representatives to view your profile and resume.</p>
         </div>
-      </div>
+      </div> -->
       
-      <div class="center-fixed md:ml-32 lg:ml-0 mx-4">
+      <div class="center-fixed md:ml-32 lg:ml-0 mx-4 lg:mt-8">
         <div class="text-xl mt-2 lg:mt-4 lg:mb-2 md:ml-8 max-w-sm">
           <h2>Live preview of your card</h2>
         </div>

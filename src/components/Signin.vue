@@ -38,6 +38,7 @@
 
 <script>
 import axios from 'axios'
+import { parseJWT } from '../util'
 import { validateEmail } from "../validators";
 
 export default {
@@ -64,7 +65,16 @@ export default {
       const config = { headers: {'Content-Type' : 'application/json' }, withCredentials: true }
       axios.post('http://localhost:3000/signin', JSON.stringify(data), config)
       .then(() => {
-        this.$router.push('/home')
+        const role = parseJWT(document.cookie.split('=')[1])['Role']
+        if (role === 'student') {
+          localStorage.setItem('role', 'student')
+          this.$router.push('/profile')
+        } else if(role === 'representative') {
+          localStorage.setItem('role', 'representative')
+          this.$router.push('/account')
+        } 
+
+        localStorage.setItem('isLoggedIn', 'true')
       })
       .catch(err => {
         console.log(err)
