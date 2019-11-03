@@ -38,6 +38,7 @@
 
 <script>
 import axios from 'axios'
+import { EventBus } from '../eventbus'
 import { parseJWT } from '../util'
 import { validateEmail } from "../validators";
 
@@ -68,13 +69,15 @@ export default {
         const role = parseJWT(document.cookie.split('=')[1])['Role']
         if (role === 'student') {
           localStorage.setItem('role', 'student')
+          localStorage.setItem('isLoggedIn', 'true')
+          EventBus.$emit('loggedIn', 'student logged in')
           this.$router.push('/profile')
         } else if(role === 'representative') {
           localStorage.setItem('role', 'representative')
+          localStorage.setItem('isLoggedIn', 'true')
+          EventBus.$emit('loggedIn', 'representative logged in')
           this.$router.push('/account')
         } 
-
-        localStorage.setItem('isLoggedIn', 'true')
       })
       .catch(err => {
         console.log(err)

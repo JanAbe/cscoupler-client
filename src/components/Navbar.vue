@@ -46,6 +46,8 @@
 </template>
 
 <script>
+import { EventBus } from '../eventbus'
+
 export default {
   data() {
     return {
@@ -54,8 +56,10 @@ export default {
     }
   },
   created() {
-    this.isLoggedIn = localStorage.getItem('isLoggedIn')
-    this.role = localStorage.getItem('role')
+    EventBus.$on('loggedIn', () => {
+      this.isLoggedIn = localStorage.getItem('isLoggedIn')
+      this.role = localStorage.getItem('role')
+    })
   },
   methods: {
     toggleMenuContent() {
@@ -67,6 +71,8 @@ export default {
       menuContent.style.display = 'none'
     },
     logout() {
+      this.isLoggedIn = 'false'
+      this.role = ''
       localStorage.setItem('isLoggedIn', 'false')
       localStorage.setItem('role', '')
       this.$router.push('/signin')
