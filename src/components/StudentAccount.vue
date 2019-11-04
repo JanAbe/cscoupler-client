@@ -29,11 +29,14 @@
         </div>
       </div>
     </div>
-    <div class="lg:w-1/2 bg-purple-100">
+    <div class="lg:w-1/2">
       <div class="text-center">
         <h2 class="text-2xl pt-4 mb-4">{{ student.firstname }} {{ student.lastname }}'s CV</h2>
-        <!-- <iframe src="../assets/test.pdf" type="application/pdf" width="800px" height="400px"> </iframe> -->
-        <iframe src="https://www.bellevue.edu/student-support/career-services/pdfs/resume-samples.pdf" type="application/pdf" width="100%" height="900px"> </iframe>
+        <!-- this doesn't display the pdf, what is wrong with test.pdf -->
+        <iframe src="./test.pdf" type="application/pdf" width="100%" height="900px" class="mb-px"> </iframe>
+        <!-- this does display the pdf -->
+        <iframe src="./resume-samples.pdf" type="application/pdf" width="100%" height="900px" class="mb-px"> </iframe>
+        <!-- <iframe src="https://www.bellevue.edu/student-support/career-services/pdfs/resume-samples.pdf" type="application/pdf" width="100%" height="900px"> </iframe> -->
       </div>
     </div>
   </div>
