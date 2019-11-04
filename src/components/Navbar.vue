@@ -28,12 +28,6 @@
         <div v-if="this.role === 'student'" class="mt-4 lg:mt-0">
           <router-link to="/profile" class="mr-4">Profile</router-link>
         </div>
-        <div class="mt-4 lg:mt-0">
-          <router-link to="/signup/company" class="mr-4">Register(Company)</router-link>
-        </div>
-        <div class="mt-4 lg:mt-0">
-          <router-link to="/signup/student">Register(Student)</router-link>
-        </div>
         <div v-if="this.isLoggedIn !== 'true'" class="mt-4 lg:mt-0">
           <router-link to="/signin" class="lg:ml-4">Sign in</router-link>
         </div>
