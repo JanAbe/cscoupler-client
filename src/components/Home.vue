@@ -34,7 +34,7 @@
     </div>
 
     <div class="flex justify-center mt-4">
-      <img src="../assets/svg/online-resume.svg" class="w-2/5 my-2">
+      <img id="registration-form" src="../assets/company_registration.png" class="w-5/6 rounded-lg" alt="company registration form">
     </div>
 
     <div class="flex justify-center mt-4">
@@ -59,6 +59,8 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+  #registration-form {
+    box-shadow: 27.1px 62.5px 75px -25px rgba(50,50,93,.5),16.2px 37.5px 75px -37.5px rgba(0,0,0,.6);
+  }
 </style>
