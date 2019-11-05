@@ -15,7 +15,7 @@
       </div>
 
       <div class="mx-6">
-        <h2 class="text-lg pt-4 lg:ml-32">Experiences:</h2>
+        <h2 v-if="student.experiences.length !== 0" class="text-lg pt-4 lg:ml-32">Experiences:</h2>
         <div v-for="(exp, index) in student.experiences" :key="index"
           class="text-sm text-gray-700 text-justify p-2 my-3 lg:mx-40 bg-purple-100 rounded-lg">
           {{ exp }}
@@ -23,7 +23,7 @@
       </div>
       
       <div class="mx-6">
-        <h2 class="text-lg pt-4 lg:ml-32">Wishes:</h2>
+        <h2 v-if="student.wishes.length !== 0" class="text-lg pt-4 lg:ml-32">Wishes:</h2>
         <div class="text-sm text-gray-700 text-justify p-2 my-2 lg:mx-40 bg-purple-100 rounded-lg">
           {{ student.wishes }}
         </div>
@@ -32,11 +32,7 @@
     <div class="lg:w-1/2">
       <div class="text-center">
         <h2 class="text-2xl pt-4 mb-4">{{ student.firstname }} {{ student.lastname }}'s CV</h2>
-        <!-- this doesn't display the pdf, what is wrong with test.pdf -->
-        <iframe src="./test.pdf" type="application/pdf" width="100%" height="900px" class="mb-px"> </iframe>
-        <!-- this does display the pdf -->
-        <iframe src="./resume-samples.pdf" type="application/pdf" width="100%" height="900px" class="mb-px"> </iframe>
-        <!-- <iframe src="https://www.bellevue.edu/student-support/career-services/pdfs/resume-samples.pdf" type="application/pdf" width="100%" height="900px"> </iframe> -->
+        <iframe src="https://www.bellevue.edu/student-support/career-services/pdfs/resume-samples.pdf" type="application/pdf" width="100%" height="900px"> </iframe>
       </div>
     </div>
   </div>

@@ -174,7 +174,7 @@ export default {
 
       axios.post(endpoint, payload)
       .then(() => {
-        location.reload()
+        this.$router.push('/signin')
       })
       .catch(err => {
         switch(err.response.status) {

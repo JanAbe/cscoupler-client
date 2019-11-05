@@ -247,8 +247,8 @@ export default {
         this.skills = student.skills.map(s => {
           return {skill: s}
         })
-        this.experiences = student.experiences
-        this.shortExperiences = student.shortExperiences
+        this.experiences = student.experiences === null ? [] : student.experiences
+        this.shortExperiences = student.shortExperiences === null ? [] : student.shortExperiences
         this.university = student.university
         this.status = { stat: student.status }
         this.resume = student.resume
