@@ -68,7 +68,7 @@
                 <td class="border px-4 py-1 text-sm text-center">Not yet</td>
               </tr>
               <tr v-for="i in invitations" :key="i.id">
-                <td class="border-px-4 py-1 text-sm select-all">{{ i.URL }}</td>
+                <td class="border px-4 py-1 text-sm select-all">{{ i.URL }}</td>
                 <td class="border px-4 py-1 text-sm text-center">{{ i.ExpiryDate }}</td>
                 <td class="border px-4 py-1 text-sm text-center">{{ i.Used }}</td>
               </tr>
