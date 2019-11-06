@@ -217,6 +217,7 @@ export default {
   },
   methods: {
     generateInvitation() {
+      // this should actually be a POST request, but that didn't work for some reason, so a GET request is used instead.
       axios.get('http://localhost:3000/representatives/invitelink', { withCredentials: true })
       .then(() => {
         this.fetchCreatedInvitations()
