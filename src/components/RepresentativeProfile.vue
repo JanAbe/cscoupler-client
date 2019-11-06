@@ -1,7 +1,7 @@
 <template>
-  <div class="mx-auto lg:ml-auto lg:mr-32 container">
+  <div class="mx-auto container">
     <div class="lg:flex">
-      <form id="representative-update-form" class="w-full bg-white md:px-4 pt-4 pb-3 ">
+      <form id="representative-update-form" class="w-1/2 bg-white md:px-4 pt-4 pb-3 ">
         <h2 class="text-lg font-semibold text-md mx-6 sm:mx-0">Your profile</h2>
 
         <div class="flex flex-wrap mx-3 mb-6 sm:-mx-3">
@@ -50,25 +50,20 @@
         </div>
       </form>
 
-      <div class="px-6 lg:w-full lg:pl-8 lg:ml-12 border-t border-purple-400 lg:border-t-0">
+      <div class="px-6 lg:w-1/2 lg:pl-8 lg:ml-12 border-t border-purple-400 lg:border-t-0">
         <div>
           <h2 class="text-xl text-center mt-4 md:ml-8 lg:mx-auto font-semibold">Invitations</h2>
-          <table class="mx-auto lg:mx-auto lg:w-full mt-4">
+          <table id="test" class="mx-auto lg:mx-auto lg:w-full mt-4">
             <thead>
               <tr class="bg-purple-100">
-                <th class="border text-sm font-normal w-3/5 px-3">URL</th>
-                <th class="border text-sm font-normal w-1/5 px-3">Valid for</th>
-                <th class="border text-sm font-normal w-1/5 px-3">Used</th>
+                <th class="border text-sm font-normal w-3/6 px-3">Invitation</th>
+                <th class="border text-sm font-normal w-2/6 px-3">Valid until</th>
+                <th class="border text-sm font-normal w-1/6 px-3">Used</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td class="border px-4 py-1 text-sm select-all">/invitation/company</td>
-                <td class="border px-4 py-1 text-sm text-center">14:12:12</td>
-                <td class="border px-4 py-1 text-sm text-center">Not yet</td>
-              </tr>
               <tr v-for="i in invitations" :key="i.id">
-                <td class="border px-4 py-1 text-sm select-all">{{ i.URL }}</td>
+                <td class="border px-4 py-1 text-sm select-all"><span>{{ i.URL }}</span></td>
                 <td class="border px-4 py-1 text-sm text-center">{{ i.ExpiryDate }}</td>
                 <td class="border px-4 py-1 text-sm text-center">{{ i.Used }}</td>
               </tr>
@@ -218,12 +213,25 @@ export default {
   },
   created() {
     this.fetchRepresentative()
+    this.fetchCreatedInvitations()
   },
   methods: {
     generateInvitation() {
       axios.get('http://localhost:3000/representatives/invitelink', { withCredentials: true })
+      .then(() => {
+        this.fetchCreatedInvitations()
+      })
+      .catch(err => console.log(err))
+    },
+    fetchCreatedInvitations() {
+      this.invitations = []
+      axios.get('http://localhost:3000/representatives/invitations', { withCredentials: true })
       .then(res => {
-        this.invitations.push(res.data)
+        res.data.forEach(i => {
+          i['URL'] = 'http://localhost:8080/#' + i['URL']
+          i['ExpiryDate'] = new Date(i['ExpiryDate']).toLocaleString('NL')
+          this.invitations.push(i)
+        })
       })
       .catch(err => console.log(err))
     },
@@ -292,6 +300,17 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+  #test {
+    table-layout: fixed;
+  }
 
+  #test td span {
+    display: block;
+    overflow: scroll;
+  }
+  
+  #test td {
+    white-space: nowrap;
+  }
 </style>

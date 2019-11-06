@@ -1,3 +1,13 @@
+need to make it so that when an invitation has been used or has expired
+a message is sent to the representative that created the invitation, so
+the invitationTable can be updated with correct data.
+Or the client needs to poll every x time to see if the invitation has been used already
+but that sounds not as good.
+
+problems when removing packages. 
+After installing i can't remove them because cache-loader complains, and
+i don't know how to fix that. So i still got to remove moment.js and vue-pdf (i think it's only these two)
+
 !!! Don't forget to change endpoints/url's used to 
 http if http is used by the server and vice versa !!!
 
