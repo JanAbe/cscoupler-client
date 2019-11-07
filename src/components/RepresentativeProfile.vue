@@ -2,7 +2,10 @@
   <div class="mx-auto container">
     <div class="lg:flex">
       <form id="representative-update-form" class="w-1/2 bg-white md:px-4 pt-4 pb-3 ">
-        <h2 class="text-lg font-semibold text-md mx-6 sm:mx-0">Your profile</h2>
+        <div class="flex justify-between">
+          <h2 class="text-lg font-semibold text-md mx-6 sm:mx-0">Your profile</h2>
+          <button @click="visitCompanyAccount()" class="py-1 px-3 text-white bg-purple-400 hover:bg-purple-500 rounded-full text-xs font-semibold text-md mx-6 sm:mx-0">Go to Company Profile</button>
+        </div>
 
         <div class="flex flex-wrap mx-3 mb-6 sm:-mx-3">
           <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
@@ -296,6 +299,9 @@ export default {
         location.reload()
       })
       .catch(err => console.log(err))
+    },
+    visitCompanyAccount() {
+      this.$router.push(`/companies/${this.companyID}/account`)
     }
   }
 }

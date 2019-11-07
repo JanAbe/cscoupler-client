@@ -1,3 +1,9 @@
+todo:
+fix bug where cookie suddenly/randomly gets deleted
+haven't found out what triggered it yet.
+I went to companyProfile from the representativeProfile page
+and went back. The cookie was suddenly removed
+
 need to make it so that when an invitation has been used or has expired
 a message is sent to the representative that created the invitation, so
 the invitationTable can be updated with correct data.
