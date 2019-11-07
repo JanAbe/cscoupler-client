@@ -26,7 +26,7 @@
       Addresses
     </h2>
     <div class="flex flex-wrap justify-around mx-auto mb-8 mt-2">
-      <div v-for="(l, index) in company.locations" :key="index" class="px-4 py-2">
+      <div v-for="(l, index) in company.locations" :key="index" class="px-4 pt-3 rounded border border-gray-300">
         <div class="flex flex-wrap mx-3 mb-6 md:mb-1 sm:-mx-3">
           <div class="w-full md:w-2/3 px-3 mb-3 lg:mb-1">
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="city">
@@ -74,10 +74,14 @@
       <div class="lg:flex lg:flex-wrap">
         <div v-for="(p, index) in company.projects" :key="index" class="my-2">
           <div class="min-w-sm self-start border mb-6 rounded-lg bg-white md:ml-8 max-w-sm shadow-xl hover:shadow-none">
+
             <div class="flex flex-wrap justify-center border-b-2 border-purple-400">
               <p class="p-2 text-xl text-grey-dark mx-4 mt-1 mb-2">
                 Internship at {{ company.name }}
               </p>
+              <div class="flex justify-end">
+                <button @click="deleteProject(p.ID)" class="px-3 my-4 rounded-full text-white text-sm bg-red-300 hover:bg-red-400">Delete</button>
+              </div>
             </div>
 
             <h4 class="pl-2">Description:</h4>
@@ -151,6 +155,13 @@ export default {
       axios.put(`http://localhost:3000/companies/edit/${this.$route.params.companyID}`, JSON.stringify(this.company), { withCredentials: true })
       .then(() => {
         location.reload()
+      })
+      .catch(err => console.log(err))
+    },
+    deleteProject(id) {
+      axios.delete(`http://localhost:3000/projects/delete/${id}`, { withCredentials: true })
+      .then(() => {
+
       })
       .catch(err => console.log(err))
     }
