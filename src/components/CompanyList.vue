@@ -53,6 +53,7 @@ export default {
           const id = c['id']
           const name = c['name']
           const information = c['information']
+          const description = c['description']
           const locations = c['locations']
           const representatives = c['representatives']
           const projects = c['projects'] === null ? [] : c['projects']
@@ -61,6 +62,7 @@ export default {
             id: id,
             name: name,
             information: information,
+            description: description,
             locations: locations,
             representatives: representatives,
             projects: projects

@@ -13,16 +13,14 @@
     <h4 class="pl-3">Company description:</h4>
     <div class="flex flex-wrap text-center mb-1">
       <p class="px-2 py-1 text-sm text-justify text-grey-dark mx-4 mb-2 bg-purple-100 rounded-lg">
-        {{ company.information }}
+        {{ company.description }}
       </p>
     </div>
 
     <h4 class="pl-3">Internship info:</h4>
     <div class="flex flex-wrap text-center mb-1">
       <p class="px-2 py-1 text-sm text-justify text-grey-dark mx-4 mb-2 bg-purple-100 rounded-lg">
-        During the duration of an internship, interns own their projects from start to finish. 
-        At that time, Fluugle teams provide feedback on the intern’s overall performance. At the start
-        you get assigned one mentor who will assist you during your internship.
+        {{ company.information }}
       </p>
     </div>
 
