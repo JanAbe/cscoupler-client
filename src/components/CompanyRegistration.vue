@@ -1,6 +1,6 @@
 <template>
   <div class="container mx-auto bg-white">
-    <form v-on:submit.prevent="register()" id="company-form" class="lg:mt-16 md:mt-6 lg:border-2 lg:border-gray-200 lg:rounded-lg pt-4 pb-2">
+    <form id="company-form" v-on:submit.prevent="register()" class="lg:mt-16 md:mt-6 lg:border-2 lg:border-gray-200 lg:rounded-lg pt-4 pb-2">
       <div class="lg:flex">
         <div class="lg:w-1/2 md:mx-6 lg:mx-0">
           <h2 class="font-semibold text-md pt-2 pb-6 px-2 lg:px-6 mx-6 sm:mx-0">Company Registration <span class="float-right text-sm rounded-full bg-purple-200 p-4 h-8 w-8 flex items-center justify-center">1</span></h2>
@@ -17,13 +17,24 @@
                 <p class="text-red-600 leading-tight text-xs italic pl-1">{{ nameConflictError }}</p>
               </div>
             </div>
+            
+            <div class="flex flex-wrap mx-3 mb-6 md:mb-5 sm:-mx-3">
+              <div class="w-full px-3 mb-3 lg:mb-1">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="description">
+                  Description
+                </label>
+                <input id="description" v-model="description" type="text" placeholder="We specialize in cybersecurity software" 
+                  class="appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 mb-1 leading-tight focus:outline-none hover:border-purple-300 focus:border-purple-300">
+                <p class="text-red-600 leading-tight text-xs italic pl-1">{{ validationErrors.description }}</p>
+              </div>
+            </div>
 
             <div class="flex flex-wrap mx-3 mb-6 md:mb-5 sm:-mx-3">
               <div class="w-full px-3 mb-3 lg:mb-1">
                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="information">
                   Information
                 </label>
-                <input id="information" v-model="information" type="text" placeholder="We specialize in cybersecurity software" 
+                <input id="information" v-model="information" type="text" placeholder="Interns get assigned a mentor, but work on a project on their own" 
                   class="appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 mb-1 leading-tight focus:outline-none hover:border-purple-300 focus:border-purple-300">
                 <p class="text-red-600 leading-tight text-xs italic pl-1">{{ validationErrors.information }}</p>
               </div>
@@ -35,7 +46,7 @@
                   City
                 </label>
                 <input id="city" v-model="city" type="text" placeholder="New York City" 
-                  class="appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 mb-6 leading-tight focus:outline-none hover:border-purple-300 focus:border-purple-300">
+                  class="appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 mb-1 leading-tight focus:outline-none hover:border-purple-300 focus:border-purple-300">
                 <p class="text-red-600 leading-tight text-xs italic pl-1">{{ validationErrors.city }}</p>
               </div>
               <div class="w-full md:w-1/3 px-3 mb-3 lg:mb-1">
@@ -130,7 +141,7 @@
         </div>
       </div>
 
-      <div class="flex mt-1 sm:-mx-3 justify-center px-6 mb-4">
+      <div class="flex mt-1 sm:-mx-3 justify-center px-6 lg:mb-1">
         <router-link to="/home" class="text-xs font-semibold rounded-full mx-6 px-4 py-1 bg-white border border-purple-400 hover:bg-purple-400 hover:text-white">
           Cancel
         </router-link>
@@ -150,6 +161,7 @@ import { validateFirstName,
          validatePassword,
          validateCompanyName,
          validateCompanyInfo,
+         validateCompanyDescription,
          validateCity,
          validateStreet,
          validateZipcode,
@@ -163,6 +175,7 @@ export default {
       emailConflictError: '',
       nameConflictError: '',
       name: '',
+      description: '',
       information: '',
       street: '',
       zipcode: '',
@@ -185,6 +198,7 @@ export default {
       const endpoint = 'http://localhost:3000/signup/company'
       const data = {
         name: this.name,
+        description: this.description,
         information: this.information,
         locations: [
           {
@@ -209,7 +223,7 @@ export default {
 
       axios.post(endpoint, JSON.stringify(data))
       .then(() => {
-        location.reload()
+        this.$router.push('/signin')
       })
       .catch(err => {
         switch(err.response.status) {
@@ -235,6 +249,11 @@ export default {
       const info = validateCompanyInfo(this.information)
       if (!info.isValid) {
         this.validationErrors.information = info.error      
+      }
+
+      const description = validateCompanyDescription(this.description)
+      if (!description.isValid) {
+        this.validationErrors.description = description.error
       }
 
       const city = validateCity(this.city)

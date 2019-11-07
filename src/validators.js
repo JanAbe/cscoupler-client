@@ -86,6 +86,14 @@ export const validateCompanyInfo = (info) => {
   return { isValid: true, error: null }
 }
 
+export const validateCompanyDescription = (descr) => {
+  if (!descr.length) {
+    return { isValid: false, error: 'Description about the company is required' }
+  }
+
+  return { isValid: true, error: null }
+}
+
 export const validateCity = (city) => {
   if (!city.length) {
     return { isValid: false, error: 'City is required' }
