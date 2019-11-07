@@ -273,7 +273,7 @@ export default {
 
       axios.put(`http://localhost:3000/representatives/edit/${representativeID}`, JSON.stringify(data), { withCredentials: true })
       .then(() => {
-        location.reload()
+        // location.reload()
       })
       .catch(err => console.log(err))
     },

@@ -41,7 +41,7 @@
     </h2>
     <div class="md:flex md:flex-wrap md:justify-center">
       <div v-for="(r, index) in company.representatives" :key="index" class="md:flex bg-white rounded-lg p-6 pl-4 mx-4 shadow-lg mt-2 border border-gray-300">
-        <img class="h-16 w-16 md:h-20 md:w-20 rounded-full mx-auto" src="../assets/avatar.png" alt="">
+        <img class="h-16 w-16 md:h-20 md:w-20 rounded-full mx-auto lg:mr-4" src="../assets/avatar.png" alt="">
         <div class="text-center md:text-left">
           <h2 class="text-lg">
             {{ r.user.firstname }} {{ r.user.lastname }}
