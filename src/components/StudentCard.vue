@@ -1,5 +1,5 @@
 <template>
-  <div class="self-start border mb-6 rounded-lg bg-white md:ml-8 max-w-sm shadow-xl hover:shadow-none cursor-pointer"
+  <div class="self-start border mb-6 rounded-lg bg-white md:ml-8 min-w-sm max-w-sm shadow-xl hover:shadow-none cursor-pointer"
     v-bind:class="{ marked: student.marked }"
     v-on:click.stop="mark(student)">
 
@@ -92,5 +92,11 @@ export default {
   .marked {
     background-color: #e9d8fd;
     box-shadow: none;
+  }
+
+  @media (min-width: 768px) {
+    .min-w-sm {
+      width: 382px;
+    }
   }
 </style>

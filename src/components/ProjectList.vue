@@ -1,6 +1,6 @@
 <template>
   <div class="mt-4 md:mt-8 md:flex">
-    <div class="flex-none text-gray-700 mb-6 mx-6 md:w-1/3 md:max-w-xs lg:mr-16 md:ml-10">
+    <div class="flex-none text-gray-700 mb-6 mx-6 md:mx-2 md:w-1/3 md:max-w-xs lg:mr-16 md:ml-10">
       <div class="md:flex md:justify-center">
         <div class="border border-gray-300 rounded md:fixed md:mt-16 md:ml-8">
           <h2 class="bg-purple-400 text-center font-semibold text-white py-3">

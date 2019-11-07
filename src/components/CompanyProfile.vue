@@ -25,7 +25,7 @@
     <h2 class="block uppercase tracking-wide text-gray-700 text-sm font-bold text-center mt-8 md:mt-16">
       Addresses
     </h2>
-    <div class="flex flex-wrap justify-around mx-auto mb-8 border border-gray-300 mt-2">
+    <div class="flex flex-wrap justify-around mx-auto mb-8 mt-2">
       <div v-for="(l, index) in company.locations" :key="index" class="px-4 py-2">
         <div class="flex flex-wrap mx-3 mb-6 md:mb-1 sm:-mx-3">
           <div class="w-full md:w-2/3 px-3 mb-3 lg:mb-1">
@@ -73,7 +73,7 @@
     <div class="lg:flex lg:flex-wrap md:ml-40 mx-4 lg:mx-1">
       <div class="lg:flex lg:flex-wrap">
         <div v-for="(p, index) in company.projects" :key="index" class="my-2">
-          <div class="self-start border mb-6 rounded-lg bg-white md:ml-8 max-w-sm shadow-xl hover:shadow-none">
+          <div class="min-w-sm self-start border mb-6 rounded-lg bg-white md:ml-8 max-w-sm shadow-xl hover:shadow-none">
             <div class="flex flex-wrap justify-center border-b-2 border-purple-400">
               <p class="p-2 text-xl text-grey-dark mx-4 mt-1 mb-2">
                 Internship at {{ company.name }}
@@ -158,6 +158,10 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+  @media (min-width: 1024px) {
+    .min-w-sm {
+      width: 382px;
+    }
+  }
 </style>
