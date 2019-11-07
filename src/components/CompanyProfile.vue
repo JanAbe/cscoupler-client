@@ -5,21 +5,20 @@
         {{ company.name }}
       </h1>
     </div>
-
-    <div>
-      <p class="text-center">
-        {{ company.information }}
-      </p>
+    
+    <div class="mx-4 md:mx-24 lg:mx-64 text-center mt-8">
+      <h2 class="block uppercase tracking-wide text-gray-700 text-sm font-bold text-center">
+        Company Description
+      </h2>
+      <textarea class="w-full p-2 border border-gray-200 rounded text-gray-700 mt-2" v-model="company.description">
+      </textarea>
     </div>
 
     <div class="mx-4 md:mx-24 lg:mx-64 text-center mt-8">
       <h2 class="block uppercase tracking-wide text-gray-700 text-sm font-bold text-center">
         Internship Information
       </h2>
-      <textarea class="w-full p-2 border border-gray-200 rounded text-gray-700 mt-2">
-        During the duration of an internship, interns own their projects from start to finish. 
-        At that time, Fluugle teams provide feedback on the intern’s overall performance. At the start
-        you get assigned one mentor who will assist you during your internship.
+      <textarea class="w-full p-2 border border-gray-200 rounded text-gray-700 mt-2" v-model="company.information">
       </textarea>
     </div>
 
@@ -75,32 +74,44 @@
       <div class="lg:flex lg:flex-wrap">
         <div v-for="(p, index) in company.projects" :key="index" class="my-2">
           <div class="self-start border mb-6 rounded-lg bg-white md:ml-8 max-w-sm shadow-xl hover:shadow-none">
-            <div class="sm:flex sm:items-center">
-              <div class="text-center py-1 sm:text-left sm:flex-grow">
-                <div class="mb-1 border-b-2 border-purple-400 pb-2">
-                  <p class="text-xl text-center leading-tight">
-                    {{ company.name }} 
-                  </p>
-                </div>
-              </div>
-            </div>
-            
-            <h4 class="pl-3">Company description:</h4>
-            <div class="flex flex-wrap text-center mb-1">
-              <p class="px-2 py-1 text-sm text-justify text-grey-dark mx-4 mb-2 bg-purple-100 rounded-lg">
-                {{ company.description }}
+            <div class="flex flex-wrap justify-center border-b-2 border-purple-400">
+              <p class="p-2 text-xl text-grey-dark mx-4 mt-1 mb-2">
+                Internship at {{ company.name }}
               </p>
             </div>
 
-            <h4 class="pl-3">Internship info:</h4>
+            <h4 class="pl-2">Description:</h4>
             <div class="flex flex-wrap text-center mb-1">
-              <p class="px-2 py-1 text-sm text-justify text-grey-dark mx-4 mb-2 bg-purple-100 rounded-lg">
-                {{ company.information }}
-              </p>
+              <textarea class="px-2 py-1 text-sm text-justify text-grey-dark mx-4 mb-2 bg-purple-100 rounded-lg w-full" v-model="p.description">
+              </textarea>
+            </div>
+
+            <h4 class="pl-2">Duration:</h4>
+            <div class="flex flex-wrap text-center mb-1">
+              <textarea class="px-2 py-1 text-sm text-justify text-grey-dark mx-4 mb-2 bg-purple-100 rounded-lg w-full" v-model="p.duration">
+              </textarea>
+            </div>
+
+            <h4 class="pl-2">Compensation:</h4>
+            <div class="flex flex-wrap text-center mb-1">
+              <textarea class="px-2 py-1 text-sm text-justify text-grey-dark mx-4 mb-2 bg-purple-100 rounded-lg w-full" v-model="p.compensation">
+              </textarea>
+            </div>
+
+            <h4 class="pl-2">Desired Skills:</h4>
+            <div class="flex flex-wrap justify-center sm:flex-grow">
+              <span v-for="(rec, index) in p.recommendations" :key="index"
+                class="flex-grow text-center bg-indigo-100 rounded-full px-2 py-1 mb-1 text-sm text-gray-700 mx-2">
+                {{ rec }}
+              </span> 
             </div>
           </div>
         </div>
       </div>
+    </div>
+
+    <div class="flex justify-center border-t-2 border-purple-400">
+      <button @click="update()" class="py-2 px-5 mt-2 text-white rounded-full bg-purple-400 hover:bg-purple-500">Update Company Data</button>
     </div>
   </div>
 </template>
@@ -131,7 +142,15 @@ export default {
           representatives: res.data['representatives'],
           projects: res.data['projects']
         }
-        console.log(this.company)
+      })
+      .catch(err => console.log(err))
+    },
+    update() {
+      // todo: validate newly provided data
+
+      axios.put(`http://localhost:3000/companies/edit/${this.$route.params.companyID}`, JSON.stringify(this.company), { withCredentials: true })
+      .then(() => {
+        location.reload()
       })
       .catch(err => console.log(err))
     }

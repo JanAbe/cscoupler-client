@@ -1,3 +1,11 @@
+// validate validates the provided input data
+// based on the provided validation-function
+// func should be a function that expects data as input
+// and produces Object{isValid: boolean, error: string | null } as output
+export const validate = (data, func) => {
+  return func(data)
+}
+
 export const validateFirstName = (fname) => {
   if (!fname.length) {
     return { isValid: false, error: 'First name is required' }
