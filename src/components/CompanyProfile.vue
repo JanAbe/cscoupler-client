@@ -80,7 +80,7 @@
                 Internship at {{ company.name }}
               </p>
               <div class="flex justify-end">
-                <button @click="deleteProject(p.ID)" class="px-3 my-4 rounded-full text-white text-sm bg-red-300 hover:bg-red-400">Delete</button>
+                <button @click="deleteProject(p.id)" class="px-3 my-4 rounded-full text-white text-sm bg-red-300 hover:bg-red-400">Delete</button>
               </div>
             </div>
 
@@ -158,10 +158,10 @@ export default {
       })
       .catch(err => console.log(err))
     },
-    deleteProject(id) {
-      axios.delete(`http://localhost:3000/projects/delete/${id}`, { withCredentials: true })
+    deleteProject(projectID) {
+      axios.delete(`http://localhost:3000/projects/delete/${projectID}`, { withCredentials: true })
       .then(() => {
-
+        location.reload()
       })
       .catch(err => console.log(err))
     }
