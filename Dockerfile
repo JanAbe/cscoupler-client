@@ -1,8 +1,8 @@
 FROM node:12 as builder
 
-WORKDIR /js/cscoupler-client
+WORKDIR /cscoupler-client
 
-ADD . /js/cscoupler-client
+ADD . /cscoupler-client
 
 RUN npm install
 
