@@ -24,7 +24,7 @@ Vue.config.productionTip = false
 Vue.use(VueRouter)
 
 const routes = [
-  { path: '/home', component: Home },
+  { path: '/', component: Home },
   { path: '/signup/student', component: StudentRegistration },
   { path: '/students', component: StudentList },
   { path: '/signup/company', component: CompanyRegistration },

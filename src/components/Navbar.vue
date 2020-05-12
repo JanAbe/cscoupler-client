@@ -1,7 +1,7 @@
 <template>
   <nav class="flex items-center justify-between flex-wrap bg-purple-600 p-2 lg:px-8">
     <div class="flex items-center flex-shrink-0 text-white mr-6">
-      <router-link to="/home" class="font-semibold text-xl tracking-tight">CScoupler</router-link>
+      <router-link to="/" class="font-semibold text-xl tracking-tight">CScoupler</router-link>
     </div>
     <div class="block lg:hidden">
       <button @click="toggleMenuContent()" class="flex items-center px-3 py-2 border rounded text-purple-200 border-purple-400 hover:text-white hover:border-white">
