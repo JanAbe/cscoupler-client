@@ -3,7 +3,7 @@
     <div class="text-xl mx-12 md:ml-24 lg:pl-56 pt-6 pb-6 md:pb-12 lg:pb-20">
       CScoupler, the new <u>platform</u> for finding computer-science related <u>internships</u>.
       <br>
-      Find your internships, or <u>suitable students</u> here.
+      Find your internships, or <u>suitable students</u> here. sdfsdf
     </div>
 
     <div class="lg:flex lg:mx-16 pb-10 border-b border-purple-400">
